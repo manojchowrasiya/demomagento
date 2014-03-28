@@ -1,0 +1,99 @@
+<?php $catalogSearchHelper =  $this->helper('catalogsearch');
+
+?>
+<form id="search_sidebar_form" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get">
+<?php //$attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'brand');?>
+<?php 
+$collection = Mage::getModel('catalog/product')
+	->getCollection()
+	->addAttributeToSort('name', 'ASC')
+	->addAttributeToFilter(
+    	'status', array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED));
+$collection->addAttributeToSelect('name');
+$collection->addAttributeToSelect('us_brand_name');
+$collection->addAttributeToSelect('active_ingridients');
+$collection->addAttributeToSelect('generic_name');
+$collection->addAttributeToFilter('type_id', array('eq' => 'configurable'));
+
+?>
+<?php //$attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'us_brand_name');?>
+<?php //$generic = Mage::getModel('eav/config')->getAttribute('catalog_product', 'active_ingridients');?>
+
+<div class="drugSearch">
+	<ul>					
+		<li><span>Brand</span> <br /> 
+		<select id="dropdown1"> 
+			<option value="Us">All US Brands</option>
+			<?php $i=0;
+				foreach ($collection as $product) {
+											
+						$data = $product->getData('us_brand_name');
+						$data = str_replace('cream','',$data);
+						$brand_active[]= trim($data);
+						$finalBrand_active=array_unique($brand_active);
+				}
+				?>
+			<?php //endforeach; 
+			asort($finalBrand_active);?>
+			<?php foreach($finalBrand_active as $names):?>
+				<?php if($names != 'Latisse'): ?>
+					<option value="Us"><?php echo $this->__($names); ?></option> 
+				<?php endif; ?>
+			<?php endforeach;?>
+			
+
+		</select> 
+		</li>
+		<li><span>Active Ingredients </span><br /> 
+		<select id="dropdown2"> 
+			<option value="Us">Select Options</option> 
+			<?php 
+				foreach ($collection as $product) {
+						$data = $product->getData('generic_name');
+						$data = str_replace('cream','',$data);
+						$active[]= trim($data);
+				}
+				$final_active=array_unique($active);
+			?>
+			
+			asort($final_active);?>
+			<?php foreach($final_active as $names):?>
+				<option value="Us"><?php echo $this->__($names);?></option> 
+			<?php endforeach;?>
+		</select>
+		</li>
+		<li><span>Product Search </span><br />
+		 <input type="text" id="searchtext"/><input id="searchquery" type="hidden" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText(); ?>" /></li>
+		<li><button type="submit" title="<?php echo $this->__('Search') ?>" ><span class="btn_arrow"><?php echo $this->__('Search') ?></span></button></li>
+	</ul>
+</div>
+</form>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		var query = "";
+		jQuery('#dropdown1').change(function(){	
+			jQuery("#dropdown1 option:selected").each(function () {
+				jQuery('#searchquery').val($(this).text());
+				//Code To submit form
+				jQuery('#search_sidebar_form').submit();
+			
+			});
+		});
+		jQuery('#dropdown2').change(function(){	
+			jQuery("#dropdown2 option:selected").each(function () {
+				
+				var active=$(this).text().split(' ');
+				
+				jQuery('#searchquery').val($(this).text());
+				//Code To submit form
+				jQuery('#search_sidebar_form').submit();
+				
+			});
+		});
+		jQuery("#searchtext").keyup(function () {
+			    query = $(this).val();
+				jQuery('#searchquery').val(query);							
+		});
+		
+	})
+</script>

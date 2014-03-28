@@ -1,0 +1,37 @@
+<?php
+
+
+$result = $this->getBestsellerProduct(); 
+$itemPerRow = ($this->getItemsPerRow()) ? $this->getItemsPerRow() : 2 ;
+ //getting product model
+
+$model = Mage::getModel('catalog/product');
+?>
+<?php  $i=0;
+for($cnt = 0; $cnt<count($result); $cnt++){
+	
+	$_product = $model->load($result[$cnt]); //getting product object for particular product id
+	if($i>($itemPerRow-1))
+			echo '<tr valign="top">';
+	?>
+   
+<div class="headerrightcontainer">
+	<h4>BEST SELLING PRODUCTS</h4>
+</div>
+<div class="bottomrightcontainer">
+	<ul>
+		<li><div class="img"><a href="<?php echo $this->getBaseUrl().$_product['url_path']; ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+					<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(($this->getImageHeight()) ? $this->getImageHeight() : 65,($this->getImageWidth()) ? $this->getImageWidth() : 65); ?>" alt="<?php echo $this->htmlEscape($_product['name']) ?>"/>
+				</a></div><a href="<?php echo $this->getBaseUrl().$_product['url_path'] ?>" title="<?php echo $this->htmlEscape($_product['name']) ?>"><?php echo $this->htmlEscape($_product['name']) ?></a>
+				<div class="text">Nemo enim ispam voluptatemquia voluptas sit aspernatur aut...</div><h3><span class="price-box"><?php echo Mage::helper('core')->currency(number_format($_product->getPrice(),2)); ?></span></h3><?php $addtocartval = $this->getAddToCart();
+					if($addtocartval == 1){
+					if($_product->isSaleable()): ?>
+
+				<button class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+				<?php else: ?>
+				<span class="out-of-stock"><?php echo $this->__('Out of stock') ?></span>
+				<?php endif; }?></li>
+		
+	</ul>
+</div>
+<div class="clear"></div>

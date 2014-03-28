@@ -1,0 +1,133 @@
+		<script type="text/javascript">
+
+		jQuery(document).ready(function() {
+			jQuery('.read_more_content').css({'font-weight':'bold'});
+			jQuery('.less_content_para').css({'font-weight':'bold'});
+			jQuery('.content_para').hide();
+			jQuery('.read_more_content').click(function (){
+				//alert('.'+this.id);
+				jQuery('.'+this.id).slideDown( "slow" );
+				jQuery('#'+this.id).hide();
+			});
+
+			jQuery('.less_content_para').click(function (){
+				//alert('.'+this.id);
+				var class_string = this.id;
+				var strarray = class_string.split('_');
+				console.log(strarray);
+				var newidforless = strarray[1]+'_'+strarray[2];
+				jQuery('.'+newidforless).slideUp( "slow" );
+				// jQuery('#'+this.id).css({'display':'none'});
+				// jQuery('.read_more_content').css({'display':'block'});
+				jQuery('.read_more_content').show();
+			});
+
+		});
+		</script>
+		<style type="text/css">
+.read_more_content,.less_content_para{cursor: pointer;}
+		</style>
+<div class="below_banner_content">
+	<p>&nbsp;</p>
+	<h2><span class="hometextcontent" style="color: #415a00;">About AlldayChemist</span></h2>
+	<hr />
+	<p>&nbsp;</p>
+	<div class="hometextcontent" title="Generic Drugs">
+		<p><span>Welcome User. Please see our Terms and Conditions before you start with shopping on our site.</span></p>
+		<p>&nbsp;</p>
+		<p><span>AllDayChemist is proud to provide our valuable customers with quality </span> <strong><span><a href="generic_drugs">generic drugs</a></span></strong> and OTC products. All our products are manufactured by major reputed Indian manufacturers, which are compatible and consistent with FDA standards. We can supply <strong><span><a href="content/103-generic-medicines">generic medicines</a></span></strong> as per the quantity needed by our customers for personal use. The usual supply of <strong>Generic drugs</strong> that customers normally order is a 90 day supply. Save time and money by ordering from our convenient, discreet and in-expensive Indian online pharmacy. <a id="content_para1" class="read_more_content">Read More</a></p>
+		<p>&nbsp;</p>
+
+		<div class="content_para1 content_para">
+
+			<p><span>The<span>generic drugs</span> supplied by our drug store are identical in pharmaceutical chemical composition to their U.S. counter-parts which are pictured here and else-where on this site. Many major pharmaceutical companies license the manufacturing of their patent <strong><span>prescription drugs</span></strong> to subsidiary pharmaceutical companies in India, where these prescription medicines are sold for much less than anywhere else in the world.</span></p>
+			<p>&nbsp;</p>
+			<p><span>Order process for <span> <a href="generic_drugs">generic drugs</a></span> is very simple. You can simply search for the <strong><span><a href="content/103-generic-medicines">generic medicines</a></span></strong> using the two options of search namely Search by Brand-Name or Search by Generic Name. Once the product selection is done, enter the desired quantity of <span>generic drugs</span> and click on Add to Cart Button. Once the product / s selection is complete from our online drugs store, you can check-out after filling the required details. We will also need a fax / scanned copy of your prescription.</span></p>
+			<p>&nbsp;</p>
+			<p><span>Visitors to this site must be at least 21 years of age to order generic medicines</span> and are obligated to know their own country&rsquo;s current laws regarding import of <span>generic drugs</span>for personal use. AllDayChemist assumes no legal responsibility for those not in compliance with such guidelines regarding the import of <span>generic drugs.</span></p>
+			<p>&nbsp;</p>
+			<p><span>AllDayChemist has been providing service to online consumers world-wide since January, 2000, and is ranked highest by numerous online consumer forums due to our earned reputation for reliability and integrity. In case a consumer experiences delay in the arrival of the consignment of <span>generic drugs</span>, we ship the consignment at absolutely no cost to the customer. For us, satisfaction of the customer is above all else.</span></p>
+			<p>&nbsp;</p>
+			<p><span>Buy all your health care products here. Buy now! Cheap Prescription Medicines and other products.&nbsp;</span>&nbsp;
+				<a id="less_content_para1" class="less_content_para">Less</a>
+			</p>
+		</div>
+		<p>&nbsp;</p>
+		<div>
+			<h2 title="Prescription Drugs"><span class="hometextcontent" style="color: #415a00;">Our DRUG Policy:</span></h2>
+			<hr />
+			<p>&nbsp;</p>
+			<div class="hometextcontent">
+				<p style="text-align: justify;"><span>www.alldaychemist.com does not sell any counterfeit or adulterated pharmaceutical products.</span><br /><span>We have absolutely no intention to desceptively represent the origin, authenticity or effectiveness of the medications listed anywhere on our site.</span><a id="content_para2" class="read_more_content">Read More</a></p>
+				<div class="content_para content_para2">
+					<p style="text-align: justify;"><span>www.alldaychemist.com is owned and operated by a fully licensed pharmacy and adheres to all important standards including those related to safety and confidentiality.</span></p>
+					<p>&nbsp;</p>
+					<p style="text-align: justify;">www.alldaychemist.com will not ship any narcotics or controlled substances including Benzodiazipines to any of it's Pharmacy Clients.<a id="less_content_para2" class="less_content_para">Less</a></p>
+				</div></div>
+				<p>&nbsp;</p>
+				<h2 title="Generic Medicines"><span class="hometextcontent" style="color: #415a00;">Why Choose AllDayChemist (ADC):</span></h2>
+				<hr />
+				<p>&nbsp;</p>
+				<p><img src="<?php echo $this->getSkinUrl().'images/qualty.jpg'?>" alt="" /></p>
+				<p>&nbsp;</p>
+				<div class="hometextcontent">
+					<p>For us, Quality is never an accident; it is always the result of high intention, sincere effort, intelligent direction and skillful execution; it represents the wise choice of many alternatives. It forms a basis of all that we do.<a id="content_para3" class="read_more_content">Read More</a></p>
+					<p>&nbsp;</p>
+					<div class="content_para content_para3">
+						<p>ADC delivers quality, to enrich your lives, to fulfill your dreams and to improve your tomorrow. ADC has envisioned its long-term future to actively fill people&rsquo;s lives with moments of JOY and COMFORT. To fill your hearts with HAPPINESS and give you an experience of the Global Standard in Quality. <br /> This is ADC&rsquo;s commitment towards the community.</p>
+						<p>&nbsp;</p>
+						<p class="chose" style="text-align: justify; font-weight: bold;"><span>Lowest Price Guarantee:</span></p>
+						<p>Buying quality medications does not mean that you have to pay premium prices. At AllDayChemist, we have the lowest prices - guaranteed. Find a cheaper price and we will beat it.&nbsp;&nbsp;</p>
+						<p>&nbsp;</p>
+						<p class="chose" style="text-align: justify; font-weight: bold;"><span>Service Standards:</span></p>
+						<p>Our service standards are routinely monitored by a Quality Audit team which ensures that they adhere to the set standards.</p>
+						<p>&nbsp;</p>
+						<p class="chose" style="text-align: justify; font-weight: bold;"><span>Product Choice: </span></p>
+						<p>We have set parameters for evaluating and then approving the product before it finally appears on our site. These&nbsp; parameters are applied after a careful study of the market and then a short-listing of the products. Subsequent evaluations includes an evaluation of the packing, manufacturer and / or an actual product analysis. A majority of products being supplied by us are generic products. Such products have exactly the same ingredients as the brand products but at a much more affordable cost. The affordable cost does not mean that they are different in terms of bio-equivalence, purity or potency to the brand products. Incidentally, India (where most of the generic products are manufactured) has the largest number of USFDA approved facilities (74 at present) outside of the US (Source: Internet, Pharmaceuticals in India, url: https://bit.ly/41eGJE ).</p>
+						<p>&nbsp;</p>
+						<p class="chose" style="text-align: justify; font-weight: bold;"><span>Security: </span></p>
+						<p>Normally most of the leading e-commerce sites go either for certification by McAfee Secure or ControlScan which are individually considered the gold standard for internet security. Since we value the security of the users, both the subscriptions have been taken. These services inform us of any potential vulnerabilities and our IT experts then resolve them immediately. In addition, all shopping cart pages are secured by SSL certificate (for more information on this, click <a style="text-decoration: underline;" href="http://bit.ly/HTTPS" rel="nofollow">here</a>) by GoDaddy.</p>
+						<p>&nbsp;</p>
+						<p class="chose" style="text-align: justify; font-weight: bold;"><span>Discreet Delivery:</span></p>
+						<p>We ship in discreet mailers or boxes to respect your privacy. Most of the packaging material is re-cycled and thus environmental friendly.&nbsp;&nbsp;</p>
+						<p>&nbsp;</p>
+						<p class="chose" style="text-align: justify; font-weight: bold;">After Sales Support:</p>
+						<p>Our Customer Service staff are fanatical about one simple objective - your satisfaction. They have been instructed to go to any lengths to achieve it. Contact us today to experience our exceptional service. Our solid community support (of over eight years) is a live testimony to this. You are welcome to read some of the independent testimonials elsewhere on our site or else a simple search on any of the leading search engine will remove all doubts.&nbsp;&nbsp;<a id="less_content_para3" class="less_content_para">Less</a></p>
+					</div></div>
+					<p>&nbsp;</p>
+					<h2 title="Prescription Medicines"><span class="hometextcontent" style="color: #415a00;">Disclaimer:</span></h2>
+					<hr />
+					<p>&nbsp;</p>
+					<div class="hometextcontent">
+						<p style="text-align: justify;">That our pharmacy follows all the local legal regulations in providing health-care service through the internet.<a id="content_para4" class="read_more_content">Read More</a></p>
+						<p>&nbsp;</p>
+						<div class="content_para4 content_para" >
+						<p style="text-align: justify;">That the medication manufacturers (pharmaceutical companies) have certified facilities and that they have qualified pharmacists to provide you with good pharmaceutical care.</p>
+						<p>&nbsp;</p>
+						<p style="text-align: justify;">FDA has authorized its officers to use their enforcement discretion to allow residents to order certain products under certain limited conditions (a three months supply). Under this policy, the FDA may allow the residents to bring into their country drugs for their personal use for a serious condition, if there has been no commercialization or promotion of the drugs to the residents.</p>
+						<p>&nbsp;</p>
+						<p style="text-align: justify;">That medicine supplied are for personal use, not for commercial exportation or importation by mail and is not for a re-sale. You are purchasing it because it is unavailable in your country. All day chemist is not liable for any customs and legal implications including forfeiture, seizure and / or auction. Any such legal implication or notice shall be forwarded to the purchaser.</p>
+						<p>&nbsp;</p>
+						<p style="text-align: justify;">It is for the knowledge of the site visitors at large that the brand names mentioned under 'Brand Search' column or under different categories, are meant merely as a guide. Further elsewhere, the brands mentioned under 'Similar in composition to' against the marketed drug under 'Our Brand' column are only for knowledge / information purposes for the prospective customer / s. It should not be construed or misunderstood that the site has any remotest intention to market the 'Similar in composition to' named drug or that the site has any tie-up or link with the manufacturers or traders of the 'Similar in composition to' named medicine and further the website and its owners are not liable for the use or action of any medicine mentioned in the web-site.'</p>
+						<p>&nbsp;</p>
+						<p style="text-align: justify;">Further the web-site does not intend to use the trade-mark of the 'Similar in composition to' drug because the web-site is not selling any 'Similar in composition to' drug to its prospective customers and it is only sharing the existing knowledge and information which is already public and this has no relation whatsoever to the trade mark being used by the 'Similar in composition to' drug. It is also to be noted that the words 'Our Brand' refers to the brand which will be supplied by us. We may supply any other brand of a reputed company in case the brand under 'Our Brand' is not available. It should be noted that by mentioning the brand names anywhere on this site, we are not making a claim on any patent / trade-mark which the respective manufacturer / patent-holder might be holding.<a id="less_content_para4" class="less_content_para">Less</a></p>
+					</div>
+					<p>&nbsp;</p>
+					<div id="news" title="Generic drugs">
+						<h2 title="Generic drugs"><span class="hometextcontent" style="color: #415a00;">News &amp; Updates</span></h2>
+						<hr />
+						<p>&nbsp;</p>
+						<div class="hometextcontent">
+							<p>AllDayChemist is proud to announce its 100% No Questions Asked Money Back Guarantee. If for any reason whatsoever you are not satisfied, we will refund your money totally.<a id="content_para5" class="read_more_content">Read More</a></p>
+							<p>&nbsp;</p>
+							<div class="content_para content_para5">
+							<p>AllDayChemist is proud to announce its 100% Satisfaction Guarantee. If for any reason whatsoever you are not satisfied with the results, we will ship any alternative brand at our cost.</p>
+							<p>&nbsp;</p>
+							<p>AllDayChemist is proud to announce its 100% Delivery Guarantee. In case you do not receive your consignment within a maximum of 30 days, we will re-ship at no cost to you.</p>
+							<p>&nbsp;</p>
+							<p>AllDayChemist is proud to announce a special $ 5.00 rebate on all orders paid by Check/ Money Order/ Wire Transfer.<a id="less_content_para5" class="less_content_para">Less</a></p>
+							<p>&nbsp;</p>
+						</div>
+						</div>
+					</div>
+				</div>

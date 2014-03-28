@@ -1,0 +1,35 @@
+<div class="footer_imp_msg">
+	<p>
+		<p class="footer_content">Please note that not all medications, including any referenced on this page, are dispensed from our affiliated Indian pharmacy. The medications in your order may be filled and shipped from an approved International fulfilment center located in a country other than India. In addition to dispensing medications from our Indian pharmacy, medication orders are also filled and shipped from international fulfilment centers that are approved by the regulatory bodies from their respective countries.<a href="#show_footer_txt_readmore" class="show_footer_txt" id="footer_readmore">Read More</a>
+		</p>
+		
+		<p id="show_footer_txt_readmore">
+			Medication orders are filled and shipped from approved fulfilment centers around the world including, but not limited to, India, United Kingdom, New Zealand and the United States. The items in your order may be filled and shipped from any one of the above jurisdictions. The products are sourced from various countries as well as those listed above. All of our affiliated fulfilment centers have been approved by the regulatory bodies from their respective countries.
+		<a href="#footer_imp_msg" class="show_footer_txt" id="footer_less">Less</a>
+		</p>
+	</p>	
+</div>
+<style type="text/css">
+
+</style>
+
+<script type="text/javascript">
+jQuery(document).ready(function ($) {
+	jQuery('#show_footer_txt_readmore').hide();
+	jQuery('.show_footer_txt').click(function () {
+		jQuery('#show_footer_txt_readmore').slideDown( "slow");
+		jQuery('.footer_content').css({'margin-bottom':'10px'});
+		jQuery('#footer_readmore').hide();
+		jQuery('#footer_less').show();
+		
+	});
+
+	jQuery('#footer_less').click(function () {
+		jQuery('#show_footer_txt_readmore').slideUp( "slow");
+		jQuery('#footer_readmore').show();
+		jQuery('#footer_less').hide();
+		jQuery('.footer_content').css({'margin-bottom':'0px'});
+	});
+});
+
+</script>

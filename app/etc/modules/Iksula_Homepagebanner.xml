@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Homepagebanner>
+      <active>true</active>
+      <codePool>local</codePool>
+      <version>0.1.0</version>
+    </Iksula_Homepagebanner>
+  </modules>
+</config>

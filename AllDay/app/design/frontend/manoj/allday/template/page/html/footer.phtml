@@ -1,0 +1,390 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<?php //echo $this->getChildHtml('category_bottom_description');?>
+<?php
+	$current_category = Mage::registry('current_category');
+	if(is_object($current_category))
+	{
+		echo $this->getLayout()->createBlock('catalog/category_view')->setTemplate('ajaxwishlist/catalog/product/category_bottom_description.phtml')->toHtml(); 
+	}
+
+?>
+<?php //echo $this->getChildHtml('more_details');?>
+<!-- BEGIN LivePerson Monitor. -->
+<script language='javascript'> 
+	var lpMTagConfig = {'lpServer' : "server.iad.liveperson.net",'lpNumber' : "82521976",'lpProtocol' : "https"}; 
+	function lpAddMonitorTag(src){
+	if(typeof(src)=='undefined'||typeof(src)=='object')
+	{
+	src=lpMTagConfig.lpMTagSrc?lpMTagConfig.lpMTagSrc:'/hcp/html/mTag.js';
+	}
+	if(src.indexOf('http')!=0)
+	{
+	src=lpMTagConfig.lpProtocol+"://"+lpMTagConfig.lpServer+src+'?site='+lpMTagConfig.lpNumber;
+	}
+	else{
+		if(src.indexOf('site=')<0)
+		{
+		if(src.indexOf('?')<0)src=src+'?';
+		else src=src+'&';src=src+'site='+lpMTagConfig.lpNumber;
+		}
+	};
+	var s=document.createElement('script');s.setAttribute('type','text/javascript');s.setAttribute('charset','iso-8859-1');s.setAttribute('src',src);document.getElementsByTagName('head').item(0).appendChild(s);
+	} 
+	if (window.attachEvent) window.attachEvent('onload',lpAddMonitorTag); else window.addEventListener("load",lpAddMonitorTag,false);
+</script>
+<!-- END LivePerson Monitor. -->
+<div class="footer-container">
+
+	<div style="position: fixed; right: 0px; top: 0px; z-index: 100" class="bookMark">
+		<a href="#" onclick="return add_favorite(this);">
+			<img width="120px" src="<?php echo $this->getSkinUrl('images/bookmark_add.png'); ?>" />
+		</a>
+	</div>
+ <?php //echo $this->getChildHtml('customer_form_login') ?> 
+ 
+<script type="text/javascript">
+//<![CDATA[
+    var contactForm = new VarienForm('contactForm', true);
+//]]>
+jQuery(document).ready(function(){
+    //alert('sdf');
+      jQuery('#hcIcon').css('width','135px');
+	  
+});
+
+</script>
+
+  <div class="footer">
+
+    <div class="padd-footer" style="padding:0 0 10px 104px;">
+      <div class="wrapper">
+        <div class="footer_links_area">
+        	<?php
+				echo $this->getLayout()->createBlock('core/template')
+				->setTemplate('homepage/footer_msg.phtml')->toHtml();
+			?>
+        <div class="footer-col"> 
+            <?php echo $this->getChildHtml('cms_footer_links') ?>
+        </div>
+        <div class="footer-col-1"> <?php echo $this->getChildHtml('cms_footer_links_1') ?></div>
+		<div class="footer-col-2"> <?php echo $this->getChildHtml('cms_footer_links_2') ?> </div>
+        <div class="footer-col-3"> <?php echo $this->getChildHtml('cms_footer_links_3') ?> </div>
+		</div>
+        <div class="our_partners">
+        	<span class="parttext">Our Partner</span>
+			<div class="footer-col-3">
+				<a rel="nofollow" href="https://www.mcafeesecure.com/RatingVerify?ref=www.alldaychemist.com" id="mcaffee_logo" class="footer_logos" onclick="window.open(this.href, 'mcafee_new',
+	'width=1000,height=500,toolbar=1,resizable=0'); return false;"></a>
+				<a  href="https://seal.godaddy.com/verifySeal?sealID=516304681046fb4bc11011f1400b8da37d719429464659303720420694" rel="nofollow" style="cursor: pointer" id="godaddy_logo" onclick="window.open(this.href, 'godaddy_new',
+	'width=700,height=500,toolbar=1,resizable=0'); return false;" class="footer_logos"></a>
+				<a href="http://www.copyscape.com/dmca-copyright-protection/" rel="nofollow" id="copyscap_logo" class="footer_logos target_blank"></a>
+				<!--img src="<?php echo $this->getSkinUrl('images/logos_image.jpg') ?>" /-->
+				<!-- BEGIN LivePerson Button Code -->
+				<div style="position: fixed; right: 0px; bottom: 0px; left: 90.6%; z-index: 501;">
+					<table border='0' cellspacing='2' cellpadding='2'>
+							<tr>
+								<td align="center">
+								</td>
+								<td align='center'>
+								<a rel="nofollow" id="_lpChatBtn" href='https://server.iad.liveperson.net/hc/82521976/?cmd=file&file=visitorWantsToChat&site=82521976&byhref=1&imageUrl=https://server.iad.liveperson.net/hcp/Gallery/ChatButton-Gallery/English/General/3b' target='chat82521976'  onClick="lpButtonCTTUrl = 'https://server.iad.liveperson.net/hc/82521976/?cmd=file&file=visitorWantsToChat&site=82521976&imageUrl=https://server.iad.liveperson.net/hcp/Gallery/ChatButton-Gallery/English/General/3b&referrer='+escape(document.location); lpButtonCTTUrl = (typeof(lpAppendVisitorCookies) != 'undefined' ? lpAppendVisitorCookies(lpButtonCTTUrl) : lpButtonCTTUrl); lpButtonCTTUrl = ((typeof(lpMTag)!='undefined' && typeof(lpMTag.addFirstPartyCookies)!='undefined')?lpMTag.addFirstPartyCookies(lpButtonCTTUrl):lpButtonCTTUrl);window.open(lpButtonCTTUrl,'chat82521976','width=472,height=320,resizable=yes');return false;" ><img src='https://server.iad.liveperson.net/hc/82521976/?cmd=repstate&site=82521976&channel=web&&ver=1&imageUrl=https://server.iad.liveperson.net/hcp/Gallery/ChatButton-Gallery/English/General/3b' id='hcIcon' name='hcIcon' alt='Chat Button' border=0>
+								</a>
+								</td> 
+							</tr>
+							
+					</table>
+				</div>
+				
+		    </div>
+		</div>
+         <?php echo $this->getChildHtml('left.newsletter'); ?>
+      </div>
+    </div>
+    <div class="disclaimer_area"><p><span>IMPORTANT DISCLAIMER :</span> All information provided on this web site is provided for information purposes only and does not constitute a legal contract between this site and any person or entity unless otherwise specified. Information on this site is subject to change without prior notice. Although every reasonable effort is made to present current and accurate information, the site makes no guarantees of any kind.
+The web site may contain information (including but not limited to medical content and news articles) that is created and maintained by a variety of sources both internal and external to it. These internal urls / sites are unmoderated forums containing the personal opinions and other expressions of the persons who post the content / entries. The site does not control, monitor or guarantee the information contained in these internal urls / sites or information contained in links to other external web sites, and does not endorse any views expressed or products or services offered therein. In no event shall the site be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods, or services available on or through any such site or resource. This site does not provide any medical advise and the content of this site should not be a substitute for professional medical advise, diagnosis or any treatment.</p>
+</div>
+<div class="copyright_area">
+	<div class="copyright_area1">Copyright &copy; 2013 AllDayChemist. All Rights Reserved.</div>
+</div>
+    <address>
+    <?php //echo $this->getCopyright() ?>
+	Copyright  &copy; <?php echo date('Y')?> AllDayChemist.All Rights Reserved.
+    </address>
+    <?php echo $this->getChildHtml('store_switcher') ?>
+    <?php $current_page = Mage::app()->getFrontController()->getRequest()->getRouteName(); 
+        if ($current_page == 'cms'):
+        endif;
+    ?>
+  </div>
+</div>
+
+<!-- Crazy Egg Code Starts -->
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0017/0693.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+<!-- Crazy Egg Code Ends -->
+<script type="text/javascript">
+   function add_favorite( a ) { 
+  title = document.title; 
+  url = document.location; 
+  try { 
+    // Internet Explorer 
+    window.external.AddFavorite( url, title ); 
+  } 
+  catch (e) { 
+    try { 
+      // Mozilla 
+      window.sidebar.addPanel( title, url, "" ); 
+    } 
+    catch (e) { 
+      // Opera 
+      if( typeof( opera ) == "object" ) { 
+        a.rel = "sidebar"; 
+        a.title = title; 
+        a.url = url; 
+        return true; 
+      } 
+      else { 
+        // Unknown 
+        alert( 'Press CTRL+D to add page to your bookmarks' ); 
+      } 
+    } 
+  } 
+  return false; 
+}
+</script>
+ <div id="toTop">
+
+    <div class="subscribe">
+        <div class="subscribe-innerdiv">
+        Subscribe to our Newsletter &amp; never miss a latest product or offer
+        <input type="text" id="txtEmailDiv" placeholder="Please enter your email address here" class="subs" 
+        onblur="return showText(this, 'Please enter your email address here')" onfocus="return hideText(this, 'Please enter your email address here')">
+       <input type="button" id="subscribebtn" value="Go" style="width: 110px; height: 30px; margin-left: 10px">
+    </div>
+    
+</div>
+<div class="subscribe_msg" style="display:none;">
+ <div class="subscribe-innerdiv">Thank you for Subscribing us.</div>
+</div>
+	<a id="show_subs" class="subs_a" onclick="" style="display:none; bottom: 7px; color: #FFFFFF; position: fixed; left: 8px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 2px">&gt;</a>
+    <a id="close_subs" class="subs_a" onclick="" style="bottom: 7px; color: #FFFFFF; position: fixed; left: 8px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 2px">X</a>
+</div>
+
+<style type="text/css">
+.subs_a {cursor: pointer;}
+#toTop{width: 100%; position: relative; bottom: 0px; position: fixed; background-color: #ccc; padding: 10px; margin: 0px auto; left: 0px; z-index: 190;} 
+.subscribe,.subscribe_msg{text-align: center;}
+.subscribe_msg{padding: 5px;}
+.subscribe-innerdiv{margin:auto;width:100%; display: inline-block;}
+#toTop {
+position: fixed;
+bottom: 0px;
+cursor: default;
+color: #fff;
+font-size: 11px;
+text-align: center;
+width: 100%;
+height:30px;
+background: #507100;
+font-size: 14px;
+font-weight: bold;
+padding: 5px 0;
+/*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+filter: alpha(opacity=90);
+opacity: .9;*/
+left: 0;
+z-index: 500;
+}
+
+#toTop input.subs {
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+border: 1px solid #ccc;
+padding: 5px;
+width: 200px;
+margin-left: 10px;
+font-size: 12px;
+}
+
+#subscribebtn {
+-webkit-align-items: flex-start;
+text-align: center;
+cursor: default;
+color: buttontext;
+padding: 2px 10px 3px;
+border: 2px outset buttonface;
+border-image-source: initial;
+border-image-slice: initial;
+border-image-width: initial;
+border-image-outset: initial;
+border-image-repeat: initial;
+background-color: buttonface;
+box-sizing: border-box;
+}
+
+</style>
+ <script type="text/javascript">
+
+jQuery(document).ready(function(){
+	console.log(jQuery.browser);
+	jQuery("#hello").html(window.location.protocol);
+	var subsclose_val = get_cookie("subsclose");
+	
+	if(subsclose_val=="yes") {
+		CloseSubscription(1);
+	}
+	jQuery("#close_subs").click(function(){
+		CloseSubscription();
+	});
+	jQuery("#show_subs").click(function(){
+		ShowSubscription();
+	});
+
+	jQuery('#subscribebtn').click(function(){
+		if(jQuery('#txtEmailDiv').val()==''){
+	       // alert('please enter the email id');
+	       jQuery('#txtEmailDiv').val('Please enter your email address here');
+	    }
+	    else{
+	        var emailid = jQuery('#txtEmailDiv').val();
+	        var check = IsEmail(emailid);
+	    
+	    	// var checkurl ="<?php echo Mage::getBaseUrl() ?>"+'ordertracking/index/subscriptionstatus';
+		    //     jQuery.post(checkurl,{email:emailid},function(data)
+		    //     {   alert('hi');
+			   //      jQuery('.subscribe').css('display','none');
+			   //      jQuery('.subscribe_msg').css('display','block');
+		    // 	});
+
+	        if(check){
+				var url = 'http://' + window.location.hostname + '/';
+				if (window.location.protocol === 'https:') {
+					url = 'https://' + window.location.hostname + '/';
+				}
+				var url = url+'newsletter/subscriber/newSub';
+		        /*jQuery.post(url,{email:emailid},function(data)
+		        {   
+			        jQuery('.subscribe').css('display','none');
+			        jQuery('.subscribe_msg').css('display','block');
+		    	});*/
+				jQuery.ajax({
+					type: 'POST',
+					url: url,
+					data: {email:emailid},
+					success: function(resultData) {
+						jQuery('.subscribe').css('display','none');
+						jQuery('.subscribe_msg').html(resultData).css('display','block');
+						setTimeout(function(){
+							jQuery('.subscribe_msg').animate({display: "none"}, 500, function(){
+								jQuery('.subscribe').show(); jQuery('#toTop #txtEmailDiv').val('');
+								if(resultData == "Thank you for your subscription.") {
+									CloseSubscription();
+								}
+							});
+						}, 2000);
+					}
+				});
+	        }
+	        else{
+	       		alert("Please enter valid email.");
+	       		jQuery('#txtEmailDiv').val('Please enter your email address here').focus();
+	       		//alert(jQuery('#txtEmailDiv').val());
+	        }
+	        
+	   	}
+    });
+});
+
+function IsEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
+}
+function hideText(element, defaultVal) {
+	if (element.value == defaultVal || element.value == "Invalid Email Address" || element.value == "Please enter a valid email address" || element.value == "Thank You" || element.value == "Already Subscribed") {
+		element.value = '';
+	}
+}
+function showText(element, defaultVal) {
+	if (element.value == '') {
+		element.value = defaultVal;
+	}
+}
+function CloseSubscription(val) {
+		//alert(val);
+		jQuery('#toTop .subscribe').hide(); jQuery('#toTop .subscribe_msg').hide();
+		if(val==1) {
+			jQuery('#toTop').css('width', '35px'); jQuery('#close_subs').hide(); jQuery('#show_subs').show();
+		} else {
+			jQuery('#toTop').animate({width: "35px"}, 500, function(){
+				jQuery('#close_subs').hide(); jQuery('#show_subs').show();
+			});
+		}
+		var cookie_status = get_cookie('subsclose');
+		if(cookie_status != "yes") {
+			var now = new Date();
+			var time = now.getTime();
+			time += 3600 * 1000 * 700;
+			now.setTime(time);
+			document.cookie = 
+			'subsclose=yes' + 
+			'; expires=' + now.toGMTString() + 
+			'; path=/';
+		}
+	}
+	function ShowSubscription() {
+		jQuery('#toTop').animate({width: window.innerWidth}, 500, function(){
+			jQuery('#toTop .subscribe').show(); jQuery('#close_subs').show(); jQuery('#show_subs').hide();
+		});
+		document.cookie = 
+		'subsclose=no' + 
+		'; expires=Thu, 01 Jan 1970 00:00:01 GMT' 
+		'; path=/';
+	}
+	function get_cookie(Name) {
+		var search = Name + "="
+		var returnvalue = "";
+		if (document.cookie.length > 0) {
+			offset = document.cookie.indexOf(search)
+			// if cookie exists
+			if (offset != -1) { 
+				offset += search.length
+				// set index of beginning of value
+				end = document.cookie.indexOf(";", offset);
+				// set index of end of cookie value
+				if (end == -1) end = document.cookie.length;
+				returnvalue=unescape(document.cookie.substring(offset, end))
+			}
+		}
+		return returnvalue;
+	}
+ </script>

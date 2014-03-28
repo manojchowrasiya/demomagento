@@ -1,0 +1,368 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<magestore translate="label">
+			<label>Magestore Extension</label>
+			<sort_order>400</sort_order>
+		</magestore>
+	</tabs>
+	<sections>
+		<giftvoucher translate="label" module="giftvoucher">
+			<class>separator-top</class>
+			<label>Gift Voucher</label>
+			<tab>magestore</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>300</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<general translate="label">
+					<label>General</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>6</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label"><label>Enable:</label><frontend_type>select</frontend_type><source_model>adminhtml/system_config_source_yesno</source_model><sort_order>1</sort_order><show_in_default>1</show_in_default><show_in_website>1</show_in_website><show_in_store>1</show_in_store></enabled>
+						<pattern translate="label">
+							<label>Gift voucher code pattern</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment><![CDATA[Pattern examples:<br/><strong>[A.8] : 8 alpha chars<br/>[N.4] : 4 numerics<br/>[AN.6] : 6 alphanumeric<br/>GIFT-[A.4]-[AN.6] : GIFT-ADFA-12NF0O</strong>]]></comment>
+						</pattern>
+						<cardnopattern translate="label">
+							<label>Gift voucher Card No pattern</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment><![CDATA[Pattern examples:<br/><strong>[A.8] : 8 alpha chars<br/>[N.4] : 4 numerics<br/>[AN.6] : 6 alphanumeric<br/>GIFT-[A.4]-[AN.6] : GIFT-ADFA-12NF0O</strong>]]></comment>
+						</cardnopattern>
+						<pincodepattern translate="label">
+							<label>Gift voucher pincode code pattern</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment><![CDATA[Pattern examples:<br/><strong>[A.4] : 4 alpha chars<br/>[N.4] : 4 numerics<br/>[AN.4] : 4 alphanumeric<br/>[AN.4] : AD12</strong>]]></comment>
+						</pincodepattern>
+						<showprefix translate="label">
+							<label>Show number of prefix</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>13</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment><![CDATA[The number of Gift Voucher Code prefix to show in frontend, and orther character(s) will be hidden.]]></comment>
+						</showprefix>
+						<hiddenchar translate="label">
+							<label>Hidden character will be replaced by</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>16</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment><![CDATA[Default hidden character is X.]]></comment>
+						</hiddenchar>
+						<status translate="label">
+							<label>Default status</label>
+							<frontend_type>select</frontend_type>
+							<source_model>giftvoucher/status</source_model>
+							<sort_order>18</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</status>
+						<autochange translate="label">
+							<label>Auto change gift voucher status depend on order</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>26</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</autochange>
+						<expire_orderstatus translate="label">
+							<label>Disable Gift Voucher when order state is</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>28</sort_order>
+							<source_model>adminhtml/system_config_source_order_status</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Disable Gift Voucher created from this order</comment>
+						</expire_orderstatus>
+						<expire translate="label">
+							<label>Gift Voucher expire after</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>36</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment>day(s). Empty or zero is no limitation. (Only use for frontend)</comment>
+						</expire>
+						<refund_orderstatus translate="label">
+							<label>Receive refund when order state is</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>45</sort_order>
+							<source_model>adminhtml/system_config_source_order_status</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Receive refund from order that uses Gift Voucher to purchase.</comment>
+						</refund_orderstatus>
+						<maximum translate="label">
+							<label>Maximum time(s) allowed to incorrectly enter Gift Voucher code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>51</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Empty or zero is no limitation.</comment>
+						</maximum>
+					</fields>
+				</general>
+				<interface translate="label">
+					<label>Gift product view</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>12</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<amount translate="label">
+							<label>Default gift product amount</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Pattern examples:<br/><strong>10-1000 </strong>: a range between 10 and 1000<br/><strong>25,75,100 </strong>: a dropdown with value 25, 75 and 100<br/><strong>100 </strong>: a static value of 100<br/><strong>Currency unit is base currency!</strong>]]></comment>
+						</amount>
+						<postoffice translate="label">
+							<label>Allow Shipping Gift Voucher</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+						</postoffice>
+						<enable translate="label">
+							<label>Enable custom message</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+						</enable>
+						<max translate="label">
+							<label>Message max length</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+						</max>
+						<preview translate="label">
+							<label>Preview message in product view page</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</preview>
+						<display translate="label">
+							<label>Display full information in cart</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>18</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+						</display>
+					</fields>
+				</interface>
+				<email translate="label">
+					<label>Email notification</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>18</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enable translate="label">
+							<label>Enable email notification</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+						</enable>
+						<sender translate="label">
+							<label>Sender</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_email_identity</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+						</sender>
+						<self translate="label">
+							<label>Send to purchaser email template</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</self>
+						<template translate="label">
+							<label>Send Gift Voucher to friend email template</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>18</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</template>
+						<autosend translate="label">
+							<label>Enable to send auto-email before Gift Voucher expires</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>27</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+						</autosend>
+						<daybefore translate="label">
+							<label>Send email before</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>36</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>day(s).</comment>
+						</daybefore>
+					</fields>
+				</email>
+				<print_voucher translate="label">
+					<label>Print Voucher</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>80</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						 <logo translate="label comment">
+                            <label>Logo for PDF Print-outs</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image_pdf</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">giftvoucher/pdf/logo</upload_dir>
+                            <base_url type="media" scope_info="1">giftvoucher/pdf/logo</base_url>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>167x47. Default logo, will be used in PDF and HTML documents.&lt;br /&gt; Allow jpeg,tiff,png file type</comment>
+                        </logo>
+					</fields>
+				</print_voucher>
+			</groups>
+		</giftvoucher>
+		<payment>
+			<groups>
+				<giftvoucher translate="label" module="giftvoucher">
+					<label>Gift Voucher</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>101</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<active translate="label">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</active>
+						<title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</title>
+						<order_status translate="label">
+							<label>New order status</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_order_status</source_model>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</order_status>
+						<invoice translate="label">
+							<label>Capture Online</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</invoice>
+						<description translate="label">
+							<label>Description</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>18</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</description>
+						<allowspecific translate="label">
+							<label>Payment from Applicable Countries</label>
+							<frontend_type>allowspecific</frontend_type>
+							<sort_order>27</sort_order>
+							<source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</allowspecific>
+						<specificcountry translate="label">
+							<label>Payment from Specific Countries</label>
+							<frontend_type>multiselect</frontend_type>
+							<sort_order>36</sort_order>
+							<source_model>adminhtml/system_config_source_country</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+							<can_be_empty>1</can_be_empty>
+						</specificcountry>
+						<sort_order>
+							<label>Sort Order</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>46</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sort_order>						
+					</fields>
+				</giftvoucher>
+			</groups>
+		</payment>
+	</sections>
+</config>

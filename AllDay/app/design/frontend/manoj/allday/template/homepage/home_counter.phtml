@@ -1,0 +1,43 @@
+
+<script>
+	jQuery(document).ready(function($){
+		$("#countdown").countdown({
+			date: "31 january 2014 12:00:00",
+			format: "on"
+		},
+		function() {
+			jQuery('#timer_con').hide();
+		});
+	});
+</script>
+<div id="timer_con">
+	<div class="cart_bag_img  cart-icon">         
+          <a href="#inline1" class="freeship_msg various" id="free_shipping"> 
+          		<img src="<?php echo $this->getSkinUrl().'images/freeshipping.jpg'?>" />   
+          </a>
+          </div>
+	<!-- TIMER -->
+	<div id="timer-area" class="timer-area">
+		<ul id="countdown">
+			
+			<li class="daysdiv">
+				<span class="days">00</span>
+				<p class="timeRefDays">Days</p>
+			</li>
+
+			<li>
+				<span class="hours">00</span>
+				<p class="timeRefHours">Hours</p>
+			</li>
+			<li>
+				<span class="minutes">00</span>
+				<p class="timeRefMinutes">Min</p>
+			</li>
+			<li>
+				<span class="seconds">00</span>
+				<p class="timeRefSeconds">Sec</p>
+			</li>
+		</ul>
+	</div> <!-- end timer-area -->
+	<div id="validdiv">Valid till 31st Jan</div>
+</div>

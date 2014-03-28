@@ -1,0 +1,719 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/** @var Mage_Checkout_Block_Onepage_Billing $this */
+?>
+<head>
+<style>
+.detail 
+{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    padding: 5px;
+}
+.fancybox-inner
+{
+ height : auto !important;
+}
+.cart td.disc {
+    background: none repeat scroll 0 0 #EEEEEE;
+}
+.cart td {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+}
+h5 {
+    border-bottom: 1px solid #666666;
+    
+}
+body
+{
+  text-align:left;
+}
+.f-left, .left
+{
+ float: none !important;
+}
+.medical
+{
+    background:#333333;
+    padding-top:1px;
+    border-radius:5px;
+    
+}
+.medical_title
+{
+    color: #FFFFFF;
+    font-size: 12px;
+    margin: 0 0 0 16px;
+}
+
+</style>
+</head>
+<form id="co-billing-form" action="" name="billing-form-google-analytics">
+<fieldset>
+    <ul class="form-list">
+    <?php if ($this->customerHasAddresses()): ?>
+        <li class="wide">
+            <label for="billing-address-select"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></label>
+            <div class="input-box">
+                <?php echo $this->getAddressesHtmlSelect('billing') ?>
+            </div>
+        </li>
+    <?php endif; ?>
+    <li id="billing-new-address-form"<?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif; ?>>
+        <fieldset>
+            <input type="hidden" name="billing[address_id]" value="<?php echo $this->getAddress()->getId() ?>" id="billing:address_id" />
+            <ul>
+                <li class="fields"><?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getAddress()->getFirstname() ? $this->getAddress() : $this->getQuote()->getCustomer())->setForceUseCustomerRequiredAttributes(!$this->isCustomerLoggedIn())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?></li>
+                <li class="fields">
+                <!--     <div class="field">
+                        <label for="billing:company"><?php echo $this->__('Company') ?></label>
+                        <div class="input-box">
+                            <input type="text" id="billing:company" name="billing[company]" value="<?php echo $this->escapeHtml($this->getAddress()->getCompany()) ?>" title="<?php echo $this->__('Company') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('company') ?>" />
+                        </div>
+                    </div> -->
+                  <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+                        <?php if ($_gender->isEnabled()): ?>
+                    <div class="field">
+                        <?php echo $_gender->setGender($this->getQuote()->getCustomerGender())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
+                    </div>
+                <?php endif ?>   
+        <?php if(!$this->isCustomerLoggedIn()): ?>
+                    <div class="field-2">
+                        <label for="billing:email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="billing[email]" id="billing:email" value="<?php echo $this->escapeHtml($this->getAddress()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" />
+                        </div>
+                    </div>
+        <?php endif; ?>
+                </li>
+        <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+                <li class="wide">
+                    <label for="billing:street1" class="required"><em>*</em><?php echo $this->__('Address') ?></label>
+                    <div class="input-box">
+                        <input type="text" title="<?php echo $this->__('Street Address') ?>" name="billing[street][]" id="billing:street1" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" class="input-text <?php echo $_streetValidationClass ?>" />
+                    </div>
+                </li>
+        <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
+        <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
+                <li class="wide">
+                    <div class="input-box">
+                        <input type="text" title="<?php echo $this->__('Street Address %s', $_i) ?>" name="billing[street][]" id="billing:street<?php echo $_i ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet($_i)) ?>" class="input-text <?php echo $_streetValidationClass ?>" />
+                    </div>
+                </li>
+        <?php endfor; ?>
+                <?php if ($this->helper('customer/address')->isVatAttributeVisible()) : ?>
+                <li class="wide">
+                    <label for="billing:vat_id"><?php echo $this->__('VAT Number') ?></label>
+                    <div class="input-box">
+                        <input type="text" id="billing:vat_id" name="billing[vat_id]" value="<?php echo $this->escapeHtml($this->getAddress()->getVatId()) ?>" title="<?php echo $this->__('VAT Number') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('vat_id') ?>" />
+                    </div>
+                </li>
+                <?php endif; ?>
+                <li class="fields">
+                    <div class="field">
+                        <label for="billing:city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
+                        <div class="input-box">
+                            <input type="text" title="<?php echo $this->__('City') ?>" name="billing[city]" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="billing:city" />
+                        </div>
+                    </div>
+                    <div class="field-2">
+                        <label for="billing:region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
+                        <div class="input-box">
+                            <select id="billing:region_id" name="billing[region_id]" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
+                                <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                            </select>
+                            <script type="text/javascript">
+                            //<![CDATA[
+                                $('billing:region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
+                            //]]>
+                            </script>
+                            <input type="text" id="billing:region" name="billing[region]" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" style="display:none;" />
+                        </div>
+                    </div>
+                </li>
+                <li class="fields">
+                    <div class="field">
+                        <label for="billing:postcode" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
+                        <div class="input-box">
+                            <input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" />
+                        </div>
+                    </div>
+                    <div class="field-2">
+                        <label for="billing:country_id" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+                        <div class="input-box">
+                            <?php echo $this->getCountryHtmlSelect('billing') ?>
+                        </div>
+                    </div>
+                </li>
+                <li class="fields">
+                    <div class="field">
+                        <label for="billing:telephone" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="billing[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="billing:telephone" />
+                        </div>
+                    </div>
+                    <div class="field-2">
+                        <label for="billing:fax"><?php echo $this->__('Fax') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="billing[fax]" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) ?>" title="<?php echo $this->__('Fax') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" id="billing:fax" />
+                        </div>
+                    </div>
+                </li>
+                <?php if(!$this->isCustomerLoggedIn()): ?>
+
+        <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
+        <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+            <?php if ($_dob->isEnabled() || $_gender->isEnabled()): ?>
+                <li class="fields">
+                <?php if ($_dob->isEnabled()): ?>
+                    <div class="field">
+                        <?php echo $_dob->setDate($this->getQuote()->getCustomerDob())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
+                    </div>
+                <?php endif; ?>
+               <!--  <?php if ($_gender->isEnabled()): ?>
+                    <div class="field-2">
+                        <?php //echo $_gender->setGender($this->getQuote()->getCustomerGender())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
+                    </div>
+                <?php endif ?> -->
+                </li>
+            <?php endif ?>
+
+            <?php if ($this->isTaxvatEnabled()):?>
+                <li><?php echo $this->getTaxvatHtml() ?></li>
+            <?php endif; ?>
+
+                <li class="fields" id="register-customer-password">
+                    <div class="field">
+                        <label for="billing:customer_password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                        <div class="input-box">
+                            <input type="password" name="billing[customer_password]" id="billing:customer_password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" />
+                        </div>
+                    </div>
+                    <div class="field-2">
+                        <label for="billing:confirm_password" class="required"><em>*</em><?php echo $this->__('Confirm Password') ?></label>
+                        <div class="input-box">
+                            <input type="password" name="billing[confirm_password]" title="<?php echo $this->__('Confirm Password') ?>" id="billing:confirm_password" class="input-text required-entry validate-cpassword" />
+                        </div>
+                    </div>
+                </li>
+                <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+                <?php endif; ?>
+                <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()):?>
+                    <li class="control">
+                        <input type="checkbox" name="billing[save_in_address_book]" value="1" title="<?php echo $this->__('Save in address book') ?>" id="billing:save_in_address_book" onchange="if(window.shipping) shipping.setSameAsBilling(false);"<?php if ($this->getAddress()->getSaveInAddressBook()):?> checked="checked"<?php endif;?> class="checkbox" /><label for="billing:save_in_address_book"><?php echo $this->__('Save in address book') ?></label>
+                    </li>
+                <?php else:?>
+                    <li class="no-display"><input type="hidden" name="billing[save_in_address_book]" value="1" /></li>
+                <?php endif; ?>
+                <?php echo $this->getChildHtml('form.additional.info'); ?>
+            </ul>
+            <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
+        </fieldset>
+     </li>
+      <li class="fields">
+                    <div class="field">
+                        <label for="billing:timetocall" class="required"><em>*</em>
+                            <?php echo $this->__('Preferable Time to Call') ?></label>
+                        <div class="input-box" style="width:300px;">
+                   <?php 
+
+                    $customer_data=Mage::getSingleton('customer/session')->getCustomer();
+                   // if (array_key_exists('timetocall',$customer_data)) {
+                   //   $timetocallArray = explode(' - ',$this->escapeHtml($customer_data->getData('timetocall')));
+                   //   //print_r($timetocallArray);
+                   // }
+                    $timetocallArray = explode(' - ',$this->escapeHtml($customer_data->getData('timetocall')));
+                   // else{
+                   //  $timetocallArray=array();
+                   // }
+                   // $timetocallArray = explode(' - ',$this->escapeHtml($customer_data->getData('timetocall')));
+                    //print_r($timetocallArray);
+
+                    ?>
+              
+                      <select id="timeval1" style="width:80px;float:left;margin-right:10px;">8
+                          <?php $timecounter = 1;
+                           echo   '<option value=""></option>';
+                        for($time=1; $time <=24 ; $time++) { 
+                            
+                           // $timelap ='AM'
+                            if($timecounter <=12){
+                                $newtime =$time;
+                                 $timelap ='AM';
+                            }
+                            else{
+                                   $newtime =$time-12;
+                                   $timelap ='PM';
+                                   
+                            }
+                            $selectedval='';
+                              $timeoptionval = $newtime.' '.$timelap;
+                             // echo '<option value="'.$timeoptionval.'">'.$timeoptionval.'</option>';
+                              if($timetocallArray[0]==$timeoptionval){$selectedval ='selected=selected';}
+                              else{
+                                $selectedval='';
+                              }
+
+                           echo '<option value="'.$timeoptionval.'" '.$selectedval.'>'.$timeoptionval.'</option>';
+                          $timecounter++;
+                        }
+                        ?>
+                    </select> <span style="float:left;margin-right:10px;">
+                    <?php echo $this->__('To') ?></span>
+                      <select id="timeval2" style="width:80px;float:left;margin-right:10px;">
+                          <?php $timecounter = 1;
+                            echo   '<option value=""></option>';
+                        for($time=1; $time <=24 ; $time++) { 
+                            
+                           // $timelap ='AM'
+                            if($timecounter <=12){
+                                $newtime =$time;
+                                 $timelap ='AM';
+                            }
+                            else{
+                                   $newtime =$time-12;
+                                   $timelap ='PM';
+                                   
+                            }
+                              $timeoptionval = $newtime.' '.$timelap;
+                             // echo '<option value="'.$timeoptionval.'">'.$timeoptionval.'</option>';
+                               $selectedval='';
+                          if($timetocallArray[1]==$timeoptionval){$selectedval ='selected=selected';}
+                              else{
+                                $selectedval='';
+                              }
+                          
+                           echo '<option value="'.$timeoptionval.'" '.$selectedval.'>'.$timeoptionval.'</option>';
+                          $timecounter++;
+                        }
+                        ?>
+                    </select> 
+                    <select id="timezone" style="width:80px;float:left;margin-right:10px;">
+                  
+                        <option value=""></option>
+                        <option value="CST" <?php if($timetocallArray[2]=='(CST)'){echo $selectedval ='selected=selected';} ?>>CST</option>
+                        <option value="EST" <?php if($timetocallArray[2]=='(EST)'){echo $selectedval ='selected=selected';} ?>>EST</option>
+                        <option value="MST" <?php if($timetocallArray[2]=='(MST)'){echo $selectedval ='selected=selected';} ?>>MST</option>
+                        <option value="PST" <?php if($timetocallArray[2]=='(PST)'){echo $selectedval ='selected=selected';} ?>>PST</option>
+                    </select> 
+                      <input type="hidden" name="billing[timetocall]" value="<?php echo $this->escapeHtml($customer_data->getData('timetocall')) ?>" title="<?php echo $this->__('Preferable Time to Call') ?>" class="input-text" id="timetocall" />
+                </div>
+                          
+                        </div>       
+                </li>
+                <!--end of preferable_time_to_call -->
+    <?php if ($this->canShip()): ?>
+        <li class="control">
+            <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" value="1"<?php if ($this->isUseBillingAddressForShipping()) {?> checked="checked"<?php }?> title="<?php echo  $this->__('Ship to this address') ?>" onclick="$('shipping:same_as_billing').checked = true;" class="radio" /><label for="billing:use_for_shipping_yes"><?php echo  $this->__('Ship to this address') ?></label></li>
+        <li class="control">
+            <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_no" value="0"<?php if (!$this->isUseBillingAddressForShipping()) {?> checked="checked"<?php }?> title="<?php echo $this->__('Ship to different address') ?>" onclick="$('shipping:same_as_billing').checked = false;" class="radio" /><label for="billing:use_for_shipping_no"><?php echo $this->__('Ship to different address') ?></label>
+        </li>
+       <li class="control medical" id="medical_history_div_new" style="display:block;">
+              <?php //echo $this->getChildHtml('medicalhistory');?>
+            <p class="f-left"><h4 class="medical_title">Medical Conditions </h4></p><!--a id="medical_history"  href="#medical_history_div">Add Medical History</a></p-->
+            <div id="medical_history_div" class="detail" style="display:block;">
+               <?php echo $this->getChildHtml('form.additional.info'); ?>
+                <form name="longform" action="/index.php/medicalhistory/index" method="post" id="medicalobservationform">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td colspan="1" class="table_prefix"><strong>Primary Physician's Name : </strong></td>
+                                <td class="table_value"><input type="text" class="physician_name"  style="width:250px;height:22px;" id="physician_name" name="Physician's Name"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" class="table_prefix"><strong>Physician's Telephone No : </strong> </td>
+                                <td class="table_value"><input type="text" class="physician_telephone" style="width:250px;height:22px;" id="physician_telephone" name="Physician's Telephone"></td>
+                               
+                            </tr>
+
+                            <tr>
+                                <td colspan="1" class="table_prefix table_prefix_height " ><strong>Drug Allergies:</strong><br/>
+                                    <span>
+                                        <input type="checkbox" class="medical_checkbox" id="drug_allergies" name="Drug Allergies"> None<br>
+                                    </span>
+                                </td>
+                                 <td class="table_value">
+                                    <textarea name="Drug Allergies" class="medicaltextarea" cols="55" width="auto" id="drug_allergies_texarea" style="height:52px;"></textarea>
+                                    <span id="drug_allergies_span" class="msgspan" style="background-color:#fff;color:#ff0000;font-weight:normal;display:none;">If you don't have any drug allergies, please check "None".</span>
+                                </td>
+                            </tr>                            
+                        </tbody>
+                    </table>
+                   
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td colspan="1" class="table_prefix table_prefix_height"><strong>Current Medications:</strong>   <br/>
+                                     <span>
+                                       <input type="checkbox" class="medical_checkbox" id="current_medications" name="Current Medications" > None<br>
+                                     </span>
+                                </td>
+                                <td class="table_value"><textarea name="Current Medications" class="medicaltextarea" cols="55" width="auto" id="current_medications_texarea" style="height:52px;"></textarea>
+                                   <span id="current_medications_span" class="msgspan" style="background-color:#fff;color:#ff0000;font-weight:normal;display:none;">If you don't have any current medications, please check "None".</span>
+                                 </td>
+                            </tr>                            
+                        </tbody>
+                    </table>
+                    
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td colspan="1" class="table_prefix table_prefix_height"><strong>Current Treatments:</strong><br/>
+                                     <span>
+                                        <input type="checkbox" class="medical_checkbox" id="current_treatments" name="Current Treatments"> None<br>
+                                     </span>
+                                </td>
+                                <td class="table_value">
+                                    <textarea name="Current Treatments" class="medicaltextarea" cols="55" width="auto" id="current_treatments_texarea" style="height:52px;"></textarea>
+                                    <span id="current_treatments_span" class="msgspan" style="background-color:#fff;color:#ff0000;font-weight:normal;display:none;">If you don't have any current treatments, please check "None".</span>
+                                </td>
+                            </tr>
+                          
+                        </tbody>
+                    </table>  
+                    <br/>                 
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="other_cond">
+                        <tbody>
+                            <tr>
+                                <td height="30">
+                                    <strong> Other Conditions:</strong>
+                                </td>                                
+                            </tr>
+                            <tr>
+                                <td height="30">
+                                     <span>Do you smoke?</span>
+                                        <input type="radio" class="smoke_checkbox" value="no" checked="checked" name="Smoke">No 
+                                        <input type="radio" class="smoke_checkbox" value="yes" name="Smoke">Yes<br>
+                                     
+                                </td>
+                            </tr>
+                             <tr>
+                                <td height="30">
+                                     <span>Do you drink?</span>
+                                        <input type="radio" class="drink_radio" value="no"  checked="checked" name="Drink">No
+                                        <input type="radio" class="drink_radio" value="yes" name="Drink">Yes<br>
+                                     
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                     
+                   <!--  <input name="SubmitMedical" class="btn_grn medicalhistory_btn" value="Add Medical History" onclick="submitmedicalhistory();" type="button"> -->
+                                                
+            </form>
+        </div>
+             
+        </li>
+         <div class="addedmedicalhistory" style="background-color:#fff;color:#819d01;font-weight:bold;display:none;">Medical History Added to your order</div>
+    <?php endif; ?>
+    <li><p><b>
+        I certify that I am 'over 18 years' and that I am under the supervision of a doctor. The ordered medication is for my own personal use and is strictly not meant for a re-sale. I also accept that I am taking the medicine /s at my own risk and that I am duly aware of all the effects / side effects of the medicine / s. I acknowledge that the drug is as per the norms of the country of destination.
+    </b></p><br/>
+    <p>By pressing 'continue' , I agree to the above statements.</p>
+    </li>
+    </ul>
+    <div class="input-box">
+        <input type="checkbox" name="callandoffers" title="<?php echo $this->__('Sign Up for Calls and offers') ?>" value="1" checked="checked" id="callandoffers" class="callandofferscheckbox" />
+          <label for="callandoffers"><?php echo $this->__('Sign Up for Calls and offers') ?></label>
+    </div>
+    <?php if (!$this->canShip()): ?>
+        <input type="hidden" name="billing[use_for_shipping]" value="1" />
+    <?php endif; ?>
+    <!--div class="buttons-set" id="billing-buttons-container">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <button type="button" title="<?php echo $this->__('Continue') ?>" class="button billingsavebtn" ><span><span><?php echo $this->__('Continue') ?></span></span></button>
+        <span class="please-wait" id="billing-please-wait" style="display:none;">
+            <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Loading next step...') ?>" title="<?php echo $this->__('Loading next step...') ?>" class="v-middle" /> <?php echo $this->__('Loading next step...') ?>
+        </span>
+    </div-->
+</fieldset>
+</form>
+<form id="discount-coupon-form" action="" method="post">
+    <div class="discount" style="border:0px solid #D9DDE3; padding: 20px;margin-top:20px">
+        <h2><?php echo $this->__('Discount Codes') ?></h2>
+        <div class="discount-form">
+            <label for="coupon_code"><?php echo $this->__('Enter your coupon code if you have one.') ?></label>
+            
+            <div class="input-box">
+                <input style="width:250px; margin-top:10px; margin-bottom:5px;" class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $this->htmlEscape(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode()) ?>" />
+                <br/><span id="msg" style="display:none; color:red; font-size: 20px;"></span>
+            </div>
+            
+            <div class="buttons-sets" style="margin-top:15px;">
+                <span class="coupon-please-wait" id="coupon-please-wait" style="display:none; line-height:19px; margin-left:5px;">
+                        <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Submitting coupon information...') ?>" title="<?php echo $this->__('Submitting coupon information...') ?>" class="v-middle" />
+                    </span>
+                <button type="button" title="<?php echo $this->__('Apply Coupon') ?>" class="button addcoupon" value="<?php echo $this->__('Apply Coupon') ?>"><span><span><?php echo $this->__('Apply Coupon') ?></span></span></button>
+                
+                &nbsp; <button <?php if(!strlen(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())) {echo 'style="display:none"';} ?> type="button" title="<?php echo $this->__('Cancel Coupon') ?>" class="button cancelcoupon" value="<?php echo $this->__('Cancel Coupon') ?>"><span><span><?php echo $this->__('Cancel Coupon') ?></span></span></button>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="buttons-set" id="billing-buttons-container">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <button type="button" title="<?php echo $this->__('Continue') ?>" class="button billingsavebtn" ><span><span><?php echo $this->__('Continue') ?></span></span></button>
+        <span class="please-wait" id="billing-please-wait" style="display:none;">
+            <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Loading next step...') ?>" title="<?php echo $this->__('Loading next step...') ?>" class="v-middle" /> <?php echo $this->__('Loading next step...') ?>
+        </span>
+    </div>
+
+<script type="text/javascript">
+    jQuery.noConflict();
+    function check_me(id) {
+        var ids = jQuery("#"+id);
+
+        if(ids.prop('checked')==false){
+            ids.prop('checked', true);
+        }else{
+            ids.prop('checked', false);
+        }
+        jQuery('#'+id+"_texarea").toggle();
+        jQuery('#'+id+"_texarea").val('');
+        jQuery('#'+id+"_span").css('display','none');
+    }
+    jQuery(document).ready(function(){
+        jQuery('.addcoupon').live('click', function(){
+            jQuery('#msg').hide();
+            jQuery('#coupon_code').removeClass('validation-failed');
+            if(jQuery('#coupon_code').val() == ''){
+                jQuery('#coupon_code').addClass('validation-failed');
+                jQuery('#msg').html("This is a required field").show();
+                return false;}
+            jQuery('#coupon-please-wait').show();
+            jQuery.ajax({
+                url: '<?php echo $this->getUrl('checkout/cart/customcouponPost',array('_secure'=>true)) ?>',
+                dataType: 'json',
+                data: jQuery("form#discount-coupon-form").serializeArray(), 
+                type:'POST',
+                success: function(data) {
+                    jQuery('#coupon-please-wait').hide();
+                    if(data.status == 'SUCCESS'){
+                        
+                        if(jQuery('#discount-coupon-form')){
+                           /// jQuery('#discount-coupon-form').replaceWith(data.review);
+                           
+                        }
+                        if(data.msg){
+                            jQuery('#msg').html('<span style="color:green">'+data.msg+'</span>');
+                            jQuery('#msg').show();
+                            jQuery("#discount-coupon-form .cancelcoupon").show();
+                          }
+                    }else{
+                        if(jQuery('#discount-coupon-form')){
+                           // jQuery('#discount-coupon-form').replaceWith(data.review);
+                            
+                        }
+                        if(data.msg){
+                            jQuery('#msg').html(data.msg);
+                            jQuery('#msg').show();
+                          }
+                    }
+                }
+            });
+        });
+
+        jQuery('.cancelcoupon').live('click',function(){
+            var data1 = new Object();
+            data1.remove = 1;
+            jQuery('#msg').hide();
+            if(jQuery('#coupon_code').val() == ''){return false;}
+            jQuery('#coupon-please-wait').show();
+            jQuery.ajax({
+                url: '<?php echo $this->getUrl('checkout/cart/customcouponPost',array('_secure'=>true)) ?>',
+                dataType: 'json',
+                data: data1, 
+                type:'POST',
+                success: function(data) {
+                    jQuery('#coupon-please-wait').hide();
+                    if(data.status == 'SUCCESS'){
+                        
+                        if(jQuery('#co-billing-form')){
+                         //   jQuery('#co-billing-form').replaceWith(data.review);
+                            
+                        }
+
+                        if(data.msg){
+                            jQuery('#msg').html(data.msg);
+                            jQuery('#msg').show();
+                            jQuery('#discount-coupon-form .cancelcoupon').hide();
+                          }
+                    }else{
+                        if(jQuery('#discount-coupon-form')){
+                           // jQuery('#discount-coupon-form').replaceWith(data.review);
+                            
+                        }
+                        if(data.msg){
+                            jQuery('#msg').html(data.msg);
+                            jQuery('#msg').show();
+                          }
+                    
+                        }
+                    jQuery("#coupon_code").val('');
+                }
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+   // var myForm= new VarienForm('medicalobservationform');
+  //  var myForm = new Validation('medicalobservationform');
+    var myForm = new VarienForm('co-billing-form');
+
+//<![CDATA[
+    var billing = new Billing('co-billing-form', '<?php echo $this->getUrl('checkout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('checkout/onepage/saveBilling') ?>');
+    var billingForm = new VarienForm('co-billing-form');
+
+    //billingForm.setElementsRelation('billing:country_id', 'billing:region', '<?php echo $this->getUrl('directory/json/childRegion') ?>', '<?php echo $this->__('Select State/Province...') ?>');
+    $('billing-address-select') && billing.newAddress(!$('billing-address-select').value);
+
+    var billingRegionUpdater = new RegionUpdater('billing:country_id', 'billing:region', 'billing:region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'billing:postcode');
+    if ($('onepage-guest-register-button')) {
+        Event.observe($('onepage-guest-register-button'), 'click', function(event) {
+            var billingRememberMe = $('co-billing-form').select('#remember-me-box');
+            if (billingRememberMe.length > 0) {
+                if ($('login:guest') && $('login:guest').checked) {
+                    billingRememberMe[0].hide();
+                } else if ($('login:register') && ($('login:register').checked || $('login:register').type == 'hidden')) {
+                    billingRememberMe[0].show();
+                }
+            }
+        });
+    }
+    
+    jQuery(document).ready(function() {
+        jQuery('.medical_checkbox').click(function(){
+          // alert(this.id);
+            jQuery('#'+this.id+"_texarea").toggle();
+            jQuery('#'+this.id+"_texarea").val('');
+            jQuery('#'+this.id+"_span").css('display','none');
+
+        });
+        //code for the call and offers check
+           jQuery('#callandoffers').change(function(){
+            var callforoffersval = jQuery('#callandoffers').val();
+            if(callforoffersval=='1'){
+                jQuery('#callandoffers').val('0');
+            }
+         
+
+        }); 
+           
+    });
+
+//]]>
+    function submitmedicalhistory(){
+                //alert('hi');
+        var url="<?php echo Mage::getStoreConfig(Mage_Core_Model_Store::XML_PATH_SECURE_BASE_URL);?>"+'medical/index/storemedicalhistory';
+        var drug_allergies = jQuery('#drug_allergies_texarea').val();
+        var physician_name = jQuery('#physician_name').val();
+        var physician_telephone = jQuery('#physician_telephone').val();
+        var current_medications = jQuery('#current_medications_texarea').val();
+        //alert(jQuery.type(current_medications));
+        var current_treatments = jQuery('#current_treatments_texarea').val();
+        //var smoke_treatments = jQuery('.smoke_checkbox').val();
+        var smoke_treatments=jQuery('input:radio[name="Smoke"]:checked').val();
+        var drink_treatments = jQuery('input:radio[name="Drink"]:checked').val();
+        jQuery(".medical_checkbox").each(function(){
+            if(jQuery("#"+this.id).is(':checked') == 1)
+            {
+                jQuery("#"+this.id+"_span").css('display','none');
+            }
+            else
+            {
+                 if(jQuery("#"+this.id).is(':checked') == 0){   
+                   if(jQuery("#"+this.id+'_texarea').val()==''){
+                        jQuery("#"+this.id+"_span").css('display','block');
+                   }
+                
+                }
+
+            }
+        });
+        // if(physician_telephone !='' && physicianname!='' && drug_allergies!='' && current_medications!='' && current_treatments!=''){
+        //    <?php Mage::getSingleton('core/session')->unsInsertId();?>
+        // }
+       if(drug_allergies!='' || current_medications!='' || current_treatments!='' || physician_name!='' || physician_telephone!=''){
+
+        var posting = jQuery.post( url, { physicianname: physician_name,physiciantelephone: physician_telephone,drugallergies: drug_allergies,currentmedications:current_medications,currenttreatments:current_treatments,smoke:smoke_treatments,drink:drink_treatments},function(result){
+                if(result=='success'){
+                    jQuery('#medical_history_div_new').hide(500, function(){
+                    jQuery('.addedmedicalhistory').show();
+                  });
+
+               }
+             });
+       }
+    }
+
+    jQuery('.billingsavebtn').click(function(){
+        //  alert(jQuery('#timeval').val()+'  '+jQuery('#zoneval').val());
+        // alert(jQuery('#callandoffers').val());
+        var timezonecode =jQuery('#timezone').val();
+       // alert(timezonecode);
+        var timezoneval = jQuery('#timeval1').val()+' - '+jQuery('#timeval2').val()+' - ('+timezonecode+')'; 
+        if(jQuery('#timeval1').val()=='' && jQuery('#timeval2').val()=='' && timezonecode==''){
+            timezoneval= '';
+        }
+        var all_clear = 0;
+        var callandoffersurl="<?php echo Mage::getStoreConfig(Mage_Core_Model_Store::XML_PATH_SECURE_BASE_URL);?>"+'callforoffer/index/callforoffersreg';
+        var callforfree = jQuery('#callandoffers').val();
+        var callforfreevar = jQuery.post( callandoffersurl, { callforfree: callforfree,timetocall:timezoneval},function(result){
+                //alert(result);
+               // return false;
+        });
+
+
+        var drug_allergies = jQuery('#drug_allergies_texarea').val();
+        var current_medications = jQuery('#current_medications_texarea').val();
+        var current_treatments = jQuery('#current_treatments_texarea').val();
+
+        jQuery(".medical_checkbox").each(function(){
+                if(jQuery("#"+this.id+"_texarea").val()=="" && jQuery("#"+this.id).is(':checked') == false) {
+                    all_clear = 1;
+                }                
+        });
+        //alert(all_clear);
+        if(jQuery('#medical_history_div_new').css('display') == 'block') {
+            submitmedicalhistory();
+        }
+        if(all_clear==0) {
+            //alert("Hello");
+            billing.save();
+        }
+    });
+jQuery(document).ready(function($) { 
+        $(':input').blur(function () {
+                if($(this).val().length > 0) {
+                        _gaq.push(['_trackEvent', 'billing-form-google-analytics', 'completed', $(this).attr('name')]);
+                } 
+                else {
+                        _gaq.push(['_trackEvent', 'billing-form-google-analytics', 'skipped', $(this).attr('name')]);
+                }
+        });
+});
+</script>

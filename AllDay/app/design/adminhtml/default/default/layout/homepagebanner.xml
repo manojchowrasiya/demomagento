@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <homepagebanner_adminhtml_homeslider_index>
+	<reference name="content">
+	  <block type="homepagebanner/adminhtml_homeslider" name="homeslider" />
+	</reference>
+  </homepagebanner_adminhtml_homeslider_index>
+</layout>

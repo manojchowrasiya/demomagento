@@ -1,0 +1,16 @@
+<?php $catalogSearchHelper =  $this->helper('catalogsearch');
+
+?>
+<div class="drugindexsearch">
+	<span class="drug-search-text">Drug Index</span>
+	<div class="alphabets-div">
+	<?php  //echo count(range("A","Z"));
+	
+
+		foreach(range("A","Z") as $alphabet )
+		{?>
+			<a href="<?php echo $catalogSearchHelper->getResultUrl() ?>?<?php echo $catalogSearchHelper->getQueryParamName() ?>=<?php echo $alphabet;?>&amp;let=<?php echo $alphabet;?>" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>"><?php echo "<span class='alphabets'>".$alphabet."</span>";?></a>
+		<?php }
+	?>
+	</div>
+</div>

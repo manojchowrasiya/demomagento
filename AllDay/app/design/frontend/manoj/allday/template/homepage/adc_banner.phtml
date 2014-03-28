@@ -1,0 +1,41 @@
+<div class="banner_sec">
+	<div class="drug_search_area">
+		<?php echo $this->getLayout()->createBlock("core/template")->setTemplate("homepage/drugsearch.phtml")->toHtml();?>
+	</div>
+	<!-- <div class="banner_area"> -->
+		<!-- <img src="<?php echo $this->getSkinUrl('images/home/adc_banner.jpg'); ?>" alt="AllDayChemist" class="fleft"/> -->
+		<!-- <h1>Simply a better
+pharmacy!</h1>
+		<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+		<a href="" class="banner_btn"><span>Learn More</span></a> -->
+	<!-- </div> -->
+	<?php 
+
+$model = Mage::getModel('homepagebanner/homeslider')->getCollection();
+// echo '<pre>';
+// print_r($model->getData());
+$mediaurl=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+?>
+
+	<ul id="slides1">
+
+<?php 
+foreach ($model->getData() as $banner) {
+	// print_r($banner);
+	$url = $banner['url'];
+	if (!parse_url($url, PHP_URL_SCHEME)) {
+		$url = 'http://' . $url;
+	}
+	$imagesrc = $mediaurl.''.$banner['image'];
+	echo '<li>	<div class="adc_banner_area"> ';
+	echo '<a href="'.$url.'">';
+	echo '<img src="'.$imagesrc.'" alt="'.$banner['name'].'" />';
+	echo '</a>';
+	echo '</div><div class="clear"></div></li>';
+}
+?>
+
+
+</div>
+<div class="clearSty"></div>
+<?php echo $this->getLayout()->createBlock("core/template")->setTemplate("homepage/adc_banner_below.phtml")->toHtml();?>

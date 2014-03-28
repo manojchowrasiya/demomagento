@@ -1,0 +1,492 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/** @var Mage_Checkout_Block_Onepage_Billing $this */
+?>
+<head>
+<style>
+.detail 
+{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    padding: 5px;
+}
+.fancybox-inner
+{
+ height : auto !important;
+}
+.cart td.disc {
+    background: none repeat scroll 0 0 #EEEEEE;
+}
+.cart td {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+}
+h5 {
+    border-bottom: 1px solid #666666;
+	
+}
+body
+{
+  text-align:left;
+}
+.f-left, .left
+{
+ float: none !important;
+}
+.medical
+{
+	background:#333333;
+	padding-top:1px;
+	border-radius:5px;
+	
+}
+.medical_title
+{
+	color: #FFFFFF;
+    font-size: 12px;
+    margin: 0 0 0 16px;
+}
+</style>
+</head>
+<form id="co-billing-form" action="">
+<fieldset>
+    <ul class="form-list">
+    <?php if ($this->customerHasAddresses()): ?>
+        <li class="wide">
+            <label for="billing-address-select"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></label>
+            <div class="input-box">
+                <?php echo $this->getAddressesHtmlSelect('billing') ?>
+            </div>
+        </li>
+    <?php endif; ?>
+    <li id="billing-new-address-form"<?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif; ?>>
+        <fieldset>
+            <input type="hidden" name="billing[address_id]" value="<?php echo $this->getAddress()->getId() ?>" id="billing:address_id" />
+            <ul>
+                <li class="fields"><?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getAddress()->getFirstname() ? $this->getAddress() : $this->getQuote()->getCustomer())->setForceUseCustomerRequiredAttributes(!$this->isCustomerLoggedIn())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?></li>
+                <li class="fields">
+                    <div class="field">
+                        <label for="billing:company"><?php echo $this->__('Company') ?></label>
+                        <div class="input-box">
+                            <input type="text" id="billing:company" name="billing[company]" value="<?php echo $this->escapeHtml($this->getAddress()->getCompany()) ?>" title="<?php echo $this->__('Company') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('company') ?>" />
+                        </div>
+                    </div>
+        <?php if(!$this->isCustomerLoggedIn()): ?>
+                    <div class="field-2">
+                        <label for="billing:email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="billing[email]" id="billing:email" value="<?php echo $this->escapeHtml($this->getAddress()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" />
+                        </div>
+                    </div>
+        <?php endif; ?>
+                </li>
+        <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+                <li class="wide">
+                    <label for="billing:street1" class="required"><em>*</em><?php echo $this->__('Address') ?></label>
+                    <div class="input-box">
+                        <input type="text" title="<?php echo $this->__('Street Address') ?>" name="billing[street][]" id="billing:street1" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" class="input-text <?php echo $_streetValidationClass ?>" />
+                    </div>
+                </li>
+        <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
+        <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
+                <li class="wide">
+                    <div class="input-box">
+                        <input type="text" title="<?php echo $this->__('Street Address %s', $_i) ?>" name="billing[street][]" id="billing:street<?php echo $_i ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet($_i)) ?>" class="input-text <?php echo $_streetValidationClass ?>" />
+                    </div>
+                </li>
+        <?php endfor; ?>
+                <?php if ($this->helper('customer/address')->isVatAttributeVisible()) : ?>
+                <li class="wide">
+                    <label for="billing:vat_id"><?php echo $this->__('VAT Number') ?></label>
+                    <div class="input-box">
+                        <input type="text" id="billing:vat_id" name="billing[vat_id]" value="<?php echo $this->escapeHtml($this->getAddress()->getVatId()) ?>" title="<?php echo $this->__('VAT Number') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('vat_id') ?>" />
+                    </div>
+                </li>
+                <?php endif; ?>
+                <li class="fields">
+                    <div class="field">
+                        <label for="billing:city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
+                        <div class="input-box">
+                            <input type="text" title="<?php echo $this->__('City') ?>" name="billing[city]" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="billing:city" />
+                        </div>
+                    </div>
+                    <div class="field-2">
+                        <label for="billing:region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
+                        <div class="input-box">
+                            <select id="billing:region_id" name="billing[region_id]" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
+                                <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                            </select>
+                            <script type="text/javascript">
+                            //<![CDATA[
+                                $('billing:region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
+                            //]]>
+                            </script>
+                            <input type="text" id="billing:region" name="billing[region]" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" style="display:none;" />
+                        </div>
+                    </div>
+                </li>
+                <li class="fields">
+                    <div class="field">
+                        <label for="billing:postcode" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
+                        <div class="input-box">
+                            <input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" />
+                        </div>
+                    </div>
+                    <div class="field-2">
+                        <label for="billing:country_id" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+                        <div class="input-box">
+                            <?php echo $this->getCountryHtmlSelect('billing') ?>
+                        </div>
+                    </div>
+                </li>
+                <li class="fields">
+                    <div class="field">
+                        <label for="billing:telephone" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="billing[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="billing:telephone" />
+                        </div>
+                    </div>
+                    <div class="field-2">
+                        <label for="billing:fax"><?php echo $this->__('Fax') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="billing[fax]" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) ?>" title="<?php echo $this->__('Fax') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" id="billing:fax" />
+                        </div>
+                    </div>
+                </li>
+                <?php if(!$this->isCustomerLoggedIn()): ?>
+
+        <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
+        <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+            <?php if ($_dob->isEnabled() || $_gender->isEnabled()): ?>
+                <li class="fields">
+                <?php if ($_dob->isEnabled()): ?>
+                    <div class="field">
+                        <?php echo $_dob->setDate($this->getQuote()->getCustomerDob())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
+                    </div>
+                <?php endif; ?>
+                <?php if ($_gender->isEnabled()): ?>
+                    <div class="field-2">
+                        <?php echo $_gender->setGender($this->getQuote()->getCustomerGender())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
+                    </div>
+                <?php endif ?>
+                </li>
+            <?php endif ?>
+
+            <?php if ($this->isTaxvatEnabled()):?>
+                <li><?php echo $this->getTaxvatHtml() ?></li>
+            <?php endif; ?>
+
+                <li class="fields" id="register-customer-password">
+                    <div class="field">
+                        <label for="billing:customer_password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                        <div class="input-box">
+                            <input type="password" name="billing[customer_password]" id="billing:customer_password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" />
+                        </div>
+                    </div>
+                    <div class="field-2">
+                        <label for="billing:confirm_password" class="required"><em>*</em><?php echo $this->__('Confirm Password') ?></label>
+                        <div class="input-box">
+                            <input type="password" name="billing[confirm_password]" title="<?php echo $this->__('Confirm Password') ?>" id="billing:confirm_password" class="input-text required-entry validate-cpassword" />
+                        </div>
+                    </div>
+                </li>
+                <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+                <?php endif; ?>
+                <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()):?>
+                    <li class="control">
+                        <input type="checkbox" name="billing[save_in_address_book]" value="1" title="<?php echo $this->__('Save in address book') ?>" id="billing:save_in_address_book" onchange="if(window.shipping) shipping.setSameAsBilling(false);"<?php if ($this->getAddress()->getSaveInAddressBook()):?> checked="checked"<?php endif;?> class="checkbox" /><label for="billing:save_in_address_book"><?php echo $this->__('Save in address book') ?></label>
+                    </li>
+                <?php else:?>
+                    <li class="no-display"><input type="hidden" name="billing[save_in_address_book]" value="1" /></li>
+                <?php endif; ?>
+                <?php echo $this->getChildHtml('form.additional.info'); ?>
+            </ul>
+            <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
+        </fieldset>
+     </li>
+    <?php if ($this->canShip()): ?>
+        <li class="control">
+            <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" value="1"<?php if ($this->isUseBillingAddressForShipping()) {?> checked="checked"<?php }?> title="<?php echo  $this->__('Ship to this address') ?>" onclick="$('shipping:same_as_billing').checked = true;" class="radio" /><label for="billing:use_for_shipping_yes"><?php echo  $this->__('Ship to this address') ?></label></li>
+        <li class="control">
+            <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_no" value="0"<?php if (!$this->isUseBillingAddressForShipping()) {?> checked="checked"<?php }?> title="<?php echo $this->__('Ship to different address') ?>" onclick="$('shipping:same_as_billing').checked = false;" class="radio" /><label for="billing:use_for_shipping_no"><?php echo $this->__('Ship to different address') ?></label>
+        </li>
+		<li class="control medical">
+		    
+			<p class="f-left"><h4 class="medical_title">Medical History </h4></p><!--a id="medical_history"  href="#medical_history_div">Add Medical History</a></p-->
+			<div id="medical_history_div" class="detail" style="display:block;">
+		  	
+
+		<strong>Prescriptions</strong>
+		<form name="longform" action="/index.php/medicalhistory/index" method="post">
+				<table border="0" cellpadding="0" cellspacing="0" width="70%">
+				  <tbody><tr>
+					<td height="30">Primary Physician's Name </td>
+					<td height="30">
+					  <input id="phy_name" name="phy_name" value="" type="text">
+					  </td>
+				  </tr>
+				  <tr>
+					<td height="30">Physician's Telephone No :</td>
+					<td height="30"><input id="phy_phone" name="phy_phone" value="" type="text"></td>
+				  </tr>
+				</tbody></table>
+				 <br>
+				<table class="cart" id="cart_summary" cellpadding="3" width="100%">
+				  <thead>
+					<tr>
+					  <td class="disc" align="left">Product Name</td>
+					  <td class="disc" align="left">Frequency</td>
+					  <td class="disc" align="left">Duration</td>
+					  <td class="disc" align="left"><span style="text-align:center">Drug Allergies</span></td>
+					</tr>
+				  </thead>
+				  <tfoot>
+				  </tfoot>
+				  <tbody>
+					<tr class="last_item cart_item">
+					  <td class="cart_product"><input id="med_1" name="med_1" value="" class="clsTextField" type="text"></td>
+					  <td class="cart_description"><input id="med_freq_1" name="med_freq_1" size="5" maxlength="2" value="" class="clsTextField" type="text"></td>
+					  <td class="cart_ref"><input id="med_dur_1" name="med_dur_1" size="5" maxlength="2" value="" class="clsTextField" type="text"></td>
+					  <td class="cart_availability"><input id="med_dur_alg" name="med_dur_alg" size="5" maxlength="2" value="" class="clsTextField" type="text"></td>
+					</tr>
+				  </tbody>
+				</table>
+				<br>
+				
+		<br>
+		<strong>Health Record</strong>
+		<br>
+		<div style="overflow:auto; height:180px; width:615px;">
+				<table border="0" cellpadding="0" cellspacing="0" width="98%">
+				  <tbody><tr>
+					<td height="30" width="70%">Do you have drug allergies :</td>
+					<td height="30" width="30%">
+					  <input id="option_1" name="option_1" value="1"  type="radio">
+					  Yes
+					  <input id="option_1" name="option_1" value="0" type="radio">
+					  No </td>
+				  </tr>
+				  <tr>
+					<td height="30"> Smoker</td>
+					<td height="30" width="30%">
+					  <input id="option_2" name="option_2" value="1" type="radio">
+					  Yes
+					  <input id="option_2" name="option_2" value="0" type="radio">
+					  No </td>
+				  </tr>
+				  <tr>
+					<td height="30">Emotional Mood Disorders</td>
+					<td height="30" width="30%">
+					  <input id="option_3" name="option_3" value="1" type="radio">
+					  Yes
+					  <input id="option_3" name="option_3" value="0" type="radio">
+					  No </td>
+				  </tr>
+				  <tr>
+					<td height="30">Gluacoma or other eye disorders</td>
+					<td height="30" width="30%">
+					  <input id="option_4" name="option_4" value="1" type="radio">
+					  Yes
+					  <input id="option_4" name="option_4" value="0" type="radio">
+					  No </td>
+				  </tr>
+				  <tr>
+					<td height="30">Musculoskeletal and arthritic disorders</td>
+					<td height="30" width="30%">
+					  <input id="option_5" name="option_5" value="1" type="radio">
+					  Yes
+					  <input id="option_5" name="option_5" value="0" type="radio">
+					  No </td>
+				  </tr>
+				  <tr>
+					<td height="30">Respiratory disorders(breathing problems) </td>
+					<td height="30" width="30%">
+					  <input id="option_6" name="option_6" value="1" type="radio">
+					  Yes
+					  <input id="option_6" name="option_6" value="0" type="radio">
+					  No </td>
+				  </tr>
+				  <tr>
+					<td height="30">Heart disease: high blood pressure, heart disease, angina, heart failure, heart attack, arrhythmias or heart surgery </td>
+					<td height="30" width="30%">
+					  <input id="option_7" name="option_7" value="1" type="radio">
+					  Yes
+					  <input id="option_7" name="option_7" value="0"  type="radio">
+					  No </td>
+				  </tr>
+				  <tr>
+					<td height="30">Blood disorders</td>
+					<td height="30" width="30%">
+					  <input id="option_8" name="option_8" value="1" type="radio">
+					  Yes
+					  <input id="option_8" name="option_8" value="0"  type="radio">
+					  No </td>
+				  </tr>
+				  <tr>
+					<td height="30">High lipids and triglycerides </td>
+					<td height="30" width="30%">
+					  <input id="option_9" name="option_9" value="1" type="radio">
+					  Yes
+					  <input id="option_9" name="option_9" value="0"  type="radio">
+					  No </td>
+				  </tr>
+				  <tr>
+					<td height="30">Neurological disorders</td>
+					<td height="30" width="30%">
+					  <input id="option_10" name="option_10" value="1" type="radio">
+					  Yes
+					  <input id="option_10" name="option_10" value="0"  type="radio">
+					  No </td>
+				  </tr>
+				  <tr>
+					<td height="30">Stomach, liver, interstinal disorders</td>
+					<td height="30" width="30%">
+					  <input id="option_11" name="option_11" value="1" type="radio">
+					  Yes
+					  <input id="option_11" name="option_11" value="0" type="radio">
+					  No </td>
+				  </tr>
+				  <tr>
+					<td height="30">Dermatological disorders </td>
+					<td height="30" width="30%">
+					  <input id="option_12" name="option_12" value="1"  type="radio">
+					  Yes
+					  <input id="option_12" name="option_12" value="0" type="radio">
+					  No </td>
+				  </tr>
+				  <tr>
+					<td height="30">Renal or kidney disease including prostate disease</td>
+					<td height="30" width="30%">
+					  <input id="option_13" name="option_13" value="1"  type="radio">
+					  Yes
+					  <input id="option_13" name="option_13" value="0" type="radio">
+					  No </td>
+				  </tr>
+				  <tr>
+					<td height="30">Diabetes, thyroid or other endocrine</td>
+					<td height="30" width="30%">
+					  <input id="option_14" name="option_14" value="1"  type="radio">
+					  Yes
+					  <input id="option_14" name="option_14" value="0" type="radio">
+					  No </td>
+				  </tr>
+				  <tr>
+					<td height="30">Other (If yes, please specify ) </td>
+					<td height="30">&nbsp;</td>
+				  </tr>
+				  <tr>
+					<td colspan="2" height="30"><textarea id="option_text" name="option_text" cols="60" style="height:auto;"></textarea></td>
+				  </tr>
+				</tbody></table>
+			  </div>
+			  <br>
+			  <table class="mt" border="0" cellpadding="0" cellspacing="0" width="100%">
+				<tbody><tr>
+				  <td align="center"><label>
+					
+					<input name="SubmitMedical" class="btn_grn" value="Add Medical History" onclick="submitform();" type="button">
+				  </label></td>
+				</tr>
+			    </tbody>
+			  </table>
+		</form>
+				<table class="mt" border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tbody>
+						<tr>
+						  <td>
+						  <label>
+							<p style="text-align:justify;">I certify that I am 'over 18 years' and that I am under the supervision of
+								a doctor. The ordered medication is for my own personal use and is
+								strictly not meant for a re-sale. I also accept that I am taking the
+								medicine /s at
+								my own risk and that I am duly aware of all the effects / side effects of
+								the medicine / s. I acknowledge that the drug is as per the norms of the
+								country of destination.</p> 
+						  </label>
+						  </td>
+						</tr>
+					</tbody>
+				</table>
+	  
+		
+		</div>
+		
+		</li>
+    <?php endif; ?>
+    </ul>
+    <?php if (!$this->canShip()): ?>
+        <input type="hidden" name="billing[use_for_shipping]" value="1" />
+    <?php endif; ?>
+    <div class="buttons-set" id="billing-buttons-container">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <button type="button" title="<?php echo $this->__('Continue') ?>" class="button" onclick="billing.save()"><span><span><?php echo $this->__('Continue') ?></span></span></button>
+        <span class="please-wait" id="billing-please-wait" style="display:none;">
+            <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Loading next step...') ?>" title="<?php echo $this->__('Loading next step...') ?>" class="v-middle" /> <?php echo $this->__('Loading next step...') ?>
+        </span>
+    </div>
+</fieldset>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var billing = new Billing('co-billing-form', '<?php echo $this->getUrl('checkout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('checkout/onepage/saveBilling') ?>');
+    var billingForm = new VarienForm('co-billing-form');
+
+    //billingForm.setElementsRelation('billing:country_id', 'billing:region', '<?php echo $this->getUrl('directory/json/childRegion') ?>', '<?php echo $this->__('Select State/Province...') ?>');
+    $('billing-address-select') && billing.newAddress(!$('billing-address-select').value);
+
+    var billingRegionUpdater = new RegionUpdater('billing:country_id', 'billing:region', 'billing:region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'billing:postcode');
+    if ($('onepage-guest-register-button')) {
+        Event.observe($('onepage-guest-register-button'), 'click', function(event) {
+            var billingRememberMe = $('co-billing-form').select('#remember-me-box');
+            if (billingRememberMe.length > 0) {
+                if ($('login:guest') && $('login:guest').checked) {
+                    billingRememberMe[0].hide();
+                } else if ($('login:register') && ($('login:register').checked || $('login:register').type == 'hidden')) {
+                    billingRememberMe[0].show();
+                }
+            }
+        });
+    }
+	
+	jQuery(document).ready(function() {
+		// alert('hi');
+		/* jQuery("#medical_history").fancybox({
+				closeClick  : false, // prevents closing when clicking INSIDE fancybox 
+				openEffect  : 'none',
+				closeEffect : 'none',
+				maxWidth    : '800',
+				//top: '500px',
+				helpers   : { 
+					overlay : {closeClick: false} // prevents closing when clicking OUTSIDE fancybox 
+				},
+				'afterShow' : function() {
+						jQuery.cookie('example', '1', { path: '/', expires: 1 });
+					}	
+				});*/
+			
+	});
+//]]>
+</script>

@@ -1,0 +1,25 @@
+<script>
+jQuery(document).ready(function($){
+	$(".category_text_span,.category_down_arrow").click(function(){
+		$(".category_list_area").stop(true,true).slideToggle();
+	});
+});
+</script>
+<div class="heders-links-bg">
+	<div class="header_link_wrapper">
+		<?php echo $this->getChildHtml('heders_links') ?>
+		<div class="new_offers">
+			<a href="<?php echo $this->getUrl() ?>offers.html"><img src="<?php echo $this->getSkinUrl().'images/home/offer.png'; ?>" /></a>
+		</div>
+		<div class="category_select">
+			<div class="category_text_span"> All Categories </div> <div class="category_down_arrow">&nbsp;</div>
+			<div class="category_list_area1">
+				<div class="category_list_area">
+					<div class="category_list_wrapper">
+						<?php echo $this->getChildHtml('catmenu');?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

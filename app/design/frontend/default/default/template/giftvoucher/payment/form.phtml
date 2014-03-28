@@ -1,0 +1,69 @@
+<?php
+	/**
+	 * Payment form template
+	*/
+?>
+<?php $_code = 'giftvoucher' ?>
+<ul class="form-list" id="payment_form_<?php echo $_code ?>" style="display:none;">
+	<li class="giftvoucher-description">
+		<?php echo $this->getDescription() ?>
+	</li>
+	<?php $discounts = $this->getGiftVoucherDiscount() ?>
+	<?php if (count($discounts)): ?>
+	<li class="giftvoucher-discount-code">
+		<ul>
+		<?php foreach($discounts as $code => $discount): ?>
+			<li>
+				<strong id="<?php echo $code ?>_remove">
+					<?php echo $this->__('Gift Voucher <a target="_blank" href="%s">%s</a> (%s)',$this->getUrl('giftvoucher/index/check'/*,array('code'=>$code)*/),Mage::helper('giftvoucher')->getHiddenCode($code),Mage::helper('checkout')->formatPrice($discount)) ?>
+				</strong>
+				<button type="button" id="<?php echo $code ?>" value="<?php echo $this->getUrl('giftvoucher/checkout/remove',array('code'=>$code)) ?>" title="<?php echo $this->__('Remove') ?>" onclick="removeGiftVoucher(this);">
+					<img src="<?php echo $this->getSkinUrl('images/btn_remove.gif') ?>" alt="<?php echo $this->__('Remove') ?>" />
+				</button>
+				<span id="<?php echo $code ?>_ajax" style="display:none;">
+					<img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Removing Gift Voucher "%s" ...',Mage::helper('giftvoucher')->getHiddenCode($code)) ?>" title="<?php echo $this->__('Removing Gift Voucher "%s" ...',$code) ?>" class="v-middle" />
+					<?php echo $this->__('Removing Gift Voucher "%s" ...',Mage::helper('giftvoucher')->getHiddenCode($code)) ?>
+				</span>
+			</li>
+		<?php endforeach ?>
+		</ul>
+	</li>
+	<?php endif ?>
+	<?php if ($this->isPassed()): ?>
+	<li id="<?php echo $_code ?>_message"></li>
+	<?php else: ?>
+	<li class="notice-msg">
+		<ul>
+			<li><?php echo $this->__('Grand total of this order is <strong>%s</strong>',Mage::helper('checkout')->formatPrice($this->getGrandTotal())) ?></li>
+			<li><?php echo $this->__('You need to add a gift voucher or choose orther payment methods to spend on this order!') ?></li>
+		</ul>
+	</li>
+	<li id="<?php echo $_code ?>_message">
+		<?php if (!Mage::helper('giftvoucher')->isAvailableToAddCode()): ?>
+		<ul class="error-msg">
+			<li><?php echo $this->__('The maximum number of times to enter Gift Voucher code is %d!',Mage::helper('giftvoucher')->getGeneralConfig('maximum')) ?></li>
+		</ul>
+		<?php endif ?>
+	</li>
+	<li>
+		<label for="<?php echo $_code ?>_code" class="required"><em>*</em><?php echo $this->__('Your Gift Voucher Code') ?></label>
+		<div class="input-box">
+			<input type="text" title="<?php echo $this->__('Your Gift Voucher Code') ?>" class="input-text required-entry" id="<?php echo $_code ?>_code" name="payment[gift_code]" <?php if (!Mage::helper('giftvoucher')->isAvailableToAddCode()) echo 'disabled="true"' ?> />
+		</div>
+		<?php echo $this->__('To check your Gift Voucher balance, please click <a target="_blank" href="%s">here</a>.',$this->getUrl('giftvoucher/index/check')) ?>
+	</li>
+	<li>
+		<div class="input-box">
+			<button type="button" class="button" id="<?php echo $_code ?>_add" value="<?php echo $this->getAddGiftVoucherUrl() ?>" onclick="addGiftVoucher();">
+				<span><span><?php echo $this->__('Add Gift Voucher') ?></span></span>
+			</button>
+			<span id="<?php echo $_code ?>_wait" style="display:none;">
+				<img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Adding Gift Voucher...') ?>" title="<?php echo $this->__('Adding Gift Voucher...') ?>" class="v-middle" />
+				<?php echo $this->__('Adding Gift Voucher...') ?>
+			</span>
+			<input type="hidden" class="required-entry" id="<?php echo $_code ?>_passed" />
+		</div>
+	</li>
+	<?php endif ?>
+	<p></p>
+</ul>

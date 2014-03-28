@@ -1,0 +1,105 @@
+"Check Gift Voucher Balance","Check Gift Voucher Balance"
+"Enter your giftvoucher code","Enter your giftvoucher code"
+"Gift Voucher Code","Gift Voucher Code"
+"Check Balance","Check Balance"
+"Result","Result"
+"Balance","Balance"
+"Status","Status"
+"Expired at","Expired at"
+"Enter Amount:","Enter Amount:"
+"Select Amount:","Select Amount:"
+"Enter Amount:","Enter Amount:"
+"Send Gift Voucher to friend","Send Gift Voucher to friend"
+"Recipient Name:","Recipient Name:"
+"Recipient Email:","Recipient Email:"
+"Yes","Yes"
+"Send through post office","Send through post office"
+"Postal Address:","Postal Address:"
+"Custom message","Custom message"
+"Characters Remaining:","Characters Remaining:"
+"Excl. Tax:","Excl. Tax:"
+"Incl. Tax:","Incl. Tax:"
+"From","From"
+"To","To"
+'Gift Voucher <a target="_blank" href="%s">%s</a> (%s)','Gift Voucher <a target="_blank" href="%s">%s</a> (%s)'
+"Remove","Remove"
+'Removing Gift Voucher "%s" ...','Removing Gift Voucher "%s" ...'
+'Grand total of this order is <strong>%s</strong>','Grand total of this order is <strong>%s</strong>'
+'You need to add a gift voucher or choose orther payment methods to spend on this order!', 'You need to add a gift voucher or choose orther payment methods to spend on this order!'
+'The maximum number of times to enter Gift Voucher code is %d!','The maximum number of times to enter Gift Voucher code is %d!'
+'Your Gift Voucher Code','Your Gift Voucher Code'
+'To check your Gift Voucher balance, please click <a target="_blank" href="%s">here</a>.','To check your Gift Voucher balance, please click <a target="_blank" href="%s">here</a>.'
+'Add Gift Voucher','Add Gift Voucher'
+'Adding Gift Voucher...','Adding Gift Voucher...'
+'General Information','General Information'
+'Pattern examples:<br/><strong>[A.8] : 8 alpha chars<br/>[N.4] : 4 numerics<br/>[AN.6] : 6 alphanumeric<br/>GIFT-[A.4]-[AN.6] : GIFT-ADFA-12NF0O</strong>','Pattern examples:<br/><strong>[A.8] : 8 alpha chars<br/>[N.4] : 4 numerics<br/>[AN.6] : 6 alphanumeric<br/>GIFT-[A.4]-[AN.6] : GIFT-ADFA-12NF0O</strong>'
+'Currency','Currency'
+'Store view','Store view'
+'Update comments','Update comments'
+'Created at','Created at'
+'Action','Action'
+'Amount','Amount'
+'Order','Order'
+'Comments','Comments'
+'Extra content','Extra content'
+'Customer','Customer'
+'Recipient','Recipient'
+'Customer Name','Customer Name'
+'Customer Email','Customer Email'
+'Recipient Name','Recipient Name'
+'Recipient Email','Recipient Email'
+'Recipient Address','Recipient Address'
+'Gift Voucher Information','Gift Voucher Information'
+'Transaction History','Transaction History'
+'Save Gift Voucher','Save Gift Voucher'
+'Delete Gift Voucher','Delete Gift Voucher'
+'Save And Send Email','Save And Send Email'
+'Save And Continue Edit','Save And Continue Edit'
+"Edit Gift Voucher '%s'", "Edit Gift Voucher '%s'"
+'Add Gift Voucher','Add Gift Voucher'
+'Initial amount','Initial amount'
+'Are you sure?','Are you sure?'
+'Change status','Change status'
+'Send email','Send email'
+'Gift Voucher Manager','Gift Voucher Manager'
+'Gift Voucher (%s)','Gift Voucher (%s)'
+'Gift Voucher','Gift Voucher'
+'Manage Gift Voucher','Manage Gift Voucher'
+'New Gift Voucher','New Gift Voucher'
+'Gift Voucher does not exist','Gift Voucher does not exist'
+'Updated by %s','Updated by %s'
+'Created by %s','Created by %s'
+'Gift voucher was successfully saved','Gift voucher was successfully saved'
+'and (%d) email(s) were completely sent.','and (%d) email(s) were completely sent.'
+'Unable to find Gift Voucher to save','Unable to find Gift Voucher to save'
+'Please select Gift Voucher(s)','Please select Gift Voucher(s)'
+'Mass status updated by %s','Mass status updated by %s'
+'Gift Voucher not found in your order!','Gift Voucher not found in your order!'
+'Invalid voucher code.','Invalid voucher code.'
+'You have %d times for checking voucher code.','You have %d times for checking voucher code.'
+'Gift Voucher "%s" was applied to your order.','Gift Voucher "%s" was applied to your order.'
+'You have %d times remain for checking voucher code.','You have %d times remain for checking voucher code.'
+'Gift Voucher "%s" has been removed from your order.','Gift Voucher "%s" has been removed from your order.'
+'Gift Voucher "%s" is not found.','Gift Voucher "%s" is not found.'
+'The maximum number of times to enter Gift Voucher code is %d!','The maximum number of times to enter Gift Voucher code is %d!'
+'Check Gift Voucher Balance','Check Gift Voucher Balance'
+'Ship to recipient','Ship to recipient'
+'Custom message','Custom message'
+'Send Gift Voucher to friend','Send Gift Voucher to friend'
+'Create','Create'
+'Update','Update'
+'Mass update','Mass update'
+'Send email','Send email'
+'Spend for order','Spend for order'
+'Refund','Refund'
+'Spend for order %s','Spend for order %s'
+'Used by %s %s','Used by %s %s'
+'Gift Voucher Discount','Gift Voucher Discount'
+'Refund from order %s','Refund from order %s'
+'Active when order complete','Active when order complete'
+'Created for order %s','Created for order %s'
+'Created by customer %s','Created by customer %s'
+'Please enter gift voucher information','Please enter gift voucher information'
+'Used','Used'
+'Expired','Expired'
+'Gift Voucher (%s):','Gift Voucher (%s):'

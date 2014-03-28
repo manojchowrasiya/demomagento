@@ -1,0 +1,54 @@
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/tms-0.4.1.js') ?>">// <![CDATA[
+
+// ]]></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.easing.1.3.js') ?>"></script>
+<script type="text/javascript">// <![CDATA[
+       jQuery(window).load(function() {
+          jQuery('.slider')._TMS({
+            duration:800,
+            easing:'easeOutQuad',
+            preset:'simpleFade',
+            pagination:'.pagination',
+            slideshow:8000,
+            banners:'fade',
+            waitBannerAnimation:false
+               });
+
+        });
+ function redurl(item)
+{
+  // alert('/index.php/'+item);
+   window.location.href=item;
+}
+// ]]></script>
+<div class="slider-bg">
+<div class="slider-wrapper">
+<div class="slider">
+<ul class="items">
+
+<!-- <li><img src="<?php echo $this->getSkinUrl('images/media/eyecare.jpg') ?>" alt="" />
+<div class="banner" onclick="redurl('eye-care.html');">&nbsp;</div>
+</li> -->
+<li><img src="<?php echo $this->getSkinUrl('images/media/slider1.jpg') ?>" alt="" />
+<div class="banner" onclick="redurl('beauty-r-skin-care.html');">&nbsp;</div>
+</li>
+<li><img src="<?php  echo $this->getSkinUrl('images/media/slider2_new.jpg') ?>" alt="" />
+<div class="banner" onclick="redurl('asthma.html');">&nbsp;</div>
+</li>
+<li><img src="<?php echo $this->getSkinUrl('images/media/slider3.jpg') ?>" alt="" />
+<div class="banner" onclick="redurl('allergy.html');">&nbsp;</div>
+</li>
+<li><img src="<?php echo $this->getSkinUrl('images/media/slider4.jpg') ?>" alt="" />
+<div class="banner" onclick="redurl('men-s-health.html');">&nbsp;</div>
+</li>
+</ul>
+</div>
+<ul class="pagination">
+<li><a href="<?php echo $this->getUrl('#') ?>">1</a></li>
+<li><a href="<?php echo $this->getUrl('#') ?>">2</a></li>
+<li><a href="<?php echo $this->getUrl('#') ?>">3</a></li>
+<li><a href="<?php echo $this->getUrl('#') ?>">4</a></li>
+<!-- <li><a href="<?php echo $this->getUrl('#') ?>">5</a></li> -->
+</ul>
+</div>
+</div>
