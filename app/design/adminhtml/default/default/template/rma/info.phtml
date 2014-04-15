@@ -1,0 +1,215 @@
+<?php 
+/**
+ * Jayje_Rma extension
+ *  
+ * @category   	Return Merchant Authorization Magento - wakensys
+ * @package	Jayje_Rma
+ * @copyright  	Copyright (c) 2013
+ * @license	http://opensource.org/licenses/mit-license.php MIT License
+ * @category	Jayje
+ * @package	Jayje_Rma
+ * @author        wakensys
+ * @developper   s.ratheepan@gmail.com
+ */
+
+
+$id     = $this->getRequest()->getParam('id');	  
+if($id != ''){
+    $ids = Jayje_Rma_Block_Adminhtml_Rma::getOrderInfo($id);    
+    $_order = Mage::getModel('sales/order')->load($ids[0]); ?>
+    <div class="box-left">
+        
+        <div class="entry-edit">
+
+            <div class="entry-edit-head">
+            <?php if ($_order->getNoUseOrderLink()): ?>
+                <h4 class="icon-head head-account"><?php echo Mage::helper('sales')->__('Order # %s', $_order->getRealOrderId()) ?> (<?php echo $_email ?>)</h4>
+            <?php else: ?>
+                <a href="<?php echo $_order->getViewUrl($_order->getId()) ?>"><?php echo Mage::helper('sales')->__('Order # %s', $_order->getRealOrderId()) ?></a>
+                <strong>(<?php echo $_email ?>)</strong>
+            <?php endif; ?>
+            </div>
+            <div class="fieldset">
+                <table cellspacing="0" class="form-list">
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Order Date') ?></label></td>
+                    <td class="value"><strong><?php echo $_order['created_at'] ?></strong></td>
+                </tr>
+                <?php if ($orderAdminDate != $orderStoreDate):?>
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Order Date (%s)', $_order->getCreatedAtStoreDate()->getTimezone()) ?></label></td>
+                    <td class="value"><strong><?php echo $_order['created_at']  ?></strong></td>
+                </tr>
+                <?php endif;?>
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Order Status') ?></label></td>
+                    <td class="value"><strong><span id="order_status"><?php echo $_order->getStatusLabel() ?></span></strong></td>
+                </tr>
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Purchased From') ?></label></td>
+                    <td class="value"><strong><?php echo $_order->getStoreName() ?></strong></td>
+                </tr>
+                <?php if($_order->getRelationChildId()): ?>
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Link to the New Order') ?></label></td>
+                    <td class="value"><a href="<?php echo $_order->getViewUrl($_order->getRelationChildId()) ?>">
+                        <?php echo $_order->getRelationChildRealId() ?>
+                    </a></td>
+                </tr>
+                <?php endif; ?>
+                <?php if($_order->getRelationParentId()): ?>
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Link to the Previous Order') ?></label></td>
+                    <td class="value"><a href="<?php echo $_order->getViewUrl($_order->getRelationParentId()) ?>">
+                        <?php echo $_order->getRelationParentRealId() ?>
+                    </a></td>
+                </tr>
+                <?php endif; ?>
+                <?php if($_order->getRemoteIp()): ?>
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Placed from IP') ?></label></td>
+                    <td class="value"><strong><?php echo $_order->getRemoteIp(); echo ($_order->getXForwardedFor())?' (' . $_order->getXForwardedFor() . ')':''; ?></strong></td>
+                </tr>
+                <?php endif; ?>
+                <?php if($_order->getGlobalCurrencyCode() != $_order->getBaseCurrencyCode()): ?>
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('%s / %s rate:', $_order->getGlobalCurrencyCode(), $_order->getBaseCurrencyCode()) ?></label></td>
+                    <td class="value"><strong><?php echo $_order->getBaseToGlobalRate() ?></strong></td>
+                </tr>
+                <?php endif; ?>
+                <?php if($_order->getBaseCurrencyCode() != $_order->getOrderCurrencyCode()): ?>
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('%s / %s rate:', $_order->getOrderCurrencyCode(), $_order->getBaseCurrencyCode()) ?></label></td>
+                    <td class="value"><strong><?php echo $_order->getBaseToOrderRate() ?></strong></td>
+                </tr>
+                <?php endif; ?>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="box-right">
+        <!--Account Information-->
+        <div class="entry-edit">
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-account"><?php echo Mage::helper('sales')->__('Account Information') ?></h4>
+                <div class="tools"><?php echo $_order->getAccountEditLink()?></div>
+            </div>
+            <div class="fieldset">
+                <div class="hor-scroll">
+                    <table cellspacing="0" class="form-list">
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('sales')->__('Customer Name') ?></label></td>
+                        <td class="value">
+                        <?php if ($_customerUrl=$_order->getCustomerViewUrl()) : ?>
+                            <a href="<?php echo $_customerUrl ?>" target="_blank"><strong><?php echo $_order->getCustomerName() ?></strong></a>
+                        <?php else: ?>
+                            <strong><?php echo $_order->getCustomerName() ?></strong>
+                        <?php endif; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('sales')->__('Email') ?></label></td>
+                        <td class="value"><a href="mailto:<?php echo $_order->getCustomerEmail() ?>"><strong><?php echo $_order->getCustomerEmail() ?></strong></a></td>
+                    </tr>
+                    <?php if ($_groupName = $_order->getCustomerGroupName()) : ?>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('sales')->__('Customer Group') ?></label></td>
+                        <td class="value"><strong><?php echo $_groupName ?></strong></td>
+                    </tr>
+                    <?php endif; ?>
+                    <?php foreach ($_order->getCustomerAccountData() as $data):?>
+                    <tr>
+                        <td class="label"><label><?php echo $data['label'] ?></label></td>
+                        <td class="value"><strong><?php echo $data['value'] ?></strong></td>
+                    </tr>
+                    <?php endforeach;?>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    
+    <div class="box-left">
+        <!--Billing Address-->
+        <div class="entry-edit">
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-billing-address"><?php echo Mage::helper('sales')->__('Billing Address') ?></h4>
+                <div class="tools"><?php echo $_order->getAddressEditLink($_order->getBillingAddress())?></div>
+            </div>
+            <fieldset>
+                <address><?php echo $_order->getBillingAddress()->getFormated(true) ?></address>
+            </fieldset>
+        </div>
+    </div>
+    <?php //if (!$_order->getOrder()->getIsVirtual()): ?>
+    <div class="box-right">
+        <!--Shipping Address-->
+        <div class="entry-edit">
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-shipping-address"><?php echo Mage::helper('sales')->__('Shipping Address') ?></h4>
+                <div class="tools"><?php echo $_order->getAddressEditLink($_order->getShippingAddress())?></div>
+            </div>
+            <fieldset>
+                <address><?php echo $_order->getShippingAddress()->getFormated(true) ?></address>
+            </fieldset>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <?php //endif; ?>
+    <div class="entry-edit">
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-products">Items Ordered</h4>
+            </div>
+        </div><div class="grid np">
+      <div class="hor-scroll">
+        <table cellspacing="0" class="data order-tables">
+            <colgroup><col>
+            <col width="1">
+            <col width="1">
+            <col width="1">
+            <col width="1">
+            <col width="1">
+            <col width="1">
+            <col width="1">
+            <col width="1">
+            <col width="1">
+            </colgroup><thead>
+                <tr class="headings">
+                    <th>Product</th>
+                    <th><span class="nobr">SKU</span></th>
+                    <th><span class="nobr">Price</span></th>
+                    <th class="a-center">Qty</th>
+                    <th>Subtotal</th>
+
+                </tr>
+    </thead>
+    <tbody class="even">
+    <?php
+    
+        $rma_Products = Jayje_Rma_Block_Adminhtml_Rma::getRmaProducts($id);    
+
+           while($resultn = $rma_Products->fetch(PDO::FETCH_ASSOC)){
+               extract($resultn); 
+               $product_name = Mage::getModel('catalog/product')->load($product_id)->getName(); 
+               $product_sku = Mage::getModel('catalog/product')->load($product_id)->getSku();
+               $product_price = Mage::getModel('catalog/product')->load($product_id)->getPrice(); ?>
+  
+
+
+<tr class="border">
+<td>
+<div id="order_item_33" class="item-container">
+<h5 class="title"><span id="order_item_33_title"><?php echo $product_name  ?></span></h5>
+</div></td>
+<td><span class="price"><?php echo $product_sku; ?></span></td>
+<td><span class="price"><?php echo $product_price; ?></span></td>
+<td><strong><?php echo $qty  ?></strong></td>
+<td class="a-right last"><span class="price"> <?php echo $total  ?></span>    </td>
+</tr>
+  <?php  }  ?>              
+                </tbody>
+                </table>
+      </div>
+    </div>
+<?php }   ?>

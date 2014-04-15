@@ -1,0 +1,50 @@
+<?php
+/**
+ * Jayje_Rma extension
+ *  
+ * @category   	Return Merchant Authorization Magento - wakensys
+ * @package	Jayje_Rma
+ * @copyright  	Copyright (c) 2013
+ * @license	http://opensource.org/licenses/mit-license.php MIT License
+ * @category	Jayje
+ * @package	Jayje_Rma
+ * @author        wakensys
+ * @developper   s.ratheepan@gmail.com
+ */
+
+
+   $result= $this->getRmaList();
+?>
+<div class="page-title title-buttons">
+    <h1>RMA Request</h1>
+</div>
+<a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>/rma/index/request"><h4 align="right">Add New RMA</h4></a>
+<table class="data-table" id="my-orders-table">
+<thead>
+<tr class="first last">
+<th>RMA #</th><th>Order #</th><th>Date</th><th><span class="nobr">Status</span></th><th>Return Type</th>
+<th>&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+
+<?php  
+         while($resultn = $result->fetch(PDO::FETCH_ASSOC)){
+               extract($resultn);
+              echo "<tr class='first odd'>
+            <td><a href=".Mage::helper('core/url')->getHomeUrl()."/rma/index/view/rma_id/$rma_id>$rma_id</a></td>
+            <td><span class='nobr'><a href=".Mage::helper('core/url')->getHomeUrl()."/sales/order/view/order_id/$order_id>$increment_id<?a></span></td>
+            <td>$created_time</td>
+            <td><span class='price'>$status</span></td>
+            <td class=''>
+            <span class='nobr'>$return_type</span></td>
+</tr>"; 
+               
+               }
+
+
+?>
+
+
+                    </tbody>
+    </table>

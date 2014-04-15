@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Jayje_Rma>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Jayje_Rma>
+    </modules>
+</config> 

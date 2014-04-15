@@ -1,0 +1,28 @@
+<?php 
+/**
+ * Jayje_Rma extension
+ *  
+ * @category   	Return Merchant Authorization Magento - wakensys
+ * @package	Jayje_Rma
+ * @copyright  	Copyright (c) 2013
+ * @license	http://opensource.org/licenses/mit-license.php MIT License
+ * @category	Jayje
+ * @package	Jayje_Rma
+ * @author        wakensys
+ * @developper   s.ratheepan@gmail.com
+ */
+
+
+ $id = $this->getRequest()->getParam('id');
+        $result = $this->getRmaComments() ;
+         while($resultn = $result->fetch(PDO::FETCH_ASSOC)){
+               extract($resultn); ?>
+               <ul class="note-list">
+            <li>
+            <strong><?php echo $date; ?></strong>
+            <span class="separator">|</span><strong><?php   echo $stype; ?></strong><br>
+            <small><?php   echo $comments; ?> ,                  </strong>   By: <?php   echo $by; ?></small>
+                    </li>
+        </ul><br />
+               
+               <?php  }  ?>.

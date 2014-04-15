@@ -567,6 +567,7 @@ class Mage_Usa_Model_Shipping_Carrier_Fedex
      */
     protected function _getXmlQuotes()
     {
+        print_r('hi');exit;
         $r = $this->_rawRequest;
         $xml = new SimpleXMLElement('<?xml version = "1.0" encoding = "UTF-8"?><FDXRateAvailableServicesRequest/>');
 

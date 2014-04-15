@@ -1,0 +1,67 @@
+<?php
+/**
+ * Jayje_Rma extension
+ *  
+ * @category   	Return Merchant Authorization Magento - wakensys
+ * @package	Jayje_Rma
+ * @copyright  	Copyright (c) 2013
+ * @license	http://opensource.org/licenses/mit-license.php MIT License
+ * @category	Jayje
+ * @package	Jayje_Rma
+ * @author        wakensys
+ * @developper   s.ratheepan@gmail.com
+ */
+
+?>
+<script src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery-1.4.2.js"></script>
+<script>
+function  getnp(){
+      var order_id = document.getElementById("order_id").value;
+           $("div#jfjfjf").html('<br><br><br><div align="center"  style="margin-left: -50px;">Loading...'); 
+            $.ajax({
+              type: "GET",
+                 
+            //    url: '<?php echo Mage::getUrl('rma/index/order') ?>',
+           //     url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);; ?>/oproducts.php',
+                  url: '<?php echo Mage::getUrl('rma/index/order') ?>',
+              data: "oid="+ order_id , // appears as $_GET['id'] @ ur backend side
+              success: function(data) {
+                    // data is ur summary
+                   $('#jfjfjf').html(data);
+              }
+         
+            });
+         return true;
+         }
+</script>
+<h2 class="legend translate-inline">Request For RMA</h2>
+<div>
+<a href="<?php echo Mage::helper('core/url')->getHomeUrl();; ?>/rma/index"><h4 align="right">Back to RMA</h4></a>
+<form method="post" action="<?php echo Mage::helper('core/url')->getHomeUrl();; ?>/rma/index/formpost">
+Order ID<br />
+<select name="order_id" id="order_id" style="width: 70%;"  class="input-text required-entry" onchange="return getnp()">
+<option value="">select order</option><?php   print_r($this->getOrder()) ?></select><br />
+<div id="jfjfjf"></div>
+
+<br />
+Package Opened<br />
+<select name="package">
+<option  value="yes">yes</option>
+<option  value="no">no</option>
+</select><br /><br />
+Return Type<br />
+<select name="return_type">
+<?php  echo $this->getRType();  ?>
+</select><br /><br />
+
+Tracking No<br />
+<input  type='text' name="tracking_no" /><br /><br />
+
+
+Reason<br />
+<textarea cols="60"  rows="6" name="reason"></textarea><br /><br />
+<button onclick="return notEmpty()" type="submit" title="Submit" class="button translate-inline" translate="[{shown:'Submit',translated:'Submit',original:'Submit',location:'Tag attribute (ALT, TITLE, etc.)',scope:'Mage_Customer'},{shown:'Submit',translated:'Submit',original:'Submit',location:'Push button',scope:'Mage_Customer'}]"><span><span>Submit</span></span></button>
+</form>
+
+
+</div>

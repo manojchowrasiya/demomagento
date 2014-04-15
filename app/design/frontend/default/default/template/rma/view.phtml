@@ -1,0 +1,138 @@
+<?php
+/**
+ * Jayje_Rma extension
+ *  
+ * @category   	Return Merchant Authorization Magento - wakensys
+ * @package	Jayje_Rma
+ * @copyright  	Copyright (c) 2013
+ * @license	http://opensource.org/licenses/mit-license.php MIT License
+ * @category	Jayje
+ * @package	Jayje_Rma
+ * @author        wakensys
+ * @developper   s.ratheepan@gmail.com
+ */
+
+
+    $rma = $this->getRmaDetails();
+?>
+<div class="page-title title-buttons">
+    <h1>RMA #<?php  echo $rma['rma_id']; ?> - <?php  echo $rma['adminstatus']; ?></h1>
+</div>
+<a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>/rma/index/"><h4 align="right">Back to RMA</h4></a>
+
+<div class="col2-set order-info-box">
+    <div class="col-1">
+        <div class="box">
+            <div class="box-title">
+                <h2>Request Information</h2>
+            </div>
+            <div class="box-content">
+               ID: <?php  echo $rma['rma_id']; ?>
+            </div>
+            <div class="box-content">
+               Order: <a href="<?php echo Mage::helper('core/url')->getHomeUrl()."/sales/order/view/order_id/".$rma['order_id']; ?>" >#<?php  echo $rma['increment_id']; ?></a>
+            </div>             
+            <div class="box-content">
+               Status: <?php  echo $rma['adminstatus']; ?>
+            </div>
+            <div class="box-content">
+               Tracking No: <?php  echo $rma['tracking_no']; ?>
+            </div>
+            <div class="box-content">
+               Reason: <?php  echo $rma['reason']; ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-2"><br />
+        <div class="box box-payment">
+
+            <div class="box-content">
+                <p>Created Time: <?php  echo $rma['created_time']; ?></p>
+            </div>
+            <div class="box-content">
+                <p>Package Opened: <?php  echo $rma['package']; ?></p>
+            </div>
+            <div class="box-content">
+                <p>Return Type: <?php  echo $rma['return_type']; ?><a></a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-products">Items RMA Requested for</h4>
+        </div>
+    </div><div class="grid np">
+  <div class="hor-scroll">
+<table cellspacing="0" class="data order-tables" width="90%">
+<thead>
+<tr class="headings">
+<th><strong>Product</strong></th><th><strong>Price</strong></th><th><strong>Qty</strong></th>
+<th class="a-right last"><span><strong>Row Total</strong></span></th></tr>
+</thead>
+<tbody class="even">
+<?php
+$order_id = $rma['order_id'];
+$items = Mage::getModel('sales/order')->load($order_id)->getAllItems();
+
+$rma_Products = $this->getRmaProducts();
+         while($resultn = $rma_Products->fetch(PDO::FETCH_ASSOC)){
+               extract($resultn); 
+               $product_name = Mage::getModel('catalog/product')->load($product_id)->getName(); 
+               $product_price = Mage::getModel('catalog/product')->load($product_id)->getPrice(); ?>
+  
+
+
+<tr class="border">
+<td>
+<div id="order_item_33" class="item-container">
+<div class="item-text">
+<h5 class="title"><span id="order_item_33_title"><?php echo $product_name  ?></span></h5>
+</div>
+</div>
+</td>
+<td>
+<span class="price-excl-tax">
+<span class="price"><?php echo round($product_price, 2) ?></span>                
+</span>
+</td>
+<td><strong><?php echo $qty  ?></strong></td>
+<td class="a-right last"><span class="price"> <?php echo $total  ?></span>    </td>
+</tr>
+  <?php  }  ?>              
+            </tbody>
+            </table>
+  </div>
+</div>
+<br />
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-products">Comments</h4>
+        </div>
+
+<?php  
+        $result = $this->getRmaComments() ;
+         while($resultn = $result->fetch(PDO::FETCH_ASSOC)){
+               extract($resultn); ?>
+               <ul class="note-list">
+            <li>
+            <strong><?php echo $date; ?></strong>
+            <span class="separator">|</span><strong><?php   echo $stype; ?></strong><br>
+            <small><?php   echo $comments; ?> ,                  </strong>   By: <?php   echo $by; ?></small>
+                    </li>
+        </ul><br />
+               
+               <?php  }  ?>.
+
+<h2 class="legend translate-inline">Request For RMA</h2>
+<div>
+
+<form method="post" action="<?php echo Mage::helper('core/url')->getHomeUrl();; ?>/rma/index/formpostcomments">
+<input type="hidden" name="rma_id" value="<?php echo $rma['rma_id']; ?>" />
+Comments<br />
+<textarea cols="60"  rows="6" name="comments"></textarea><br /><br />
+<button type="submit" title="Submit" class="button translate-inline" translate="[{shown:'Submit',translated:'Submit',original:'Submit',location:'Tag attribute (ALT, TITLE, etc.)',scope:'Mage_Customer'},{shown:'Submit',translated:'Submit',original:'Submit',location:'Push button',scope:'Mage_Customer'}]"><span><span>Submit</span></span></button>
+</form>
+
+
+</div>

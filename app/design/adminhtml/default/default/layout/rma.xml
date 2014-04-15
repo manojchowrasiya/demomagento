@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <rma_adminhtml_rma_index>
+        <reference name="content">
+            <block type="rma/adminhtml_rma" name="rma" />
+        </reference>
+    </rma_adminhtml_rma_index>
+    <rma_adminhtml_rma_info>
+        <reference name="content"> 
+                   <block type="rma/adminhtml_rma_info" template="rma/info.phtml" name="sales.report.refreshstatistics" />
+         </reference>
+    </rma_adminhtml_rma_info>
+    <rma_adminhtml_rma_new>
+        <reference name="content">
+                   <block type="rma/adminhtml_rma_new" template="rma/infod.phtml" name="sales.report.refreshstatistics" />
+         </reference>
+    </rma_adminhtml_rma_new>
+    <rma_adminhtml_rma_edit>
+        <reference name="content">
+         <block type="rma/adminhtml_edit" name="rma" />
+                   <block type="rma/adminhtml_edit" template="rma/info.phtml" name="sales.report.refreshstatistics" />
+         </reference>
+    </rma_adminhtml_rma_edit>
+    	<rma_adminhtml_rstatus_index>
+        <reference name="content">
+            <block type="rma/adminhtml_rstatus" name="rstatus_grid" />
+        </reference>
+	</rma_adminhtml_rstatus_index>
+	<rma_adminhtml_rstatus_grid>
+		<block type="core/text_list" name="root" output="toHtml">
+			<block type="rma/adminhtml_rstatus_grid" name="rstatus_grid"/>
+		</block>
+	</rma_adminhtml_rstatus_grid>
+	<!-- Rstatus add/edit action -->
+	<rma_adminhtml_rstatus_edit>
+		<update handle="editor"/>
+		<reference name="menu">
+			<action method="setActive">
+				<menupath>rma/rstatus</menupath>
+			</action>
+		</reference>
+		<reference name="content">
+			<block type="rma/adminhtml_rstatus_edit" name="rstatus_edit"></block>
+		</reference>
+		<reference name="left">
+			<block type="rma/adminhtml_rstatus_edit_tabs" name="rstatus_tabs"></block>
+		</reference> 
+	</rma_adminhtml_rstatus_edit>
+</layout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<config>
+    <tabs>
+        <jayje_tab module="rma" translate="label">
+            <label>RMA Configuration</label>
+            <sort_order>100</sort_order>
+        </jayje_tab>
+    </tabs>
+    <sections>
+        <jayje_section module="rma" translate="label">
+            <label>RMA</label>
+            <sort_order>200</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <tab>jayje_tab</tab>
+            <groups>
+                <jayje_group translate="label">
+                    <label>RMA Configuration</label>
+                    <comment>RMA Configuration</comment>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                 <fields>
+                        <jayje_rmamail translate="label">
+                            <label> RMA Admin Email Address: </label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </jayje_rmamail>
+                        <jayje_basicstatus translate="label">
+                            <label>Intial RMA Status: </label>
+                            <comment>When  RMA Request is created</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>rma/config_status</source_model>
+                        </jayje_basicstatus>
+                        <jayje_mail translate="label">
+                            <label>Send Email to customer: </label>
+                            <comment>When  RMA Request is created</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </jayje_mail>
+                        <jayje_emailtemp translate="label">
+                            <label>RMA Email Template: </label>
+                            <comment>under development</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jayje_emailtemp>
+                    </fields>
+                </jayje_group>
+            </groups>
+        </jayje_section>
+    </sections>
+</config>

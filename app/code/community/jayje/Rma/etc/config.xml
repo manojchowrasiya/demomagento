@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Jayje_Rma>
+            <version>0.1.0</version>
+        </Jayje_Rma>
+    </modules>
+    <frontend>
+        <routers>
+            <rma>
+                <use>standard</use>
+                <args>
+                    <module>Jayje_Rma</module>
+                    <frontName>rma</frontName>
+                </args>
+            </rma>
+        </routers>
+        <layout>
+            <updates>
+                <rma>
+                    <file>rma.xml</file>
+                </rma>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<rma>
+				<use>admin</use>
+				<args>
+					<module>Jayje_Rma</module>
+					<frontName>rma</frontName>
+				</args>
+			</rma>
+        </routers>
+    </admin>
+    <adminhtml>
+         <menu>
+                  <rma module="rma">
+                           <title>RMA</title>
+                           <sort_order>71</sort_order>               
+                           <children>
+                           
+                                             <items module="rma">
+                                             <title>Manage RMA</title>
+                                             <sort_order>0</sort_order>
+                                             <action>rma/adminhtml_rma</action>
+                                    </items>
+                                    <rstatus module="rma">
+                                             <title>RMA Status and Return Type</title>
+                                             <sort_order>10</sort_order>
+                                             <action>rma/adminhtml_rstatus</action>
+                                    </rstatus>
+                           </children>
+                  </rma>
+         </menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Jayje_Rma>
+							<title>Rma Module</title>
+							<sort_order>10</sort_order>
+						</Jayje_Rma>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<rma>
+					<file>rma.xml</file>
+				</rma>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <rma>
+                <class>Jayje_Rma_Model</class>
+                <resourceModel>rma_mysql4</resourceModel>
+            </rma>
+            <rma_mysql4>
+                <class>Jayje_Rma_Model_Mysql4</class>
+                <entities>
+                    <rma>
+                        <table>rma</table>
+                    </rma>
+                    <rcomments>
+                        <table>rma_comments</table>
+                    </rcomments>
+                    <rproducts>
+                        <table>rma_products</table>
+                    </rproducts>
+                    <rstatus>
+                        <table>rstatus</table>
+                    </rstatus>
+                </entities>
+            </rma_mysql4>
+        </models>
+        <resources>
+            <rma_setup>
+                <setup>
+                    <module>Jayje_Rma</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </rma_setup>
+            <rma_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </rma_write>
+            <rma_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </rma_read>
+        </resources>
+        <blocks>
+            <rma>
+                <class>Jayje_Rma_Block</class>
+            </rma>
+        </blocks>
+        <helpers>
+            <rma>
+                <class>Jayje_Rma_Helper</class>
+            </rma>
+        </helpers>
+<template>
+        <email>
+            <custom_email_template1 module="rma">
+                <label>ActiveCodeline custom email module</label>
+                <file>activecodeline_custom_email1.html</file>
+                <type>html</type>
+            </custom_email_template1>
+        </email>
+    </template>        
+    </global>
+</config>

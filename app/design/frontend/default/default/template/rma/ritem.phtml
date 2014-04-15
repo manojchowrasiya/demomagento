@@ -1,0 +1,88 @@
+<?php
+/**
+ * Jayje_Rma extension
+ *  
+ * @category   	Return Merchant Authorization Magento - wakensys
+ * @package	Jayje_Rma
+ * @copyright  	Copyright (c) 2013
+ * @license	http://opensource.org/licenses/mit-license.php MIT License
+ * @category	Jayje
+ * @package	Jayje_Rma
+ * @author        wakensys
+ * @developper   s.ratheepan@gmail.com
+ */
+
+
+ $order_id     = $this->getRequest()->getParam('oid');
+$increment_id = Mage::getModel('sales/order')->load(12)->getData();
+//print_r($increment_id);
+?>
+<script>
+function checkQty(id){
+      var rma_qty = document.getElementById("rma"+id).value;
+      var o_qty = document.getElementById("o"+id).value;
+          if(isNaN(rma_qty)){
+                alert('not number');
+                document.getElementById("rma"+id).value=1
+          }else{
+            if(o_qty >= rma_qty){
+              //  alert('Rma quantity should be less than ordered quantity');
+                //document.getElementById("rma"+id).value=1
+          }else{
+                alert('Rma quantity should be less than ordered quantity');
+                document.getElementById("rma"+id).value=1
+          }
+}
+}
+</script>
+<div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-products">Items RMA Requested for</h4>
+        </div>
+    </div><div class="grid np">
+  <div class="hor-scroll">
+<table cellspacing="0" class="data order-tables" width="90%">
+<thead>
+<tr class="headings">
+<th><strong>Product</strong></th><th><strong>Price</strong></th><th><strong>Qty</strong></th><th><strong>Return <br />Qty</strong></th>
+</tr>
+</thead>
+<tbody class="even">
+<?php
+
+$items = Mage::getModel('sales/order')->load($order_id)->getAllItems();
+foreach ($items as $itemId => $item)
+{
+    $tf= $this->checkRmaProduct($order_id, $item->getProductId())
+?>
+<tr class="border">
+<td>
+<div id="order_item_33" class="item-container">
+<div class="item-text">
+<h5 class="title"><span id="order_item_33_title"><?php echo $item->getName()  ?></span></h5>
+</div>
+</div>
+</td>
+<td>
+<span class="price-excl-tax">
+<span class="price"><?php echo $item->getPrice()  ?></span>                
+</span>
+</td><td><strong><?php echo round($item->getQtyOrdered())  ?></strong></td>
+<td>
+<input type="hidden" id="o<?php echo $item->getProductId() ?>" size="2" name="" value="<?php echo $item->getQtyOrdered()  ?>"  />
+
+<?php if($tf>0){   ?>
+Already Requested
+<?php }else{   ?>
+<input type="text" id="rma<?php echo $item->getProductId() ?>" size="2" name="qty_<?php echo $itemId; ?>" value="0"  autocomplete="off" onkeyup="return checkQty(<?php echo $item->getProductId() ?>)" />
+<?php }   ?>
+
+<input type="hidden" size="2" name="pid_<?php echo $itemId; ?>" value="<?php echo $item->getProductId() ?>" /></td>
+<input type="hidden" size="2" name="price_<?php echo $itemId; ?>" value="<?php echo $item->getPrice() ?>" /></td>
+</tr>
+  <?php  }  ?><tr><td> <input type="hidden" size="2" name="maxpid" value="<?php echo $itemId ?>" /></td>
+</td></tr>              
+            </tbody>
+            </table>
+  </div>
+

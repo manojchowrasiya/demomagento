@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <rma_index_index translate="label">
+        <label>Customer RMA</label>
+        <update handle="customer_account"/>
+        <!-- Mage_Customer -->
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="my.account.wrapper">
+         <block type="rma/rma" name="rma" template="rma/rma.phtml" >
+            <block type="customer/account_dashboard" name="customer_account_dashboard" template="customer/account/dashboard.phtml"/>
+                <block type="customer/account_dashboard_hello" name="customer_account_dashboard_hello" as="hello" template="customer/account/dashboard/hello.phtml"/>
+                <block type="core/template" name="customer_account_dashboard_top" as="top" />
+                <block type="customer/account_dashboard_info" name="customer_account_dashboard_info" as="info" template="customer/account/dashboard/info.phtml"/>
+                <block type="customer/account_dashboard_newsletter" name="customer_account_dashboard_newsletter" as="newsletter" template="customer/account/dashboard/newsletter.phtml"/>
+                <block type="customer/account_dashboard_address" name="customer_account_dashboard_address" as="address" template="customer/account/dashboard/address.phtml"/>
+                <block type="core/template" name="customer_account_dashboard_info1" as="info1" />
+                <block type="core/template" name="customer_account_dashboard_info2" as="info2" />
+                <block type="core/template" name="subcus_index_info2" as="info2" />
+            </block>
+        </reference>
+  
+    </rma_index_index>
+    
+    <rma_index_request>
+        <update handle="customer_account"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="my.account.wrapper">            <block type="rma/rma" name="rma" template="rma/request.phtml"  >
+            <block type="customer/account_dashboard" name="customer_account_dashboard" template="customer/account/dashboard.phtml"/>
+                <block type="customer/account_dashboard_hello" name="customer_account_dashboard_hello" as="hello" template="customer/account/dashboard/hello.phtml"/>
+                <block type="core/template" name="customer_account_dashboard_top" as="top" />
+                <block type="customer/account_dashboard_info" name="customer_account_dashboard_info" as="info" template="customer/account/dashboard/info.phtml"/>
+                <block type="customer/account_dashboard_newsletter" name="customer_account_dashboard_newsletter" as="newsletter" template="customer/account/dashboard/newsletter.phtml"/>
+                <block type="customer/account_dashboard_address" name="customer_account_dashboard_address" as="address" template="customer/account/dashboard/address.phtml"/>
+                <block type="core/template" name="customer_account_dashboard_info1" as="info1" />
+                <block type="core/template" name="customer_account_dashboard_info2" as="info2" />
+                <block type="core/template" name="subcus_index_info2" as="info2" />
+            </block>
+        </reference>
+    </rma_index_request>
+    
+    <rma_index_view>
+        <update handle="customer_account"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="my.account.wrapper">            <block type="rma/rma" name="rma" template="rma/view.phtml">
+            <block type="customer/account_dashboard" name="customer_account_dashboard" template="customer/account/dashboard.phtml"/>
+                <block type="customer/account_dashboard_hello" name="customer_account_dashboard_hello" as="hello" template="customer/account/dashboard/hello.phtml"/>
+                <block type="core/template" name="customer_account_dashboard_top" as="top" />
+                <block type="customer/account_dashboard_info" name="customer_account_dashboard_info" as="info" template="customer/account/dashboard/info.phtml"/>
+                <block type="customer/account_dashboard_newsletter" name="customer_account_dashboard_newsletter" as="newsletter" template="customer/account/dashboard/newsletter.phtml"/>
+                <block type="customer/account_dashboard_address" name="customer_account_dashboard_address" as="address" template="customer/account/dashboard/address.phtml"/>
+                <block type="core/template" name="customer_account_dashboard_info1" as="info1" />
+                <block type="core/template" name="customer_account_dashboard_info2" as="info2" />
+                <block type="core/template" name="subcus_index_info2" as="info2" />
+            </block>
+        </reference>
+    </rma_index_view>
+    
+    <rma_index_oitems>
+        <update handle="customer_account"/>
+       <reference name="content">   
+           <block type="rma/rma" name="rmaw" template="rma/oitems.phtml" >
+            <block type="customer/account_dashboard" name="customer_account_dashboard" template="customer/account/dashboard.phtml"/>
+                <block type="customer/account_dashboard_hello" name="customer_account_dashboard_hello" as="hello" template="customer/account/dashboard/hello.phtml"/>
+                <block type="core/template" name="customer_account_dashboard_top" as="top" />
+                <block type="customer/account_dashboard_info" name="customer_account_dashboard_info" as="info" template="customer/account/dashboard/info.phtml"/>
+                <block type="customer/account_dashboard_newsletter" name="customer_account_dashboard_newsletter" as="newsletter" template="customer/account/dashboard/newsletter.phtml"/>
+                <block type="customer/account_dashboard_address" name="customer_account_dashboard_address" as="address" template="customer/account/dashboard/address.phtml"/>
+                <block type="core/template" name="customer_account_dashboard_info1" as="info1" />
+                <block type="core/template" name="customer_account_dashboard_info2" as="info2" />
+                <block type="core/template" name="subcus_index_info2" as="info2" />
+            </block>
+       </reference>   
+    </rma_index_oitems>
+    
+    <customer_account>
+    <reference name="customer_account_navigation">
+        <action method="addLink" translate="label" module="customer">
+            <name>jayje_rma</name>
+            <path>rma/index/index</path>
+            <label>RMA</label>
+        </action>
+    </reference>
+</customer_account>
+
+</layout> 
