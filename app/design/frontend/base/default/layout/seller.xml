@@ -1,0 +1,44 @@
+<?xml version="1.0"?>   
+<layout version="0.1.0">  
+  <default>
+    <reference name="root">   
+      <action method="setTemplate"><template>page/1column.phtml</template></action>   
+    </reference>  
+    <reference name="top.links">
+        <action method="addLink" translate="label title" >
+          <label>Seller account</label>
+          <url>seller/account</url>
+          <title>Seller Account</title>
+          <prepare>true</prepare>
+          <urlParams/>
+          <position>0</position>
+        </action>
+    </reference>
+
+  </default> 
+  <seller_index_index>   
+    <reference name="root">   
+      <action method="setTemplate"><template>page/1column.phtml</template></action>   
+    </reference>   
+    <reference name="content">   
+      <block type="seller/index" name="seller_index" template="seller/index.phtml"/>   
+    </reference>   
+  </seller_index_index>   
+    <seller_create_index>   
+    <reference name="root">   
+      <action method="setTemplate"><template>page/1column.phtml</template></action>   
+    </reference>   
+    <reference name="content">   
+      <block type="seller/index" name="seller_index" template="seller/create.phtml"/>   
+    </reference>   
+  </seller_create_index>    
+   <seller_account_index>   
+    <reference name="root">   
+      <action method="setTemplate"><template>page/1column.phtml</template></action>   
+    </reference>   
+    <reference name="content">   
+      <block type="seller/index" name="seller_index" template="seller/sellerdashboard.phtml"/>   
+    </reference>   
+  </seller_account_index>   
+</layout>   
+	

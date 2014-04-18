@@ -34,6 +34,7 @@
 <?php
     $_productCollection=$this->getLoadedProductCollection();
     $_helper = $this->helper('catalog/output');
+    $price_helper = Mage::helper('seller/data');
 ?>
 <?php if(!$_productCollection->count()): ?>
 <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
@@ -56,7 +57,8 @@
                     <?php if($_product->getRatingSummary()): ?>
                     <?php echo $this->getReviewsSummaryHtml($_product) ?>
                     <?php endif; ?>
-                    <?php echo $this->getPriceHtml($_product, true) ?>
+                    <?php //echo $this->getPriceHtml($_product, true) ?>
+                    <?php echo $price_helper->getCustomPrice($_product);?>
                     <?php if($_product->isSaleable()): ?>
                         <p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
                     <?php else: ?>
@@ -97,7 +99,8 @@
                 <?php if($_product->getRatingSummary()): ?>
                 <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                 <?php endif; ?>
-                <?php echo $this->getPriceHtml($_product, true) ?>
+                <?php //echo $this->getPriceHtml($_product, true) ?>
+                <?php echo $price_helper->getCustomPrice($_product);?>
                 <div class="actions">
                     <?php if($_product->isSaleable()): ?>
                         <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>

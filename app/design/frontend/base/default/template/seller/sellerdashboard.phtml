@@ -1,0 +1,36 @@
+<?php 
+	$baseurl = Mage::getBaseUrl();
+	$login = Mage::getSingleton( 'customer/session' )->isLoggedIn();
+	if($login)
+	{
+        $customerData = Mage::getSingleton('customer/session')->getCustomer();
+        $sellerName = $customerData->getName();
+	}else{
+		$sellerName = "Seller";
+	}
+?>
+<style type="text/css">
+.seller-profile h1 {
+font-size: 35px;
+margin: 10px 0;
+font-weight: normal;
+font-family: din-med,Arial,Sans-Serif;
+}
+.seller-profile{text-align: center;}
+.myaccount-tabs li{background-color: #ccc;/*width: 20%;*/display: inline-block;width: 20%;
+text-align: center;margin: 11px;padding: 9px;}
+</style>
+<div class="seller-content">
+	<div class="seller-profile">
+		<h1 id="top">My Account <span class="sep">/</span> Profile</h1>
+		<h3> Welcome <?php echo $sellerName;?></h3>
+	</div>
+	<div class="myaccount-tabs">
+		<ul>
+			<li><a href="<?php echo $baseurl;?>seller/account/orders">Orders</a></li>
+			<li><a href="<?php echo $baseurl;?>seller/account/auctions">Auctions</a></li>
+			<li><a href="<?php echo $baseurl;?>seller/account/excess">Excess</a></li>
+			<li><a href="<?php echo $baseurl;?>seller/account/ratecontract">Rate Contract</a></li>
+		</ul>
+	</div>
+</div>

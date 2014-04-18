@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <seller_adminhtml_groupdiscount_index>
+	<reference name="content">
+	  <block type="seller/adminhtml_groupdiscount" name="groupdiscount" />
+	</reference>
+  </seller_adminhtml_groupdiscount_index>
+</layout>

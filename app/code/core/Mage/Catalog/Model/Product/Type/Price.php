@@ -119,7 +119,7 @@ class Mage_Catalog_Model_Product_Type_Price
      */
     public function getGroupPrice($product)
     {
-
+        // echo 'manoj';
         $groupPrices = $product->getData('group_price');
 
         if (is_null($groupPrices)) {
@@ -142,7 +142,7 @@ class Mage_Catalog_Model_Product_Type_Price
                 $matchedPrice = $groupPrice['website_price'];
                 break;
             }
-        }
+        }   
 
         return $matchedPrice;
     }

@@ -1,0 +1,838 @@
+2014-04-17T05:17:45+00:00 DEBUG (7): Array
+(
+    [request] => Array
+        (
+            [WebAuthenticationDetail] => Array
+                (
+                    [UserCredential] => Array
+                        (
+                            [Key] => 6tTeBdMHog86XMCl
+                            [Password] => WbYEKmdUS3j9zODhvtoLej37e
+                        )
+
+                )
+
+            [ClientDetail] => Array
+                (
+                    [AccountNumber] => 510087208
+                    [MeterNumber] => 118631647
+                )
+
+            [Version] => Array
+                (
+                    [ServiceId] => trck
+                    [Major] => 5
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+            [PackageIdentifier] => Array
+                (
+                    [Type] => TRACKING_NUMBER_OR_DOORTAG
+                    [Value] => 87548513665415
+                )
+
+            [IncludeDetailedScans] => 1
+        )
+
+    [result] => stdClass Object
+        (
+            [HighestSeverity] => ERROR
+            [Notifications] => stdClass Object
+                (
+                    [Severity] => ERROR
+                    [Source] => trck
+                    [Code] => 9040
+                    [Message] => No information for the following shipments has been received by our system yet.  Please try again or contact Customer Service at 1.800.Go.FedEx(R) 800.463.3339.
+                    [LocalizedMessage] => No information for the following shipments has been received by our system yet.  Please try again or contact Customer Service at 1.800.Go.FedEx(R) 800.463.3339.
+                )
+
+            [Version] => stdClass Object
+                (
+                    [ServiceId] => trck
+                    [Major] => 5
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+        )
+
+    [__pid] => 1491
+)
+
+2014-04-17T14:16:12+00:00 DEBUG (7): Array
+(
+    [request] => Array
+        (
+            [WebAuthenticationDetail] => Array
+                (
+                    [UserCredential] => Array
+                        (
+                            [Key] => 6tTeBdMHog86XMCl
+                            [Password] => WbYEKmdUS3j9zODhvtoLej37e
+                        )
+
+                )
+
+            [ClientDetail] => Array
+                (
+                    [AccountNumber] => 510087208
+                    [MeterNumber] => 118631647
+                )
+
+            [Version] => Array
+                (
+                    [ServiceId] => crs
+                    [Major] => 10
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+            [RequestedShipment] => Array
+                (
+                    [DropoffType] => REGULAR_PICKUP
+                    [ShipTimestamp] => 2014-04-17T14:16:08+00:00
+                    [PackagingType] => FEDEX_ENVELOPE
+                    [TotalInsuredValue] => Array
+                        (
+                            [Amount] => 299.99
+                            [Currency] => USD
+                        )
+
+                    [Shipper] => Array
+                        (
+                            [Address] => Array
+                                (
+                                    [PostalCode] => 90034
+                                    [CountryCode] => US
+                                )
+
+                        )
+
+                    [Recipient] => Array
+                        (
+                            [Address] => Array
+                                (
+                                    [PostalCode] => 400029
+                                    [CountryCode] => IN
+                                    [Residential] => 1
+                                )
+
+                        )
+
+                    [ShippingChargesPayment] => Array
+                        (
+                            [PaymentType] => SENDER
+                            [Payor] => Array
+                                (
+                                    [AccountNumber] => 510087208
+                                    [CountryCode] => US
+                                )
+
+                        )
+
+                    [CustomsClearanceDetail] => Array
+                        (
+                            [CustomsValue] => Array
+                                (
+                                    [Amount] => 299.99
+                                    [Currency] => USD
+                                )
+
+                        )
+
+                    [RateRequestTypes] => LIST
+                    [PackageCount] => 1
+                    [PackageDetail] => INDIVIDUAL_PACKAGES
+                    [RequestedPackageLineItems] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [Weight] => Array
+                                        (
+                                            [Value] => 20
+                                            [Units] => LB
+                                        )
+
+                                    [GroupPackageCount] => 1
+                                )
+
+                        )
+
+                    [ServiceType] => SMART_POST
+                    [SmartPostDetail] => Array
+                        (
+                            [Indicia] => PARCEL_SELECT
+                            [HubId] => 
+                        )
+
+                )
+
+        )
+
+    [result] => stdClass Object
+        (
+            [HighestSeverity] => ERROR
+            [Notifications] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [Severity] => ERROR
+                            [Source] => crs
+                            [Code] => 712
+                            [Message] => Destination country is not serviced. 
+                            [LocalizedMessage] => Destination country is not serviced. 
+                        )
+
+                    [1] => stdClass Object
+                        (
+                            [Severity] => ERROR
+                            [Source] => crs
+                            [Code] => 701
+                            [Message] => Packaging type missing or invalid .
+                            [LocalizedMessage] => Packaging type missing or invalid .
+                        )
+
+                )
+
+            [Version] => stdClass Object
+                (
+                    [ServiceId] => crs
+                    [Major] => 10
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+        )
+
+    [__pid] => 4702
+)
+
+2014-04-17T14:16:16+00:00 DEBUG (7): Array
+(
+    [request] => Array
+        (
+            [WebAuthenticationDetail] => Array
+                (
+                    [UserCredential] => Array
+                        (
+                            [Key] => 6tTeBdMHog86XMCl
+                            [Password] => WbYEKmdUS3j9zODhvtoLej37e
+                        )
+
+                )
+
+            [ClientDetail] => Array
+                (
+                    [AccountNumber] => 510087208
+                    [MeterNumber] => 118631647
+                )
+
+            [Version] => Array
+                (
+                    [ServiceId] => crs
+                    [Major] => 10
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+            [RequestedShipment] => Array
+                (
+                    [DropoffType] => REGULAR_PICKUP
+                    [ShipTimestamp] => 2014-04-17T14:16:12+00:00
+                    [PackagingType] => FEDEX_ENVELOPE
+                    [TotalInsuredValue] => Array
+                        (
+                            [Amount] => 299.99
+                            [Currency] => USD
+                        )
+
+                    [Shipper] => Array
+                        (
+                            [Address] => Array
+                                (
+                                    [PostalCode] => 90034
+                                    [CountryCode] => US
+                                )
+
+                        )
+
+                    [Recipient] => Array
+                        (
+                            [Address] => Array
+                                (
+                                    [PostalCode] => 400029
+                                    [CountryCode] => IN
+                                    [Residential] => 1
+                                )
+
+                        )
+
+                    [ShippingChargesPayment] => Array
+                        (
+                            [PaymentType] => SENDER
+                            [Payor] => Array
+                                (
+                                    [AccountNumber] => 510087208
+                                    [CountryCode] => US
+                                )
+
+                        )
+
+                    [CustomsClearanceDetail] => Array
+                        (
+                            [CustomsValue] => Array
+                                (
+                                    [Amount] => 299.99
+                                    [Currency] => USD
+                                )
+
+                        )
+
+                    [RateRequestTypes] => LIST
+                    [PackageCount] => 1
+                    [PackageDetail] => INDIVIDUAL_PACKAGES
+                    [RequestedPackageLineItems] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [Weight] => Array
+                                        (
+                                            [Value] => 20
+                                            [Units] => LB
+                                        )
+
+                                    [GroupPackageCount] => 1
+                                    [InsuredValue] => Array
+                                        (
+                                            [Amount] => 299.99
+                                            [Currency] => USD
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [result] => stdClass Object
+        (
+            [HighestSeverity] => WARNING
+            [Notifications] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [Severity] => WARNING
+                            [Source] => crs
+                            [Code] => 556
+                            [Message] => There are no valid services available. 
+                            [LocalizedMessage] => There are no valid services available. 
+                        )
+
+                    [1] => stdClass Object
+                        (
+                            [Severity] => NOTE
+                            [Source] => crs
+                            [Code] => 819
+                            [Message] => The origin state/province code has been changed.  
+                            [LocalizedMessage] => The origin state/province code has been changed.  
+                        )
+
+                )
+
+            [Version] => stdClass Object
+                (
+                    [ServiceId] => crs
+                    [Major] => 10
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+        )
+
+    [__pid] => 4702
+)
+
+2014-04-17T14:16:39+00:00 DEBUG (7): Array
+(
+    [request] => Array
+        (
+            [WebAuthenticationDetail] => Array
+                (
+                    [UserCredential] => Array
+                        (
+                            [Key] => 6tTeBdMHog86XMCl
+                            [Password] => WbYEKmdUS3j9zODhvtoLej37e
+                        )
+
+                )
+
+            [ClientDetail] => Array
+                (
+                    [AccountNumber] => 510087208
+                    [MeterNumber] => 118631647
+                )
+
+            [Version] => Array
+                (
+                    [ServiceId] => crs
+                    [Major] => 10
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+            [RequestedShipment] => Array
+                (
+                    [DropoffType] => REGULAR_PICKUP
+                    [ShipTimestamp] => 2014-04-17T14:16:36+00:00
+                    [PackagingType] => FEDEX_ENVELOPE
+                    [TotalInsuredValue] => Array
+                        (
+                            [Amount] => 750
+                            [Currency] => USD
+                        )
+
+                    [Shipper] => Array
+                        (
+                            [Address] => Array
+                                (
+                                    [PostalCode] => 90034
+                                    [CountryCode] => US
+                                )
+
+                        )
+
+                    [Recipient] => Array
+                        (
+                            [Address] => Array
+                                (
+                                    [PostalCode] => 400029
+                                    [CountryCode] => IN
+                                    [Residential] => 1
+                                )
+
+                        )
+
+                    [ShippingChargesPayment] => Array
+                        (
+                            [PaymentType] => SENDER
+                            [Payor] => Array
+                                (
+                                    [AccountNumber] => 510087208
+                                    [CountryCode] => US
+                                )
+
+                        )
+
+                    [CustomsClearanceDetail] => Array
+                        (
+                            [CustomsValue] => Array
+                                (
+                                    [Amount] => 750
+                                    [Currency] => USD
+                                )
+
+                        )
+
+                    [RateRequestTypes] => LIST
+                    [PackageCount] => 1
+                    [PackageDetail] => INDIVIDUAL_PACKAGES
+                    [RequestedPackageLineItems] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [Weight] => Array
+                                        (
+                                            [Value] => 0.3
+                                            [Units] => LB
+                                        )
+
+                                    [GroupPackageCount] => 1
+                                )
+
+                        )
+
+                    [ServiceType] => SMART_POST
+                    [SmartPostDetail] => Array
+                        (
+                            [Indicia] => PRESORTED_STANDARD
+                            [HubId] => 
+                        )
+
+                )
+
+        )
+
+    [result] => stdClass Object
+        (
+            [HighestSeverity] => ERROR
+            [Notifications] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [Severity] => ERROR
+                            [Source] => crs
+                            [Code] => 712
+                            [Message] => Destination country is not serviced. 
+                            [LocalizedMessage] => Destination country is not serviced. 
+                        )
+
+                    [1] => stdClass Object
+                        (
+                            [Severity] => ERROR
+                            [Source] => crs
+                            [Code] => 701
+                            [Message] => Packaging type missing or invalid .
+                            [LocalizedMessage] => Packaging type missing or invalid .
+                        )
+
+                )
+
+            [Version] => stdClass Object
+                (
+                    [ServiceId] => crs
+                    [Major] => 10
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+        )
+
+    [__pid] => 11642
+)
+
+2014-04-17T14:16:42+00:00 DEBUG (7): Array
+(
+    [request] => Array
+        (
+            [WebAuthenticationDetail] => Array
+                (
+                    [UserCredential] => Array
+                        (
+                            [Key] => 6tTeBdMHog86XMCl
+                            [Password] => WbYEKmdUS3j9zODhvtoLej37e
+                        )
+
+                )
+
+            [ClientDetail] => Array
+                (
+                    [AccountNumber] => 510087208
+                    [MeterNumber] => 118631647
+                )
+
+            [Version] => Array
+                (
+                    [ServiceId] => crs
+                    [Major] => 10
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+            [RequestedShipment] => Array
+                (
+                    [DropoffType] => REGULAR_PICKUP
+                    [ShipTimestamp] => 2014-04-17T14:16:39+00:00
+                    [PackagingType] => FEDEX_ENVELOPE
+                    [TotalInsuredValue] => Array
+                        (
+                            [Amount] => 750
+                            [Currency] => USD
+                        )
+
+                    [Shipper] => Array
+                        (
+                            [Address] => Array
+                                (
+                                    [PostalCode] => 90034
+                                    [CountryCode] => US
+                                )
+
+                        )
+
+                    [Recipient] => Array
+                        (
+                            [Address] => Array
+                                (
+                                    [PostalCode] => 400029
+                                    [CountryCode] => IN
+                                    [Residential] => 1
+                                )
+
+                        )
+
+                    [ShippingChargesPayment] => Array
+                        (
+                            [PaymentType] => SENDER
+                            [Payor] => Array
+                                (
+                                    [AccountNumber] => 510087208
+                                    [CountryCode] => US
+                                )
+
+                        )
+
+                    [CustomsClearanceDetail] => Array
+                        (
+                            [CustomsValue] => Array
+                                (
+                                    [Amount] => 750
+                                    [Currency] => USD
+                                )
+
+                        )
+
+                    [RateRequestTypes] => LIST
+                    [PackageCount] => 1
+                    [PackageDetail] => INDIVIDUAL_PACKAGES
+                    [RequestedPackageLineItems] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [Weight] => Array
+                                        (
+                                            [Value] => 0.3
+                                            [Units] => LB
+                                        )
+
+                                    [GroupPackageCount] => 1
+                                    [InsuredValue] => Array
+                                        (
+                                            [Amount] => 750
+                                            [Currency] => USD
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [result] => stdClass Object
+        (
+            [HighestSeverity] => WARNING
+            [Notifications] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [Severity] => WARNING
+                            [Source] => crs
+                            [Code] => 556
+                            [Message] => There are no valid services available. 
+                            [LocalizedMessage] => There are no valid services available. 
+                        )
+
+                    [1] => stdClass Object
+                        (
+                            [Severity] => NOTE
+                            [Source] => crs
+                            [Code] => 819
+                            [Message] => The origin state/province code has been changed.  
+                            [LocalizedMessage] => The origin state/province code has been changed.  
+                        )
+
+                )
+
+            [Version] => stdClass Object
+                (
+                    [ServiceId] => crs
+                    [Major] => 10
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+        )
+
+    [__pid] => 11642
+)
+
+2014-04-17T14:17:42+00:00 DEBUG (7): Array
+(
+    [request] => Array
+        (
+            [WebAuthenticationDetail] => Array
+                (
+                    [UserCredential] => Array
+                        (
+                            [Key] => 6tTeBdMHog86XMCl
+                            [Password] => WbYEKmdUS3j9zODhvtoLej37e
+                        )
+
+                )
+
+            [ClientDetail] => Array
+                (
+                    [AccountNumber] => 510087208
+                    [MeterNumber] => 118631647
+                )
+
+            [Version] => Array
+                (
+                    [ServiceId] => trck
+                    [Major] => 5
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+            [PackageIdentifier] => Array
+                (
+                    [Type] => TRACKING_NUMBER_OR_DOORTAG
+                    [Value] => 804994059188
+                )
+
+            [IncludeDetailedScans] => 1
+        )
+
+    [result] => stdClass Object
+        (
+            [HighestSeverity] => ERROR
+            [Notifications] => stdClass Object
+                (
+                    [Severity] => ERROR
+                    [Source] => trck
+                    [Code] => 9040
+                    [Message] => No information for the following shipments has been received by our system yet.  Please try again or contact Customer Service at 1.800.Go.FedEx(R) 800.463.3339.
+                    [LocalizedMessage] => No information for the following shipments has been received by our system yet.  Please try again or contact Customer Service at 1.800.Go.FedEx(R) 800.463.3339.
+                )
+
+            [Version] => stdClass Object
+                (
+                    [ServiceId] => trck
+                    [Major] => 5
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+        )
+
+    [__pid] => 4508
+)
+
+2014-04-17T14:29:07+00:00 DEBUG (7): Array
+(
+    [request] => Array
+        (
+            [WebAuthenticationDetail] => Array
+                (
+                    [UserCredential] => Array
+                        (
+                            [Key] => 6tTeBdMHog86XMCl
+                            [Password] => WbYEKmdUS3j9zODhvtoLej37e
+                        )
+
+                )
+
+            [ClientDetail] => Array
+                (
+                    [AccountNumber] => 510087208
+                    [MeterNumber] => 118631647
+                )
+
+            [Version] => Array
+                (
+                    [ServiceId] => trck
+                    [Major] => 5
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+            [PackageIdentifier] => Array
+                (
+                    [Type] => TRACKING_NUMBER_OR_DOORTAG
+                    [Value] => 804994059188
+                )
+
+            [IncludeDetailedScans] => 1
+        )
+
+    [result] => stdClass Object
+        (
+            [HighestSeverity] => ERROR
+            [Notifications] => stdClass Object
+                (
+                    [Severity] => ERROR
+                    [Source] => trck
+                    [Code] => 9040
+                    [Message] => No information for the following shipments has been received by our system yet.  Please try again or contact Customer Service at 1.800.Go.FedEx(R) 800.463.3339.
+                    [LocalizedMessage] => No information for the following shipments has been received by our system yet.  Please try again or contact Customer Service at 1.800.Go.FedEx(R) 800.463.3339.
+                )
+
+            [Version] => stdClass Object
+                (
+                    [ServiceId] => trck
+                    [Major] => 5
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+        )
+
+    [__pid] => 4715
+)
+
+2014-04-17T14:30:09+00:00 DEBUG (7): Array
+(
+    [request] => Array
+        (
+            [WebAuthenticationDetail] => Array
+                (
+                    [UserCredential] => Array
+                        (
+                            [Key] => 6tTeBdMHog86XMCl
+                            [Password] => WbYEKmdUS3j9zODhvtoLej37e
+                        )
+
+                )
+
+            [ClientDetail] => Array
+                (
+                    [AccountNumber] => 510087208
+                    [MeterNumber] => 118631647
+                )
+
+            [Version] => Array
+                (
+                    [ServiceId] => trck
+                    [Major] => 5
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+            [PackageIdentifier] => Array
+                (
+                    [Type] => TRACKING_NUMBER_OR_DOORTAG
+                    [Value] => 804994059188
+                )
+
+            [IncludeDetailedScans] => 1
+        )
+
+    [result] => stdClass Object
+        (
+            [HighestSeverity] => ERROR
+            [Notifications] => stdClass Object
+                (
+                    [Severity] => ERROR
+                    [Source] => trck
+                    [Code] => 9040
+                    [Message] => No information for the following shipments has been received by our system yet.  Please try again or contact Customer Service at 1.800.Go.FedEx(R) 800.463.3339.
+                    [LocalizedMessage] => No information for the following shipments has been received by our system yet.  Please try again or contact Customer Service at 1.800.Go.FedEx(R) 800.463.3339.
+                )
+
+            [Version] => stdClass Object
+                (
+                    [ServiceId] => trck
+                    [Major] => 5
+                    [Intermediate] => 0
+                    [Minor] => 0
+                )
+
+        )
+
+    [__pid] => 1487
+)
+

@@ -33,6 +33,10 @@
 ?>
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
+<?php 
+ $price_helper = Mage::helper('seller/data');
+// print_r();exit();
+?>
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
@@ -49,14 +53,17 @@
             <div class="product-name">
                 <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
             </div>
-
+            <?php 
+               
+            ?>
             <?php if ($this->canEmailToFriend()): ?>
                 <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
             <?php endif; ?>
 
             <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
             <?php echo $this->getChildHtml('alert_urls') ?>
-            <?php echo $this->getChildHtml('product_type_data') ?>
+            <?php //echo $this->getChildHtml('product_type_data') ?>
+            <?php echo $price_helper->getCustomPrice($_product);?>
             <?php echo $this->getTierPriceHtml() ?>
             <?php echo $this->getChildHtml('extrahint') ?>
 
@@ -108,7 +115,8 @@
             if (this.validator.validate()) {
                 var form = this.form;
                 var oldUrl = form.action;
-
+                // alert('im there');return false;
+                // alert(jQuery('.product-custom-option').val());
                 if (url) {
                    form.action = url;
                 }
