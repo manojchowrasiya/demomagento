@@ -40,5 +40,15 @@
       <block type="seller/index" name="seller_index" template="seller/sellerdashboard.phtml"/>   
     </reference>   
   </seller_account_index>   
+  
+
+     <seller_index_test>   
+    <reference name="root">   
+      <action method="setTemplate"><template>page/1column.phtml</template></action>   
+    </reference>   
+    <reference name="content">   
+      <block type="seller/index" name="seller_index" template="seller/simpleform.phtml"/>   
+    </reference>   
+  </seller_index_test>   
 </layout>   
 	

@@ -19,4 +19,24 @@ class Shopelect_Seller_IndexController extends Mage_Core_Controller_Front_Action
       $this->renderLayout(); 
 	  
     }
+
+    public function testAction() {
+        $this->loadLayout();   
+    $this->getLayout()->getBlock("head")->setTitle($this->__("Magento"));
+          $breadcrumbs = $this->getLayout()->getBlock("breadcrumbs");
+      $breadcrumbs->addCrumb("home", array(
+                "label" => $this->__("Home Page"),
+                "title" => $this->__("Home Page"),
+                "link"  => Mage::getBaseUrl()
+       ));
+
+      $breadcrumbs->addCrumb("seller", array(
+                "label" => $this->__("Magento"),
+                "title" => $this->__("Magento")
+       ));
+
+      $this->renderLayout(); 
+    
+
+    }
 }

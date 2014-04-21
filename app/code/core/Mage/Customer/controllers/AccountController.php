@@ -263,6 +263,8 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
             $this->_redirect('*/*/');
             return;
         }
+
+        print_r($this->getRequest()->getParams());exit();
         $session->setEscapeMessages(true); // prevent XSS injection in user input
         if ($this->getRequest()->isPost()) {
             $errors = array();
