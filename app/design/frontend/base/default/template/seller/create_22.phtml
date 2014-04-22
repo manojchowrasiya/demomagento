@@ -1,0 +1,1179 @@
+<html>
+<head>
+	<title>Shopelect</title>
+	<!-- Bootstrap -->
+	<link href="http://network.shopelect.com/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="http://network.shopelect.com/prettify.css" rel="stylesheet">
+	<link href="http://network.shopelect.com/custom.css" rel="stylesheet">
+</head><body style="">
+<div class="container">
+
+	<div class="row">
+		<div class="span12 outer-box">
+			<section id="wizard">
+				<div class="jumbotron">
+					<h1>Shopelect Network</h1>
+					<p class="lead">If you are a Contractor, Panel Builder, Architect, Authorized Dealer Or Electrical Consultant. REGISTER HERE.</p>
+				</div>
+				<p style="background-color: #FAF8F8;margin-top: -64px;padding: 30px;" class="panel-body">Welcome to the registration process at Shopelect.com. We are the first B2B site having the largest database of industrial customers like Real Estate, Textile, Cement, Automobile etc. 
+					Do you work on projects in these sectors? Fill in our simple registration form which will allow you to enjoy the benefits of promoting your business in one of the largest online B2B e-marketplace. </p>
+					<form action="http://localhost/magento/index.php/customer/account/createpost/" method="post" enctype="multipart/form-data">	
+						<div id="rootwizard">
+							<div class="navbar">
+								<div class="navbar-inner">
+									<div class="container">
+										<ul class="nav nav-pills">
+											<li class="active"><a href="#tab1" data-toggle="tab">Contact Information</a></li>
+											<li class=""><a href="#tab5" data-toggle="tab">Organisation Details</a></li>
+											<!-- 						<li><a href="#tab2" data-toggle="tab">Company Description </a></li> -->
+											<li class=""><a href="#tab3" data-toggle="tab">References</a></li>
+											<li class=""><a href="#tab4" data-toggle="tab">Product Profile</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div id="bar" class="progress progress-striped active">
+								<div class="bar" style="width: 25%;"></div>
+							</div>
+							<div class="tab-content">
+								<!-- 					Form Submission. -->
+
+
+								<div class="tab-pane active" id="tab1">
+
+									<input type="hidden" value="" name="login_user_id">
+
+									<div class="panel panel-default"><p class="panel-body">Each company will have separate page in the classifieds section. However various people in the same organisation can access and edit the information by logging in through their respective email id's. The same will be subject to verification by Shop Elect.</p></div>
+									<p class="panel-body prettyprint">Though all Fields are not mandatory, it is advisable to fill the form completely to ensure that in Search Results your company name is<br> 
+										displayed right among the top results and more clients will be able to view and send enquiries.</p>
+										<legend>Contact Information</legend>
+										<p><label> <span> Company name </span>
+											<input type="text" name="company_name" id="company_name" value="" required="" placeholder=""></label></p>
+											<p><label> <span> Your name </span>
+												<input type="text" name="your_name" id="your_name" value="" required="" placeholder=""></label></p>
+												<p><label> <span> Std code</span><input class="span1" style="width:45px;" type="text" name="office_landline_std_code" value="444" id="office_landline_std_code" required="" placeholder=""></label></p>
+												<p> <label> <span> Landline No.</span><input type="text" name="office_landline_number" value="" id="office_landline_number" required="" placeholder="xxxxxxxx"></label></p>
+												<p> <span style="display:inline-block;width:176px;"> Mobile Number </span>
+													<input type="text" name="mobile_number" id="mobile_number" value="" required="" placeholder="xxxxxxxx"></p>
+													<p><label> <span> Email Id (Username)</span>
+														<input type="text" id="username" name="username" value="" required="" placeholder="email"></label></p>
+														<p><label> <span> Create new password</span>
+															<input type="password" name="password" id="password" required="" placeholder="password"></label></p>
+															<p><label> <span>Website</span><input type="text" name="website" id="website" value="" placeholder=""><small> (Separate by comma for more than one website)</small></label></p>
+															<p><label> <span>Attach your introduction letter/ Brochure</span><input type="file" name="intro_letter" id="intro_letter" value="" placeholder=""></label></p>
+															<!--<input type="button" value="Save" class="btn" id="save_contact_info"/>-->
+
+															<legend>Organisation structure</legend>
+
+
+															<div class="row">
+																<div class="span3"><p><label> <span>Name</span><input type="text" name="tree_name[]" value="" id="tree_name_1" placeholder=""></label></p> </div>  
+																<div class="span3" style="display:none"><p><label> <span>Reports to</span><input type="text" name="tree_name_reports_to[]" id="" placeholder=""></label></p>  </div>
+																<div class="span2"> <p><label>  <span> </span> Owner / Director</label><input type="checkbox" style="display:none" value="Owner" checked="" name="tree_org_dept[]"></p>
+																</div>
+															</div>
+															<div class="row">
+																<div class="span3"><p><label> <span>Name</span><input type="text" name="tree_name[]" id="tree_name_1" placeholder=""></label></p> </div>  
+																<div class="span3"><p><label> <span>Reports to</span><input type="text" name="tree_name_reports_to[]" id="" placeholder=""></label></p>  </div>
+																<div class="span2"> 
+																	<p> <label><span>Department</span> Sale</label><input type="checkbox" value="Sale" checked="" style="display:none" name="tree_org_dept[]"></p>
+																</div>
+															</div>
+															<div class="row">
+																<div class="span3"><p><label> <span>Name</span><input type="text" name="tree_name[]" id="tree_name_1" placeholder=""></label></p> </div>  
+																<div class="span3"><p><label> <span>Reports to</span><input type="text" name="tree_name_reports_to[]" id="" placeholder=""></label></p>  </div>
+																<div class="span2"> <p><label> <span>Department</span> Purchase</label><input type="checkbox" checked="" value="Purchase" style="display:none" name="tree_org_dept[]"></p></div>
+															</div>
+
+															<div class="row">
+																<div class="span3"><p><label> <span>Name</span><input type="text" name="tree_name[]" id="tree_name_1" placeholder=""></label></p> </div>  
+																<div class="span3"><p><label> <span>Reports to</span><input type="text" name="tree_name_reports_to[]" id="" placeholder=""></label></p>  </div>
+																<div class="span2"><p><label> <span>Department</span>
+																	<select name="tree_org_dept[]">
+
+																		<option>Owner / Director</option>
+																		<option>Accounts</option>
+																		<option>Sale</option>
+																		<option selected="">Purchase</option>
+																		<option>Factory/ Site</option>
+																		<option>Stores</option>
+																	</select>
+																</label></p></div>
+															</div>
+
+
+
+
+															<div class="row">
+																<p class="span2"><button class="add-more-btn btn" id="add_org_struct_btn" type="button">+ Add More</button></p>
+															</div>		  
+
+
+															<legend>Category/Business Type</legend>
+															<p></p><div class="row"><label> <!--<span class="span2"> Business Type</span>--></label>
+															<!--<select id="business_type" name="business_type[]" multiple="">-->
+															<div class="span3">	 
+																<label class="checkbox-inline">  <input type="checkbox" name="business_type[]" id="authorized_dealer_chkbox" value="auth_dealer"> Authorized Dealer</label>
+																<label class="checkbox-inline">  <input type="checkbox" name="business_type[]" value="e_u_i"> End User</label>
+																<!-- <label class="checkbox-inline">  <input type="checkbox" name="business_type[]" value="e_u_b" /> End User Builders</label> -->
+																<p><label class="checkbox-inline">  <input type="checkbox" name="business_type[]" value="retailer"> Architect</label></p></div>
+																<div class="span3">
+																	<label class="checkbox-inline">  <input type="checkbox" name="business_type[]" value="oem"> Machine Manufacturer</label>
+																	<label class="checkbox-inline">  <input type="checkbox" name="business_type[]" value="service_center"> Service center</label>
+																	<label class="checkbox-inline">  <input type="checkbox" name="business_type[]" value="elec_contractor"> Electrical Contractor</label>
+																</div>
+																<div class="span3">
+																	<label class="checkbox-inline"> <input type="checkbox" name="business_type[]" value="panel_builder"> Panel Builder</label>
+																	<label class="checkbox-inline">  <input type="checkbox" name="business_type[]" value="architect">  Retailer/ Supplier</label>
+																	<label class="checkbox-inline">  <input type="checkbox" name="business_type[]" value="consultant"> Consultant</label>
+																</div>
+																<div class="span3">
+																</div>
+
+															</div><p></p>
+
+															<div id="authorized_dealer_wrapper">	
+																<legend id="authorized_dealer_legend">Authorized dealer for</legend>
+																<div>
+																	<p><label> <span>Brand</span><input type="text" name="auth_dealer_brand[]" id="" placeholder=""></label></p>  
+																	<p><label> <span>Product category</span><input type="text" name="auth_dealer_prod_cat[]" id="" placeholder=""></label></p>  
+																	<p><label> <span>Add dealership certificate</span><input type="file" name="auth_dealer_cert[]" id="" placeholder=""></label></p>  
+																	<p><label> <span>Add pricelist</span><input type="file" name="auth_dealer_pricelist[]" id="" placeholder=""></label></p>  
+																	<p><label> <span>Average stock in lacs</span><input type="text" name="auth_dealer_stock[]" id="auth_dealer_stock" placeholder=""></label></p>  
+																</div><div class="row">
+																<p class="span2"><button class="add-more-btn btn" type="button">+ Add More</button></p>
+															</div>
+														</div>
+														<hr>
+
+
+														<p><label> <span>Your inventory system(e.g. Tally/SAP )</span><input type="text" name="inventory_system" value="" id="" placeholder=""></label></p>  
+														<p><label> <span>Upload your stock</span><input type="file" name="stock_info" id="" placeholder=""></label></p> 
+														<small>Upload excel with your itemlist with columns as 1)Item code(SKU) 2)Description 3)Price 4) Maximum discount</small>
+
+														<hr>
+														ID : <input type="text" style="width:40px;" name="salesperson" id="salesperson" value="">
+														<hr>
+
+													</div>
+													<div class="tab-pane" id="tab5">
+														<pre class="prettyprint"><span class="typ">Though</span><span class="pln"> all </span><span class="typ">Fields</span><span class="pln"> are </span><span class="kwd">not</span><span class="pln"> mandatory</span><span class="pun">,</span><span class="pln"> it </span><span class="kwd">is</span><span class="pln"> advisable to fill completely to </span><span class="kwd">ensure</span><span class="pln"> that </span><span class="kwd">in</span><span class="pln"> </span><span class="typ">Search</span><span class="pln"> </span><span class="typ">Results</span><span class="pln"> your company name shows </span><span class="kwd">and</span><span class="pln"> more client will be able to decide </span><span class="kwd">and</span><span class="pln"> send enquiries</span><span class="pun">.</span></pre>
+														<legend>Company Description </legend>
+														<div class="row">					 <div class="span5">    <p><label> <span>Year of Establishment</span><input type="text" value="" name="yoe" id="yoe" placeholder=""></label></p>  
+					   <!--  <p><label> <span>Legal Status of Firm</span><select>
+					     <option>	SOLE TRADER / PROPRIETORSHIP	</option>
+					    <option>	PARTNERSHIP	</option>
+					    <option>	PRIVATE LIMITED COMPANY	</option>
+					    <option>	PUBLIC LIMITED COMPANY	</option>
+					</select></label></p> --> 
+
+					<p><label> <span>No. of Employees</span><input type="text" name="no_of_employees" value="" id="no_of_employees" placeholder=""></label></p>  
+					<!-- 					     <p><label> <span>Service Tax Details</span><input type="text" name="service_tax_details" id="service_tax_details" placeholder=""/></label></p>   -->
+					<!-- 					     <p><label> <span>Excise Details</span><input type="text" name="excise_details" id="excise_details" placeholder="ECC No."/></label></p>   -->
+					<p><label> <span>IEC Code</span><input type="text" name="iec_code" id="iec_code" value="" placeholder=""></label></p>  
+					<!-- 					     <p><label> <span>Add file (*.pdf, *.doc)</span><input type="file" name="add_file" id="add_file" placeholder=""/></label></p>   -->
+				</div>
+				<div class="span5">
+					<p><label> </label></p><p>Group companies/ Sister companies</p><input type="text" name="sister_companies" value="" id="sister_companies" placeholder=""><p></p>  
+					<p><label> <span>Pan No.</span><input type="text" name="pan_no" id="pan_no" value="" placeholder=""></label></p>  
+					<p><label> </label></p><p>Proffessional,Standard Certifications</p><input type="text" name="psc" value="" id="psc" placeholder=""><p></p>  
+				</div>
+			</div>
+
+
+
+
+			<legend>Address - Head Office</legend>
+			<div class="row">
+				<div class="span5"><p><label> <span>Address</span><input type="text" name="addr_line1" id="addr_line1" placeholder="Address Line 1" value=""></label></p> </div>  
+				<div class="span5"><p><label> <span>Landmark</span><input type="text" name="addr_line2" id="addr_line2" placeholder="" value=""></label></p>  </div>
+			</div>
+
+			<div class="row">
+				<div class="span5"><p><label> <span>City </span><!--<input type="text" name="city" id="city" placeholder=""/>-->
+					<select name="city" id="city">
+
+						<option>	Default	</option>
+						<option>	Ananthnag	</option>
+						<option>	Baramulla	</option>
+						<option>	Budgam	</option>
+						<option>	Doda	</option>
+						<option>	Jammu	</option>
+						<option>	Kargil	</option>
+						<option>	Kathua	</option>
+						<option>	Kupwara	</option>
+						<option>	Leh	</option>
+						<option>	Poonch	</option>
+						<option>	Pulwama	</option>
+						<option>	Rajauri	</option>
+						<option>	Srinagar	</option>
+						<option>	Udhampur	</option>
+						<option>	Bilaspur	</option>
+						<option>	Chamba	</option>
+						<option>	Hamirpur	</option>
+						<option>	Kangra	</option>
+						<option>	Kinnaur	</option>
+						<option>	Kullu	</option>
+						<option>	Lahul &amp; spiti	</option>
+
+						<option>	Mumbai	</option>
+						<option>	Mandi	</option>
+						<option>	Shimla	</option>
+						<option>	Sirmaur	</option>
+						<option>	Solan	</option>
+						<option>	Una	</option>
+						<option>	Chandigarh	</option>
+						<option>	Amritsar	</option>
+						<option>	Bathinda	</option>
+						<option>	Faridkot	</option>
+						<option>	Fatehgarh Sahib	</option>
+						<option>	Firozpur	</option>
+						<option>	Gurdaspur	</option>
+						<option>	Hoshiarpur	</option>
+						<option>	Jalandhar	</option>
+						<option>	Kapurthala	</option>
+						<option>	Ludhiana	</option>
+						<option>	Mansa	</option>
+						<option>	Moga	</option>
+						<option>	Mohali	</option>
+						<option>	Muktsar	</option>
+						<option>	Nawanshahr	</option>
+						<option>	Patiala	</option>
+						<option>	Ropar (rupnagar)	</option>
+						<option>	Sangrur	</option>
+						<option>	Ambala	</option>
+						<option>	Bhiwani	</option>
+						<option>	Faridabad	</option>
+						<option>	Fatehabad	</option>
+						<option>	Gurgaon	</option>
+						<option>	Hisar	</option>
+						<option>	Jhajjar	</option>
+						<option>	Jind	</option>
+						<option>	Kaithal	</option>
+						<option>	Karnal	</option>
+						<option>	Kurukshetra	</option>
+						<option>	Mahendragarh	</option>
+						<option>	Panchkula	</option>
+						<option>	Panipat	</option>
+						<option>	Rewari	</option>
+						<option>	Rohtak	</option>
+						<option>	Sirsa	</option>
+						<option>	Sonipat	</option>
+						<option>	Yamuna Nagar	</option>
+						<option>	Central Delhi	</option>
+						<option>	East Delhi	</option>
+						<option>	New Delhi	</option>
+						<option>	North Delhi	</option>
+						<option>	North West delhi	</option>
+						<option>	South Delhi	</option>
+						<option>	South West delhi	</option>
+						<option>	West Delhi	</option>
+						<option>	Almora	</option>
+						<option>	Bageshwar	</option>
+						<option>	Chamoli	</option>
+						<option>	Champawat	</option>
+						<option>	Dehradun	</option>
+						<option>	Haridwar	</option>
+						<option>	Nainital	</option>
+						<option>	Pauri Garhwal	</option>
+						<option>	Pithoragarh	</option>
+						<option>	Rudraprayag	</option>
+						<option>	Tehri Garhwal	</option>
+						<option>	Udham Singh nagar	</option>
+						<option>	Uttarkashi	</option>
+						<option>	Agra	</option>
+						<option>	Aligarh	</option>
+						<option>	Allahabad	</option>
+						<option>	Ambedkar Nagar	</option>
+						<option>	Auraiya	</option>
+						<option>	Azamgarh	</option>
+						<option>	Bagpat	</option>
+						<option>	Bahraich	</option>
+						<option>	Ballia	</option>
+						<option>	Balrampur	</option>
+						<option>	Banda	</option>
+						<option>	Barabanki	</option>
+						<option>	Bareilly	</option>
+						<option>	Basti	</option>
+						<option>	Bijnor	</option>
+						<option>	Budaun	</option>
+						<option>	Bulandshahr	</option>
+						<option>	Chandauli	</option>
+						<option>	Chitrakoot	</option>
+						<option>	Deoria	</option>
+						<option>	Etah	</option>
+						<option>	Etawah	</option>
+						<option>	Faizabad	</option>
+						<option>	Farrukhabad	</option>
+						<option>	Fatehpur	</option>
+						<option>	Firozabad	</option>
+						<option>	Gautam Buddha nagar	</option>
+						<option>	Ghaziabad	</option>
+						<option>	Ghazipur	</option>
+						<option>	Gonda	</option>
+						<option>	Gorakhpur	</option>
+						<option>	Hardoi	</option>
+						<option>	Hathras	</option>
+						<option>	Jalaun	</option>
+						<option>	Jaunpur	</option>
+						<option>	Jhansi	</option>
+						<option>	Jyotiba Phule nagar	</option>
+						<option>	Kannauj	</option>
+						<option>	Kanpur Dehat	</option>
+						<option>	Kanpur Nagar	</option>
+						<option>	Kaushambi	</option>
+						<option>	Kheri	</option>
+						<option>	Kushinagar	</option>
+						<option>	Lalitpur	</option>
+						<option>	Lucknow	</option>
+						<option>	Maharajganj	</option>
+						<option>	Mahoba	</option>
+						<option>	Mainpuri	</option>
+						<option>	Mathura	</option>
+						<option>	Mau	</option>
+						<option>	Meerut	</option>
+						<option>	Mirzapur	</option>
+						<option>	Moradabad	</option>
+						<option>	Muzaffarnagar	</option>
+						<option>	Pilibhit	</option>
+						<option>	Pratapgarh	</option>
+						<option>	Raebareli	</option>
+						<option>	Rampur	</option>
+						<option>	Saharanpur	</option>
+						<option>	Sant Kabir nagar	</option>
+						<option>	Sant Ravidas nagar	</option>
+						<option>	Shahjahanpur	</option>
+						<option>	Shrawasti	</option>
+						<option>	Siddharthnagar	</option>
+						<option>	Sitapur	</option>
+						<option>	Sonbhadra	</option>
+						<option>	Sultanpur	</option>
+						<option>	Unnao	</option>
+						<option>	Varanasi	</option>
+						<option>	Araria	</option>
+						<option>	Aurangabad	</option>
+						<option>	Banka	</option>
+						<option>	Begusarai	</option>
+						<option>	Bhagalpur	</option>
+						<option>	Bhojpur	</option>
+						<option>	Buxar	</option>
+						<option>	Darbhanga	</option>
+						<option>	East Champaran	</option>
+						<option>	Gaya	</option>
+						<option>	Gopalganj	</option>
+						<option>	Jamui	</option>
+						<option>	Jehanabad	</option>
+						<option>	Kaimur (bhabua)	</option>
+						<option>	Katihar	</option>
+						<option>	Khagaria	</option>
+						<option>	Kishanganj	</option>
+						<option>	Lakhisarai	</option>
+						<option>	Madhepura	</option>
+						<option>	Madhubani	</option>
+						<option>	Munger	</option>
+						<option>	Muzaffarpur	</option>
+						<option>	Nalanda	</option>
+						<option>	Nawada	</option>
+						<option>	Patna	</option>
+						<option>	Purnia	</option>
+						<option>	Rohtas	</option>
+						<option>	Saharsa	</option>
+						<option>	Samastipur	</option>
+						<option>	Saran	</option>
+						<option>	Sheikhpura	</option>
+						<option>	Sheohar	</option>
+						<option>	Sitamarhi	</option>
+						<option>	Siwan	</option>
+						<option>	Supaul	</option>
+						<option>	Vaishali	</option>
+						<option>	West Champaran	</option>
+						<option>	Bankura	</option>
+						<option>	Bardhaman	</option>
+						<option>	Birbhum	</option>
+						<option>	Cooch Behar	</option>
+						<option>	Darjeeling	</option>
+						<option>	East Medinipur	</option>
+						<option>	Hooghly	</option>
+						<option>	Howrah	</option>
+						<option>	Jalpaiguri	</option>
+						<option>	Kolkata	</option>
+						<option>	Malda	</option>
+						<option>	Murshidabad	</option>
+						<option>	Nadia	</option>
+						<option>	North 24 parganas	</option>
+						<option>	North Dinajpur (uttar)	</option>
+						<option>	Purulia	</option>
+						<option>	South 24 parganas	</option>
+						<option>	South Dinajpur (dakshin)	</option>
+						<option>	West Medinipur	</option>
+						<option>	West Midnapore 	</option>
+						<option>	Bokaro	</option>
+						<option>	Chatra	</option>
+						<option>	Deoghar	</option>
+						<option>	Dhanbad	</option>
+						<option>	Dumka	</option>
+						<option>	East Singhbhum	</option>
+						<option>	Garhwa	</option>
+						<option>	Giridh	</option>
+						<option>	Godda	</option>
+						<option>	Gumla	</option>
+						<option>	Hazaribag	</option>
+						<option>	Jamtara	</option>
+						<option>	Koderma	</option>
+						<option>	Latehar	</option>
+						<option>	Lohardaga	</option>
+						<option>	Pakur	</option>
+						<option>	Palamau	</option>
+						<option>	Ramgarh	</option>
+						<option>	Ranchi	</option>
+						<option>	Sahibganj	</option>
+						<option>	Simdega	</option>
+						<option>	West Singhbhum	</option>
+						<option>	Seraikela-kharsawan	</option>
+						<option>	Angul	</option>
+						<option>	Balangir	</option>
+						<option>	Baleswar	</option>
+						<option>	Bargarh	</option>
+						<option>	Bhadrak	</option>
+						<option>	Boudh	</option>
+						<option>	Cuttack	</option>
+						<option>	Debagarh (deogarh)	</option>
+						<option>	Dhenkanal	</option>
+						<option>	Gajapati	</option>
+						<option>	Ganjam	</option>
+						<option>	Jagatsinghapur	</option>
+						<option>	Jajapur	</option>
+						<option>	Jharsuguda	</option>
+						<option>	Kalahandi	</option>
+						<option>	Kandhamal	</option>
+						<option>	Kendrapara	</option>
+						<option>	Kendujhar	</option>
+						<option>	Khurda (khordha)	</option>
+						<option>	Koraput	</option>
+						<option>	Malkangiri	</option>
+						<option>	Mayurbhanj	</option>
+						<option>	Nabarangapur	</option>
+						<option>	Nayagarh	</option>
+						<option>	Nuapada	</option>
+						<option>	Puri	</option>
+						<option>	Rayagada	</option>
+						<option>	Sambalpur	</option>
+						<option>	Sonapur (subarnapur)	</option>
+						<option>	Sundergarh	</option>
+						<option>	Bastar	</option>
+						<option>	Bijapur	</option>
+						<option>	Dantewada	</option>
+						<option>	Dhamtari	</option>
+						<option>	Durg	</option>
+						<option>	Janjgir-champa	</option>
+						<option>	Jashpur	</option>
+						<option>	Kanker	</option>
+						<option>	Kawardha	</option>
+						<option>	Korba	</option>
+						<option>	Koriya	</option>
+						<option>	Mahasamund	</option>
+						<option>	Narayanpur	</option>
+						<option>	Raigarh	</option>
+						<option>	Raipur	</option>
+						<option>	Rajnandgaon	</option>
+						<option>	Surguja	</option>
+						<option>	Anuppur	</option>
+						<option>	Ashoknagar	</option>
+						<option>	Balaghat	</option>
+						<option>	Barwani	</option>
+						<option>	Betul	</option>
+						<option>	Bhind	</option>
+						<option>	Bhopal	</option>
+						<option>	Burhanpur	</option>
+						<option>	Chhatarpur	</option>
+						<option>	Chhindwara	</option>
+						<option>	Damoh	</option>
+						<option>	Datia	</option>
+						<option>	Dewas	</option>
+						<option>	Dhar	</option>
+						<option>	Dindori	</option>
+						<option>	Guna	</option>
+						<option>	Gwalior	</option>
+						<option>	Harda	</option>
+						<option>	Hoshangabad	</option>
+						<option>	Indore	</option>
+						<option>	Jabalpur	</option>
+						<option>	Jhabua	</option>
+						<option>	Katni	</option>
+						<option>	Khandwa (east nimar)	</option>
+						<option>	Khargone (west nimar)	</option>
+						<option>	Mandla	</option>
+						<option>	Mandsaur	</option>
+						<option>	Morena	</option>
+						<option>	Narsinghpur	</option>
+						<option>	Neemuch	</option>
+						<option>	Panna	</option>
+						<option>	Raisen	</option>
+						<option>	Ratlam	</option>
+						<option>	Rewa	</option>
+						<option>	Satna	</option>
+						<option>	Seoni	</option>
+						<option>	Shahdol	</option>
+						<option>	Shajapur	</option>
+						<option>	Sheopur	</option>
+						<option>	Shivpuri	</option>
+						<option>	Sidhi	</option>
+						<option>	Tikamgarh	</option>
+						<option>	Ujjain	</option>
+						<option>	Umaria	</option>
+						<option>	Vidisha	</option>
+						<option>	Ajmer	</option>
+						<option>	Alwar	</option>
+						<option>	Banswara	</option>
+						<option>	Baran	</option>
+						<option>	Barmer	</option>
+						<option>	Bharatpur	</option>
+						<option>	Bhilwara	</option>
+						<option>	Bikaner	</option>
+						<option>	Bundi	</option>
+						<option>	Chittorgarh	</option>
+						<option>	Churu	</option>
+						<option>	Dausa	</option>
+						<option>	Dholpur	</option>
+						<option>	Dungarpur	</option>
+						<option>	Hanumangarh	</option>
+						<option>	Jaipur	</option>
+						<option>	Jaisalmer	</option>
+						<option>	Jalor	</option>
+						<option>	Jhalawar	</option>
+						<option>	Jhunjhunu	</option>
+						<option>	Jodhpur	</option>
+						<option>	Karauli	</option>
+						<option>	Kota	</option>
+						<option>	Nagaur	</option>
+						<option>	Pali	</option>
+						<option>	Rajsamand	</option>
+						<option>	Sawai Madhopur	</option>
+						<option>	Sikar	</option>
+						<option>	Sirohi	</option>
+						<option>	Sri Ganganagar	</option>
+						<option>	Tonk	</option>
+						<option>	Udaipur	</option>
+						<option>	Ahmedabad	</option>
+						<option>	Amreli	</option>
+						<option>	Anand	</option>
+						<option>	Banaskantha	</option>
+						<option>	Bharuch	</option>
+						<option>	Bhavnagar	</option>
+						<option>	Dahod	</option>
+						<option>	Gandhi Nagar	</option>
+						<option>	Jamnagar	</option>
+						<option>	Junagadh	</option>
+						<option>	Kachchh	</option>
+						<option>	Kheda	</option>
+						<option>	Mahesana	</option>
+						<option>	Narmada	</option>
+						<option>	Navsari	</option>
+						<option>	Panch Mahals	</option>
+						<option>	Patan	</option>
+						<option>	Porbandar	</option>
+						<option>	Rajkot	</option>
+						<option>	Sabarkantha	</option>
+						<option>	Surat	</option>
+						<option>	Surendra Nagar	</option>
+						<option>	The Dangs	</option>
+						<option>	Vadodara	</option>
+						<option>	Valsad	</option>
+						<option>	Daman	</option>
+						<option>	Diu	</option>
+						<option>	Dadra &amp; nagar haveli	</option>
+						<option>	Thane	</option>
+						<option>	North Goa	</option>
+						<option>	South Goa	</option>
+						<option>	Adilabad	</option>
+						<option>	Anantapur	</option>
+						<option>	Chittoor	</option>
+						<option>	Cuddapah	</option>
+						<option>	East Godavari	</option>
+						<option>	Guntur	</option>
+						<option>	Hyderabad	</option>
+						<option>	Karim Nagar	</option>
+						<option>	Khammam	</option>
+						<option>	Krishna	</option>
+						<option>	Kurnool	</option>
+						<option>	Mahabubnagar	</option>
+						<option>	Medak	</option>
+						<option>	Nalgonda	</option>
+						<option>	Nellore	</option>
+						<option>	Nizamabad	</option>
+						<option>	Prakasam	</option>
+						<option>	Rangareddi	</option>
+						<option>	Srikakulam	</option>
+						<option>	Visakhapatnam	</option>
+						<option>	Vizianagaram	</option>
+						<option>	Warangal	</option>
+						<option>	West Godavari	</option>
+						<option>	Bagalkot	</option>
+						<option>	Bangalore	</option>
+						<option>	Bangalore Rural	</option>
+						<option>	Belgaum	</option>
+						<option>	Bellary	</option>
+						<option>	Bidar	</option>
+						<option>	Chamrajnagar	</option>
+						<option>	Chickmagalur	</option>
+						<option>	Chitradurga	</option>
+						<option>	Dakshina Kannada	</option>
+						<option>	Davangare	</option>
+						<option>	Dharward	</option>
+						<option>	Gadag	</option>
+						<option>	Gulbarga	</option>
+						<option>	Hassan	</option>
+						<option>	Haveri	</option>
+						<option>	Kodagu	</option>
+						<option>	Kolar	</option>
+						<option>	Koppal	</option>
+						<option>	Mandya	</option>
+						<option>	Mysore	</option>
+						<option>	Raichur	</option>
+						<option>	Shimoga	</option>
+						<option>	Tumkur	</option>
+						<option>	Udupi	</option>
+						<option>	Uttara Kannada	</option>
+						<option>	Alappuzha	</option>
+						<option>	Ernakulam	</option>
+						<option>	Idukki	</option>
+						<option>	Kannur	</option>
+						<option>	Kasargod	</option>
+						<option>	Kollam	</option>
+						<option>	Kottayam	</option>
+						<option>	Kozhikode	</option>
+						<option>	Malappuram	</option>
+						<option>	Palakkad	</option>
+						<option>	Pathanamthitta	</option>
+						<option>	Thiruvananthapuram	</option>
+						<option>	Thrissur	</option>
+						<option>	Wayanad	</option>
+						<option>	Ariyalur	</option>
+						<option>	Chennai	</option>
+						<option>	Coimbatore	</option>
+						<option>	Cuddalore	</option>
+						<option>	Dharmapuri	</option>
+						<option>	Dindigul	</option>
+						<option>	Erode	</option>
+						<option>	Kanchipuram	</option>
+						<option>	Kanyakumari	</option>
+						<option>	Karur	</option>
+						<option>	Krishnagiri	</option>
+						<option>	Madurai	</option>
+						<option>	Nagapattinam	</option>
+						<option>	Namakkal	</option>
+						<option>	Nilgiris	</option>
+						<option>	Perambalur	</option>
+						<option>	Pudukkottai	</option>
+						<option>	Ramanathapuram	</option>
+						<option>	Salem	</option>
+						<option>	Sivaganga	</option>
+						<option>	Thanjavur	</option>
+						<option>	Theni	</option>
+						<option>	Tiruchirappalli	</option>
+						<option>	Tirunelveli	</option>
+						<option>	Tiruvallur	</option>
+						<option>	Tiruvannamalai	</option>
+						<option>	Tiruvarur	</option>
+						<option>	Tuticorin ( thoothukudi )	</option>
+						<option>	Vellore	</option>
+						<option>	Villupuram	</option>
+						<option>	Virudhunagar	</option>
+						<option>	North And middle andaman	</option>
+						<option>	South Andaman	</option>
+						<option>	Nicobar	</option>
+						<option>	Karaikal	</option>
+						<option>	Mahe	</option>
+						<option>	Pondicherry	</option>
+						<option>	Lakshadweep	</option>
+						<option>	East Sikkim	</option>
+						<option>	North Sikkim	</option>
+						<option>	South Sikkim	</option>
+						<option>	West Sikkim	</option>
+						<option>	Barpeta	</option>
+						<option>	Bongaigaon	</option>
+						<option>	Cachar	</option>
+						<option>	Darrang	</option>
+						<option>	Dhemaji	</option>
+						<option>	Dhubri	</option>
+						<option>	Dibrugarh	</option>
+						<option>	Goalpara	</option>
+						<option>	Golaghat	</option>
+						<option>	Hailakandi	</option>
+						<option>	Jorhat	</option>
+						<option>	Kamrup	</option>
+						<option>	Karbi Anglong	</option>
+						<option>	Karimganj	</option>
+						<option>	Kokrajhar	</option>
+						<option>	Lakhimpur	</option>
+						<option>	Marigaon	</option>
+						<option>	Nagaon	</option>
+						<option>	Nalbari	</option>
+						<option>	North Cachar hills	</option>
+						<option>	Sivasagar (sibsagar)	</option>
+						<option>	Sonitpur	</option>
+						<option>	Tinsukia	</option>
+						<option>	Changlang	</option>
+						<option>	Dibang Valley	</option>
+						<option>	East Kameng	</option>
+						<option>	East Siang	</option>
+						<option>	Kurung Kumey	</option>
+						<option>	Lohit	</option>
+						<option>	Lower Dibang valley	</option>
+						<option>	Lower Subansiri	</option>
+						<option>	Papum Pare	</option>
+						<option>	Tawang	</option>
+						<option>	Tirap	</option>
+						<option>	Upper Siang	</option>
+						<option>	Upper Subansiri	</option>
+						<option>	West Kameng	</option>
+						<option>	West Siang	</option>
+						<option>	East Garo hills	</option>
+						<option>	East Khasi hills	</option>
+						<option>	Jaintia Hills	</option>
+						<option>	Ri Bhoi	</option>
+						<option>	South Garo hills	</option>
+						<option>	West Garo hills	</option>
+						<option>	West Khasi hills	</option>
+						<option>	Dhalai	</option>
+						<option>	North Tripura	</option>
+						<option>	South Tripura	</option>
+						<option>	West Tripura	</option>
+						<option>	Aizawl	</option>
+						<option>	Champhai	</option>
+						<option>	Kolasib	</option>
+						<option>	Lawngtlai	</option>
+						<option>	Lunglei	</option>
+						<option>	Mammit	</option>
+						<option>	Saiha	</option>
+						<option>	Serchhip	</option>
+						<option>	Bishnupur	</option>
+						<option>	Chandel	</option>
+						<option>	Churachandpur	</option>
+						<option>	Imphal East	</option>
+						<option>	Imphal West	</option>
+						<option>	Senapati	</option>
+						<option>	Tamenglong	</option>
+						<option>	Thoubal	</option>
+						<option>	Ukhrul	</option>
+						<option>	Dimapur	</option>
+						<option>	Kiphire	</option>
+						<option>	Kohima	</option>
+						<option>	Longleng	</option>
+						<option>	Mokokchung	</option>
+						<option>	Mon	</option>
+						<option>	Peren	</option>
+						<option>	Phek	</option>
+						<option>	Tuensang	</option>
+						<option>	Wokha	</option>
+						<option>	Zunhebotto	</option>
+					</select>
+
+
+				</label></p>   </div>  
+
+				<div class="span5"><p><label> <span>State</span><select id="addr_ho_state" name="state">
+					<option>Default </option>	    
+					<option>	Jammu &amp; kashmir	</option>
+					<option>	Himachal Pradesh	</option>
+					<option>	Chandigarh	</option>
+					<option>	Punjab	</option>
+					<option>	Haryana	</option>
+					<option>	Delhi	</option>
+					<option>	Uttarakhand	</option>
+					<option>	Uttar Pradesh	</option>
+					<option>	Bihar	</option>
+					<option>	West Bengal	</option>
+					<option>	Jharkhand	</option>
+					<option>	Orissa	</option>
+					<option>	Chhattisgarh	</option>
+					<option>	Madhya Pradesh	</option>
+					<option>	Rajasthan	</option>
+					<option>	Gujarat	</option>
+					<option>	Daman &amp; diu	</option>
+					<option>	Dadra &amp; nagar haveli	</option>
+					<option>	Maharashtra	</option>
+					<option>	Goa	</option>
+					<option>	Andhra Pradesh	</option>
+					<option>	Karnataka	</option>
+					<option>	Kerala	</option>
+					<option>	Tamil Nadu	</option>
+					<option>	Andaman &amp; nicobar islands	</option>
+					<option>	Pondicherry	</option>
+					<option>	Lakshadweep	</option>
+					<option>	Sikkim	</option>
+					<option>	Assam	</option>
+					<option>	Arunachal Pradesh	</option>
+					<option>	Meghalaya	</option>
+					<option>	Tripura	</option>
+					<option>	Mizoram	</option>
+					<option>	Manipur	</option>
+					<option>	Nagaland	</option>
+				</select></label></p>   </div>  
+			</div>
+
+			<div class="row">
+				<div class="span5"><p><label> <span>Pincode No.</span><input type="text" value="" name="pincode" id="pincode" placeholder="">
+
+
+
+				</label></p>   </div>  
+				<div class="span5"><p><label> <span>Location</span><input type="text" name="location" id="location" value="" placeholder=""></label></p>   </div> 
+			</div>  
+
+			<legend>Organisation details</legend> 
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email Id</th>
+						<th>Landline No.</th>
+						<th>Mobile No.</th>
+					</tr>
+				</thead>
+				<tbody id="org_struct_tbody">
+					<tr>
+					</tr>
+
+				</tbody>
+			</table>
+
+	</div>
+
+	<div class="tab-pane" id="tab3">
+		<p class="panel-body prettyprint">Though all Fields are not mandatory, it is advisable to fill the form completely to ensure that in Search Results your company name is<br> 
+			displayed right among the top results and more clients will be able to view and send enquiries.</p>
+			<div class="panel panel-default">
+				<div class="panel-body">
+
+
+					Customer's can select to send inquiries to you based on your Projects executed in the Relevant Industry, and the Value of projects handled. We shall be giving filters based on the industry and value of projects for customers to select your name, if you have filled up the details. Based on the contact details provided by you (these contact details will not be shown into site) we shall be verifying the same and if found correct we shall put a label of "Verified" against each project, this will help your company to show up on listings with the "Verified" tag selected by the customer.	
+
+				</div>
+			</div>
+			<legend>Testmonials / References</legend>
+			<legend>Top Projects Executed</legend>
+
+			<div class="row"><div class="span5 border_right_line">
+				<p><label> <span>Project name</span><input type="text" name="project_company_name[]" id="company_name" placeholder=""></label></p>  
+				<p><label> <span>Industry </span>
+					<select name="project_industry[]">
+						<option>	Automotive 	</option>
+						<option>	Chemical 	</option>
+						<option>	Utility</option>
+						<option>	Pharmaceuticals 	</option>
+						<option>	Real Estate 	</option>
+						<option>	Cement</option>
+						<option>	Steel</option>
+						<option>	Textile</option>
+						<option>	Technology 	</option>
+						<option>	Other</option>
+					</select>
+				</label></p>  
+				<p><label> <span>Phone No. for verification </span><input type="text" name="project_phone_no_verify[]" id="phone_no_verify" placeholder=""></label></p>  
+				<!-- 					     <p><label> <span>Value in Lacs </span><input type="text" name="project_value_in_lacs[]" id="value_in_lacs" placeholder=""/></label></p> -->
+			</div>
+
+			<div class="span5 ">
+				<p><label> <span>Location  </span><input type="text" name="project_location" id="location" placeholder=""></label></p>  
+				<p><label> <span>Name </span><input type="text" name="project_name" id="name" placeholder=""></label></p>  
+				<p><label> <span>Value in Lacs </span><input type="text" name="project_value_in_lacs" id="value_in_lacs" placeholder=""></label></p>
+
+			</div>
+
+		</div>
+
+
+		<!-- 				     <hr> --><div class="row">
+		<p class="span3"><button class="add-more-btn btn" type="button">+ Add More Projects</button></p>
+	</div>	
+	<legend>Major Customers</legend>
+
+	<div class="row">
+		<div class="span5 border_right_line">
+			<p><label> <span>Customer Name</span><input type="text" name="major_customer_name[]" placeholder=""></label></p>  
+<!--					     <p><label> <span>Reference Contact Name  </span><input type="text" name="ref_contact_name" id="ref_contact_name" placeholder=""/></label></p>  
+					     <p><label> <span>Reference Contact No. </span><input type="text" name="ref_contact_no" id="ref_contact_no" placeholder=""/></label></p>  
+					     <p><label> <span>Reference Email Id</span><input type="text" name="ref_email_id" id="ref_email_id" placeholder=""/></label></p>  -->
+					 </div>
+
+					 <div class="span5 ">
+					 	<p><label> <span>Customer Name</span><input type="text" name="major_customer_name[]" placeholder=""></label></p>  
+<!--					     <p><label> <span>Reference Contact Name  </span><input type="text" name="ref_contact_name" id="ref_contact_name" placeholder=""/></label></p>  
+					     <p><label> <span>Reference Contact No. </span><input type="text" name="ref_contact_no" id="ref_contact_no" placeholder=""/></label></p>  
+					     <p><label> <span>Reference Email Id</span><input type="text" name="ref_email_id" id="ref_email_id" placeholder=""/></label></p>  -->
+					 </div>
+
+					</div>
+					<div class="row">
+						<p class="span3"><button class="add-more-btn btn" type="button">+ Add More Customers</button></p>
+					</div>	
+
+					<hr>
+
+					<p><label> <span>Add Testimonials</span><input type="file" name="testimonials" id="" placeholder=""><small>(Add files of the testimonials received)</small></label></p>  
+
+					<legend>Credentials</legend>
+					<p><label> <span>Total Annual Sales Volume in Lacs Yr Ended March 2013</span><input type="text" name="tot_ann_sales" id="tot_ann_sales" placeholder=""></label></p>  
+					<p><label> <span>Expected Annual Sales Volume in Lacs Yr Ended March 2014</span><input type="text" name="exp_ann_sales" id="exp_ann_sales" placeholder=""></label></p>  
+					<!--				     <p><label> <span>Factory Information</span><input type="text" name="fac_info" id="fac_info" placeholder="Factory Size (Sqft)"/></label></p>  -->
+				</div>
+				<div class="tab-pane" id="tab4">
+					<p class="panel-body prettyprint">Though all Fields are not mandatory, it is advisable to fill the form completely to ensure that in Search Results your company name is<br> 
+						displayed right among the top results and more clients will be able to view and send enquiries.</p>
+						<legend>Your detailed company page</legend>
+						<p><label> <span>Main Products / Services Offered</span><textarea class="span9" rows="3" name="main_products"></textarea></label></p>  
+						<p><label> <span>Photos of your products/ installations/ projects executed</span><input name="product_photos" type="file" id=""></label></p>  
+						<p><label> <span>Highlight USP/Special Benefits of your Product/Services over Competition</span><textarea class="span9" name="usp"></textarea></label></p>  
+						<p><label> <span>Company Video URL</span><input type="text" name="video" id="comp_vid_url"></label></p>  
+						<p><label> <span>Company Photos</span><input type="file" name="company_photos"></label></p>  
+						<p><label> <span>Our Associate Concerns</span><textarea class="span9" name="associate"></textarea></label></p>  
+
+						<p><label> <span>Register with Us</span>
+
+
+							<input type="submit" value="Register"></label></p>  
+						</div>
+						<ul class="pager wizard">
+							<li class="previous first disabled" style="display:none;"><a href="#">First</a></li>
+							<li class="previous disabled"><a href="#">Previous</a></li>
+							<li class="next last" style="display:none;"><a href="#">Last</a></li>
+							<li class="next"><a href="#">Next</a></li>
+						</ul>
+					</div>	
+					
+					
+					
+				</div></form>
+				
+				
+			</section>
+		</div>
+	</div>
+</div>
+
+<!--     <script src="http://code.jquery.com/jquery-latest.js"></script> -->
+<script src="http://network.shopelect.com/jquery-latest.js"></script>
+<!-- <script src="jquery.anychange.js"></script> -->
+<script src="http://network.shopelect.com/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://network.shopelect.com/jquery.bootstrap.wizard.js"></script>
+<script src="http://network.shopelect.com/prettify.js"></script>
+<script>
+jQuery(document).ready(function($) {
+	
+
+	// $("#office_landline_std_code").keydown(function(event) {
+	// 	// Allow only backspace and delete
+	// 	if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9) {
+	// 		// let it happen, don't do anything
+	// 	}
+	// 	else {
+	// 		// Ensure that it is a number and stop the keypress
+	// 		if (event.keyCode < 48 || event.keyCode > 57 ) {
+	// 			event.preventDefault();	
+	// 		}
+	// 		if($(this).val().length >3)
+	// 		{
+	// 		$('#office_landline_number').focus();
+	// 		}
+
+	// 	}
+	// });
+
+// 	$("#salesperson").keydown(function(event) {
+// 		// Allow only backspace and delete
+// 		if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9) {
+// 			// let it happen, don't do anything
+// 		}
+// 		else {
+// 			// Ensure that it is a number and stop the keypress
+// 			if (event.keyCode < 48 || event.keyCode > 57 ) {
+// 				event.preventDefault();	
+// 			}
+// 			if($(this).val().length >4)
+// 			{
+// // 			console.log("helo");
+// 			$(this).focusout();
+// 			}
+// 			
+// 		}
+// 	});
+
+// 	$("#office_landline_number").keydown(function(event) {
+// 	if($(this).val().length > 7)
+// 			{
+// 			$('this').next().focus();
+// 			}
+// 	});
+// 	
+// 	Save Contact Information
+
+/*		 $("#save_contact_info").click(function(){	
+		  username=$("#login_id").val();
+		  password=$("#login_pwd").val();
+		  $.ajax({
+		   type: "POST",
+		   url: "login.php",
+		   data: "name="+username+"&pwd="+password,
+		   success: function(html){    
+			if(html=='true')    {
+			$('#login_form').fadeOut();
+			$('#welcome_box').fadeIn();
+			 //$("#add_err").html("right username or password");
+// 			 window.location="index.php";
+			}
+			else    {
+			$("#add_err").css('display', 'inline', 'important');
+			$("#welcome_box").html("Wrong username or password").fadeIn();
+			}
+		   },
+		   beforeSend:function()
+		   {
+			$("#add_err").css('display', 'inline', 'important');
+			$("#add_err").html("<img src='images/ajax-loader.gif' /> Loading...")
+		   }
+		  });
+		return false;
+	});*/	
+// 	Save Contact Information
+
+// $('#addr_ho_state').change(function(){
+// 
+// 		  var state_name=$(this).val();
+// 		  $.ajax({
+// 		   type: "POST",
+// 		   url: "get_city.php",
+// 		   data: "state="+state_name,
+// 		   success: function(html){    
+// 			if(html)    {
+// 			$('#city').html(html);
+// 			}
+// 			else    {
+// 			}
+// 		   },
+// 		   beforeSend:function()
+// 		   {
+// 		   }
+// 		  });
+// 		return false;
+// });
+
+$('#authorized_dealer_chkbox').change(function() {
+
+	$('#authorized_dealer_wrapper').slideToggle();
+});
+
+$('.add-more-btn').click(function(){
+	var current_element = $(this).parent().parent().prev();
+	$new_elem = $(current_element).clone().insertAfter(current_element);
+	$new_elem.find('input').val('');
+	$($new_elem).before("<hr>");
+});
+$('#rootwizard').bootstrapWizard({
+
+	onPrevious: function(tab, navigation, index) {
+// 				    console.log("Prev");
+if(index==0){
+
+	$('#org_struct_tbody').html("");
+// 				    alert("Prev index =1 ");
+}
+
+}, 
+onNext: function(tab, navigation, index) {
+	if(index==1) {
+
+
+// 				        var office_landline_number = $('#office_landline_number').val().length;
+var office_landline_number = parseInt($('#office_landline_number').val()).toString().length;
+
+// 				        var office_landline_std_code = $('#office_landline_std_code').val().length;
+var office_landline_std_code = parseInt($('#office_landline_std_code').val()).toString().length;
+
+var office_landline = office_landline_std_code + office_landline_number ;
+
+var mobile_number =  parseInt($('#mobile_number').val()).toString().length;
+
+
+
+					// Make sure we entered the name
+					if(!$('#company_name').val()) {
+						alert('Please provide your company name.');
+						$('#your_name').focus();
+						return false;
+					}
+					else if(!$('#your_name').val()) {
+						alert('Please provide your name.');
+						$('#your_name').focus();
+						return false;
+					}
+					else if(!$('#office_landline_number').val()) {
+						alert('Please provide the office landline number.'+office_landline);
+						$('#office_landline_number').focus();
+						return false;
+					}
+					else if(office_landline !=10)
+					{
+						// alert(office_landline);
+						// alert("Please enter a correct Std code and landline number.");
+						// $('#office_landline_number').focus();
+						// return false;
+					}
+					else if(mobile_number !=10)
+					{
+						alert("Please enter a valid 10 digit mobile number");
+						$('#mobile_number').focus();
+						return false;
+					}
+					else if(!$('#username').val()) {
+						alert('Please provide your username.');
+						$('#username').focus();
+						return false;
+					}
+					else if(!$('#password').val()) {
+						alert('Please create a new password.');
+						$('#password').focus();
+						return false;
+					}
+					else
+					{
+// 				create org stucture in next pager
+var org_struc_len = $('input[name="tree_name[]"]').length;
+for ($i=0;$i<org_struc_len;$i++)
+{
+	$('#org_struct_tbody').append("<tr><td><input type='text' name='' value="+$('input[name="tree_name[]"]').eq($i).val()+" ></td><td><input type='text' name='org_struc_email[]' id='' placeholder=''></td><td><input type='text' name='org_struc_landline[]' id='' placeholder=''></td><td><input type='text' name='org_struc_mobile[]' id='' placeholder=''></td></tr>");
+}
+
+}
+// 					if(!$('#sales_name1').val()) {
+// 						alert('Atleast provide one sales officer name.');
+// 						$('#sales_name1').focus();
+// 						return false;
+// 					}
+// 				      if(!$('#purchase_name1').val()) {
+// 						alert('Atleast provide one purchase officer name.');
+// 						$('#purchase_name1').focus();
+// 						return false;
+// 					}
+// 					if(!$('#owner_name').val()) {
+// 						alert('Please provide the Owner/CEO name.');
+// 						$('#owner_name').focus();
+// 						return false;
+// 					}
+}
+
+				// Set the name for the next tab
+// 				$('#tab3').html('Hello, ' + $('#name').val());
+
+}, onTabShow: function(tab, navigation, index) {
+	var $total = navigation.find('li').length;
+	var $current = index+1;
+	var $percent = ($current/$total) * 100;
+	$('#rootwizard').find('.bar').css({width:$percent+'%'});
+}});	
+window.prettyPrint && prettyPrint()
+});	
+</script>
+
+
+</body></html>
