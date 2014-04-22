@@ -201,6 +201,8 @@
                 </div>
             </div>
         </li>
+    	</ul>
+        <ul class="form-list authorized_dealer_chkbox">
         <li><h3>Authorized dealer for</h3></li>
         <li class="fields">
             <label for="email_address" class="required">Brand</label>
@@ -1173,17 +1175,29 @@
             </script>
 
             <script type="text/javascript">
-//<![CDATA[
-function toggleRememberMepopup(event){
-    if($('remember-me-popup')){
-        var viewportHeight = document.viewport.getHeight(),
-        docHeight      = $$('body')[0].getHeight(),
-        height         = docHeight > viewportHeight ? docHeight : viewportHeight;
-        $('remember-me-popup').toggle();
-        $('window-overlay').setStyle({ height: height + 'px' }).toggle();
-    }
-    Event.stop(event);
-}
+			//<![CDATA[
+			jQuery('.authorized_dealer_chkbox').hide();
+			jQuery('#authorized_dealer_chkbox').click(function () {
+				if(jQuery('.authorized_dealer_chkbox').is(':visible')){
+					// alert('visible');
+					jQuery('.authorized_dealer_chkbox').show();
+				}else{
+					// alert('invisible');
+					jQuery('.authorized_dealer_chkbox').hide();
+				}
+				
+			});
+			
+			function toggleRememberMepopup(event){
+			    if($('remember-me-popup')){
+			        var viewportHeight = document.viewport.getHeight(),
+			        docHeight      = $$('body')[0].getHeight(),
+			        height         = docHeight > viewportHeight ? docHeight : viewportHeight;
+			        $('remember-me-popup').toggle();
+			        $('window-overlay').setStyle({ height: height + 'px' }).toggle();
+			    }
+			    Event.stop(event);
+			}
 
 document.observe("dom:loaded", function() {
     new Insertion.Bottom($$('body')[0], $('window-overlay'));
