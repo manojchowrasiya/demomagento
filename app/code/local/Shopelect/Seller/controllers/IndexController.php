@@ -39,4 +39,11 @@ class Shopelect_Seller_IndexController extends Mage_Core_Controller_Front_Action
     
 
     }
+
+    public function loginsellerAction()
+    {
+      $email ='manoj.chowrasiya@iksula.com';
+      $password = '123456';
+      Mage::helper('seller/data')->loginUser($email,$password);
+    }
 }

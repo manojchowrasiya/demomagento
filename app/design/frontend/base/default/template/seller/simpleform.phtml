@@ -169,7 +169,7 @@
                            <!-- <input type="text" name="tree_name[]" value="" id="tree_name_1" placeholder=""> -->
                         </div>
                     </div>   
-                    <div class="field name-firstname" style="display:none;">
+                    <div class="field name-firstname">
                         <label for="email_address">Reports</label>
                         <div class="input-box">
                             <input type="text" name="tree_name_reports_to[]" id="" value="" title="Email Address" class="input-text">
@@ -178,7 +178,16 @@
                        <div class="field name-firstname">
                         <label for="email_address">Reports</label>
                         <div class="input-box">
-                            <input type="text" name="tree_org_dept[]" id="" value="" title="Email Address" class="input-text">
+                            <!-- <input type="text" name="tree_org_dept[]" id="" value="" title="Email Address" class="input-text"> -->
+                            <select name="tree_org_dept[]">
+
+                                <option>Owner / Director</option>
+                                <option>Accounts</option>
+                                <option>Sale</option>
+                                <option selected="">Purchase</option>
+                                <option>Factory/ Site</option>
+                                <option>Stores</option>
+                            </select>
                         </div>
                     </div>
                 </li>
@@ -190,7 +199,7 @@
                            <!-- <input type="text" name="tree_name[]" value="" id="tree_name_1" placeholder=""> -->
                         </div>
                     </div>   
-                    <div class="field name-firstname" style="display:none;">
+                    <div class="field name-firstname">
                         <label for="email_address">Reports</label>
                         <div class="input-box">
                             <input type="text" name="tree_name_reports_to[]" id="" value="" title="Email Address" class="input-text">
@@ -199,7 +208,36 @@
                        <div class="field name-firstname">
                         <label for="email_address">Reports</label>
                         <div class="input-box">
-                            <input type="text" name="tree_org_dept[]" id="" value="" title="Email Address" class="input-text">
+                            <select name="tree_org_dept[]">
+
+                                <option>Owner / Director</option>
+                                <option>Accounts</option>
+                                <option>Sale</option>
+                                <option selected="">Purchase</option>
+                                <option>Factory/ Site</option>
+                                <option>Stores</option>
+                            </select>
+                            <!-- <input type="text" name="tree_org_dept[]" id="" value="" title="Email Address" class="input-text"> -->
+                        </div>
+                    </div>
+                </li>
+                  <li>
+                    <div class="field name-companyname">
+                        
+                        <div class="input-box">
+                           <input type="checkbox" name="business_type[]" value="" id="tree_name_1" placeholder="">
+                           <span>Authorized Dealer</span>
+                        </div>
+                    </div>   
+                    <div class="field name-firstname">
+                         <div class="input-box">
+                           <input type="checkbox" name="business_type[]" value="" id="tree_name_1" placeholder="">Authorized Dealer
+                        </div>
+                    </div>
+                       <div class="field name-firstname">
+                         <div class="input-box">      
+                           <input type="checkbox" name="business_type[]" value="" id="tree_name_1" placeholder="">Authorized Dealer
+                        </div>
                         </div>
                     </div>
                 </li>

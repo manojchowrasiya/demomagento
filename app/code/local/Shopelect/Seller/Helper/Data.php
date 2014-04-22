@@ -58,6 +58,50 @@ class Shopelect_Seller_Helper_Data extends Mage_Core_Helper_Abstract
         return Mage::getUrl('seller/account');
     }
 
+    function IscustomerEmailExists($email, $websiteId = null){
+        // echo 'mannnnnnn';
+        $websiteId = Mage::app()->getWebsite()->getId();
+        $customer = Mage::getModel('customer/customer');
+        if ($websiteId) {
+            $customer->setWebsiteId($websiteId);
+        }
+        $customer->loadByEmail($email);
+        if ($customer->getId()) {
+            return $customer->getId();
+        }
+        return false;
+    }
+
+    function loginUser(){
+        $email = $this->getRequest()->getParam('email');
+        $password = $this->getRequest()->getParam('password');
+        $websiteId = Mage::app()->getWebsite()->getId();
+        $cust_exist = $this->IscustomerEmailExists($email,$websiteId);
+
+        if($cust_exist){
+            Mage::getSingleton("core/session", array("name" => "frontend"));
+            $websiteId = Mage::app()->getWebsite()->getId();
+            $store = Mage::app()->getStore();
+            $customer = Mage::getModel("customer/customer");
+            $customer->website_id = $websiteId;
+            $customer->setStore($store);
+            try {
+                $customer->loadByEmail($email);
+                $session = Mage::getSingleton('customer/session')->setCustomerAsLoggedIn($customer);
+                $session->login($email, $password);
+                $url =$this->getSellerAccountUrl();
+                echo 'success';
+            }
+            catch(Exception $e){
+            }
+        }else{
+            echo 'failure';
+        }
+        
+
+  } 
+
+
 
 }
 	 
